@@ -10,5 +10,7 @@
 	<h1>Hello world!</h1>
 
 	<P>The time on the server is ${serverTime}.</P>
+	<P>커밋 확인용1.</P>
+	
 </body>
 </html>
