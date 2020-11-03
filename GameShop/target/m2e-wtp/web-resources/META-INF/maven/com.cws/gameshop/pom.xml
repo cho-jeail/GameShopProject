@@ -186,6 +186,7 @@
 			<version>2.9.7</version>
 		</dependency>
 		
+		<!-- c3p0 -->
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
