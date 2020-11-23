@@ -1,5 +1,14 @@
 package com.cws.service;
 
-public class HomeService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.cws.dao.HomeDAO;
+
+@Service
+public class HomeService {
+	
+	@Autowired
+	private HomeDAO HDAO;
+	
 }

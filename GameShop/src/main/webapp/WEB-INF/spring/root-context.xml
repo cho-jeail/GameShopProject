@@ -11,5 +11,41 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	 	<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+	 	<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.0.10:1521:orcl"/>
+     	<property name="user" value="c##game2"/>
+      	<property name="password" value="1"/>
+   	   	<property name="maxPoolSize" value="100"/>
+		<property name="maxIdleTime" value="600"/>
+	  	<property name="idleConnectionTestPeriod" value="300"/>
+	    <property name="checkoutTimeout" value="5000"/>
+    </bean>
+    
+    <bean id = "sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref = "dataSource"/>
+		<property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:config/sqlmap-home.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" 
+		  destroy-method="clearCache">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- 트렌젝션 설정 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 트렌젝션 어노테이션 활성화 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<context:component-scan base-package="com.cws.service" />
+	
+	<mybatis-spring:scan base-package="com.cws.dao"/>
 </beans>
