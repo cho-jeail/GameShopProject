@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>GAMESHOP</title>
+<c:set var="cpath" value="${pageContext.request.contextPath }" />
+<link rel="stylesheet" type="text/css" href="${cpath }/css/main.css">
 </head>
 <body>
-
-</body>
-</html>
+<script type="text/javascript">
+	cpath = '${cpath}';
+</script>
+<header>
+	
+</header>
