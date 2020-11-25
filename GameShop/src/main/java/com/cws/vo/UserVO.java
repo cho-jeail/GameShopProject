@@ -1,5 +1,57 @@
 package com.cws.vo;
 
-public class UserVO {
+import java.util.Date;
 
+public class UserVO {
+	private String id;
+	private String email;
+	private String passWord;
+	private String name;
+	private String address;
+	private String nickName;
+	private Date registDate;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassWord() {
+		return passWord;
+	}
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	public Date getRegistDate() {
+		return registDate;
+	}
+	public void setRegistDate(Date registDate) {
+		this.registDate = registDate;
+	}
+	
 }
