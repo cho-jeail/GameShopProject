@@ -13,6 +13,7 @@
 	<script type="text/javascript">
 		cpath = '${cpath}';
 	</script>
+	<script type="text/javascript" src="${cpath }/js/header.js"></script>
 	<header>
 		<div class="LOGO">
 			<a href="#">
@@ -39,7 +40,7 @@
 					<a href="${cpath}/gameStore/">STORE</a>
 				</li>
 				<li>
-					<a href="#">고객센터</a>
+					<a href="${cpath }/CC/">고객센터</a>
 				</li>
 			</ul>
 		</div>
