@@ -36,7 +36,7 @@
 					<a href="#">INFO</a>
 				</li>
 				<li>
-					<a href="#">STORE</a>
+					<a href="${cpath}/gameStore/">STORE</a>
 				</li>
 				<li>
 					<a href="#">고객센터</a>
