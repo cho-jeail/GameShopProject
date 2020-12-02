@@ -21,21 +21,25 @@
 		</div>
 		<div class="SearchBar">
 			<input type="text" id="SearchWord" placeholder="검색">
-			<input type="button" onclick="">
+			<input type="button" onclick="" value="돋보기 그림">
+		</div>
+		<div class="LoginArea">
+			<input type="button" onclick="" id="Login" value="로그인">
+			<input type="button" onclick="" id="AddAccount" value="회원가입">
 		</div>
 		<div class="Menu">
 			<ul>
 				<li>
-					<a></a>
+					<a href="#">HOME</a>
 				</li>
 				<li>
-					<a></a>
+					<a href="#">INFO</a>
 				</li>
 				<li>
-					<a></a>
+					<a href="#">STORE</a>
 				</li>
 				<li>
-					<a></a>
+					<a href="#">고객센터</a>
 				</li>
 			</ul>
 		</div>
