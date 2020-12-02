@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.joinSection{
+	display: flex;
+	justify-content: center;
+	max-width: 1280px;
+	min-width: 780px;
+	width: 100%;
+	height: 900px;
+	margin: 0 auto 0 auto;
+	border: 1px solid black;
+}
+
+.joinContainer{
+	width: 580px;
+	height: 650px;
+	border: 1px solid blue;
+}
+
+.joinTOSTitleBox{
+	display: flex;
+	justify-content: space-between;
+	height: 75px;
+}
+
+.joinTOSTitleBox h2{
+	width: 440px;
+}
+
+.joinTOSTitleBox div{
+	margin: auto;
+	margin-right: 0;
+	color: red;
+}
