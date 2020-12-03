@@ -32,10 +32,10 @@
 			</div>
 			<div class="Menu">
 				<ul>
-					<li><a href="${cpath }/">HOME</a></li>
-					<li><a href="#">INFO</a></li>
-					<li><a href="${cpath}/gameStore/">STORE</a></li>
-					<li><a href="${cpath }/CC/">고객센터</a></li>
+					<li style="width: 65px;"><a href="${cpath }/">홈</a></li>
+					<li style="width: 85px;"><a href="#">소개</a></li>
+					<li style="width: 85px;"><a href="${cpath}/gameStore/">상점</a></li>
+					<li style="width: 125px;"><a href="${cpath }/CC/">고객센터</a></li>
 				</ul>
 			</div>
 		</div>

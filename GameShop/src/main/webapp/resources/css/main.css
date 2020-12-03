@@ -12,7 +12,10 @@ header {
 }
 
 body {
+	margin: auto;
 	margin-top: 150px;
+	margin-bottom: 0px;
+	width: 1280px;
 }
 
 div {
@@ -27,6 +30,27 @@ footer {
 	right: 0px;
 	height: 150px;
 	background-color: #BEBEBE;
+}
+
+footer div {
+	margin: 5px auto;
+	width: 1280px;
+}
+
+footer ul {
+	display: flex;
+	margin: 0px;
+	padding: 0px;
+}
+
+footer ul li {
+	list-style: none;
+	margin-left: 10px;
+}
+
+footer a:link, footer a:visited, footer a:hover {
+	color: #115292;
+	text-decoration: none;
 }
 
 .LOGO, .LOGO img {
@@ -55,8 +79,20 @@ footer {
 	list-style: none;
 	height: 65px;
 	margin-left: 10px;
+	border: 1px solid black;
+	line-height: 65px;
+}
+
+.Menu ul li:hover {
+	background-color: #6E6E6E;
 }
 
 .Menu ul li a {
-	font-size: 25px;
+	font-size: 20px;
+	padding: 19px 22px;
+	text-decoration: none;
+}
+
+.Menu ul li a:link, .Menu ul li a:visited, .Menu ul li a:hover {
+	color: black;
 }
