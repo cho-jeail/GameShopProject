@@ -1,1 +1,62 @@
 @charset "UTF-8";
+
+header {
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 150px;
+	background-color: #BEBEBE;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+}
+
+body {
+	margin-top: 150px;
+}
+
+div {
+	margin: 0px;
+	padding: 0px;
+}
+
+footer {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 150px;
+	background-color: #BEBEBE;
+}
+
+.LOGO, .LOGO img {
+	width: 200px;
+	height: 150px;
+}
+
+.TopMenu {
+	display: flex;
+	width: 1080px;
+	height: 75px;	
+}
+
+.Menu {
+	width: 1080px;
+	height: 75px;
+}
+
+.Menu ul {
+	display: flex;
+	margin: 0px;
+	padding: 0px;
+}
+
+.Menu ul li {
+	list-style: none;
+	height: 65px;
+	margin-left: 10px;
+}
+
+.Menu ul li a {
+	font-size: 25px;
+}
