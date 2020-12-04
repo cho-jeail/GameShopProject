@@ -1,8 +1,10 @@
 package com.cws.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ImageVO {
 	private String id;
-	private String imgUrl;
+	private MultipartFile imgUrl;
 	
 	public String getId() {
 		return id;
@@ -10,10 +12,10 @@ public class ImageVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getImgUrl() {
+	public MultipartFile getImgUrl() {
 		return imgUrl;
 	}
-	public void setImgUrl(String imgUrl) {
+	public void setImgUrl(MultipartFile imgUrl) {
 		this.imgUrl = imgUrl;
 	}
 }
