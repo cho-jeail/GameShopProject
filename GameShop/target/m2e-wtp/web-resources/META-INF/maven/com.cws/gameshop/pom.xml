@@ -124,7 +124,7 @@
 		</dependency>
 
 		<!-- 여기서부터 추가한 dependency -->
-		
+
 		<!-- Spring JDBC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -142,11 +142,19 @@
 		<!-- Oracle JDBC Driver -->
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10 -->
 		<dependency>
-    		<groupId>com.oracle.database.jdbc</groupId>
-    		<artifactId>ojdbc10</artifactId>
-    		<version>19.7.0.0</version>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc10</artifactId>
+			<version>19.7.0.0</version>
 		</dependency>
-		
+
+		<!-- 지원되지 않는 문자 집합(클래스 경로에 orai18n.jar 추가) -->
+		<!-- 문제 해결을 위해 추가. -->
+		<dependency>
+			<groupId>com.oracle.ojdbc</groupId>
+			<artifactId>orai18n</artifactId>
+			<version>19.3.0.0</version>
+		</dependency>
+
 		<!-- Mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -165,28 +173,28 @@
 			<artifactId>spring-orm</artifactId>
 			<version>5.0.7.RELEASE</version>
 		</dependency>
-		
+
 		<!-- XML 한글 파싱 오류 -->
 		<dependency>
 			<groupId>xerces</groupId>
 			<artifactId>xercesImpl</artifactId>
 			<version>2.9.1</version>
 		</dependency>
-		
+
 		<!-- jackson -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
-		
+
 		<!-- json 파싱 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.7</version>
 		</dependency>
-		
+
 		<!-- c3p0 -->
 		<dependency>
 			<groupId>c3p0</groupId>
@@ -232,13 +240,13 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	<!-- Repository Setting --> 
-    <repositories>    
-    	<repository>   
-    	<id>oracle</id>    
-    	<name>ORACLE JDBC Repository</name>    
-    	<url>http://maven.jahia.org/maven2</url>    
-    	</repository>    
-    </repositories>
+
+	<!-- Repository Setting -->
+	<repositories>
+		<repository>
+			<id>oracle</id>
+			<name>ORACLE JDBC Repository</name>
+			<url>http://maven.jahia.org/maven2</url>
+		</repository>
+	</repositories>
 </project>

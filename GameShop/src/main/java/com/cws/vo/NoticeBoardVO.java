@@ -2,14 +2,24 @@ package com.cws.vo;
 
 import java.util.Date;
 
-public class NoticeBoard {
+/*
+이름        널        유형             
+--------- -------- -------------- 
+ID        NOT NULL VARCHAR2(250)  
+TITLE              VARCHAR2(200)  
+CONTENT            VARCHAR2(2000) 
+WRITER             VARCHAR2(50)   
+VIEWS              NUMBER         
+WRITEDATE          DATE                  
+ */
+
+public class NoticeBoardVO {
 	private String id;
 	private String title;
 	private String content;
 	private String writer;
-	private int view;
-	private int answer;
-	private Date writeDate;
+	private int views;
+	private Date writedate;
 	
 	public String getId() {
 		return id;
@@ -35,22 +45,16 @@ public class NoticeBoard {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public int getView() {
-		return view;
+	public int getViews() {
+		return views;
 	}
-	public void setView(int view) {
-		this.view = view;
+	public void setViews(int views) {
+		this.views = views;
 	}
-	public int getAnswer() {
-		return answer;
+	public Date getWritedate() {
+		return writedate;
 	}
-	public void setAnswer(int answer) {
-		this.answer = answer;
-	}
-	public Date getWriteDate() {
-		return writeDate;
-	}
-	public void setWriteDate(Date writeDate) {
-		this.writeDate = writeDate;
+	public void setWritedate(Date writedate) {
+		this.writedate = writedate;
 	}
 }
