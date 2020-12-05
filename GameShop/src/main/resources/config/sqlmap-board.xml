@@ -5,6 +5,6 @@
 	
 <mapper namespace="com.cws.dao.BoardDAO">
 	<select id="SelectAllNoticeBoard" resultType="NoticeBoardVO">
-		select * from noticeboard
+		select * from noticeboard order by id desc
 	</select>
 </mapper>

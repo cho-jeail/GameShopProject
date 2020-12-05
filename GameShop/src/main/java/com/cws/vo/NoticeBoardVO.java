@@ -2,29 +2,27 @@ package com.cws.vo;
 
 import java.util.Date;
 
-/*
-이름        널        유형             
---------- -------- -------------- 
-ID        NOT NULL VARCHAR2(250)  
-TITLE              VARCHAR2(200)  
-CONTENT            VARCHAR2(2000) 
-WRITER             VARCHAR2(50)   
-VIEWS              NUMBER         
-WRITEDATE          DATE                  
- */
+//	이름        널        유형             
+//	--------- -------- -------------- 
+//	ID        NOT NULL NUMBER         
+//	TITLE              VARCHAR2(200)  
+//	CONTENT            VARCHAR2(2000) 
+//	WRITER             VARCHAR2(50)   
+//	VIEWS              NUMBER         
+//	WRITEDATE          DATE           
 
 public class NoticeBoardVO {
-	private String id;
+	private int id;
 	private String title;
 	private String content;
 	private String writer;
 	private int views;
 	private Date writedate;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getTitle() {
