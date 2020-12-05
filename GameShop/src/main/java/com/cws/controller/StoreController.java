@@ -1,7 +1,11 @@
 package com.cws.controller;
 
+import java.sql.Blob;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,12 +18,16 @@ public class StoreController {
 	@Autowired private StoreService ss;
 	
 	// 게임 Store 메인 페이지
+//	@RequestMapping(value = "/gameStore/{product}/", method = RequestMethod.GET)
+//	public String home(@PathVariable String product, Model model) {
+//		model.addAttribute("product", product);
+//		return "gameStore";
+//	}
+	
 	@RequestMapping(value = "/gameStore/", method = RequestMethod.GET)
-	public ModelAndView store() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("gameStore");
-		
-		return mav;
+	public String gameStore() {
+//		model.addAttribute("product", product);
+		return "gameStore";
 	}
 	
 	// 게임 소개하고 구매하는 페이지
