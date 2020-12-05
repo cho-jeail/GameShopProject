@@ -21,11 +21,30 @@
 
 .container {
 	display: flex;
+	
 }
 
 .product {
 	width: 300px;
-	height: 250px;
-	padding: 20px;
+	height: 300px;
 	border: 1px solid black;
+	margin-left: 40px;
+	margin-bottom: 15px;
+}
+
+.sideProduct {
+	padding-left: 0px;
+	margin-left: 20px;
+}
+
+.imgsize {
+	padding: 5px;
+}
+
+.gamename {
+	margin-left: 5px;
+}
+
+.gameprice {
+	margin-left: 5px;
 }
