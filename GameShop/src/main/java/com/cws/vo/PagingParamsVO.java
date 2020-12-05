@@ -31,7 +31,7 @@ public class PagingParamsVO {
 		
 		section = (page - 1) / perPage;
 		begin = section * perSection + 1;
-		end = begin + (PageCount - 1) > PageCount ? PageCount : begin + (perSection - 1);
+		end = PageCount <= begin + perSection - 1 ? PageCount : begin + perSection - 1;
 	}
 	
 	public int getPage() {
