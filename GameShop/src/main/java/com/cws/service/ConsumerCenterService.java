@@ -17,12 +17,12 @@ public class ConsumerCenterService {
 	
 	public ModelAndView CCNotice(int page) {
 		ModelAndView mav = new ModelAndView("CC_NoticeBoard");
-		List<NoticeBoardVO> boardList = Bdao.SelectAllNoticeBoard();
 		
 		mav.addObject("BoardMainName", "공지사항");
-		mav.addObject("BoardList", boardList);
 		
 		PagingParamsVO ppv = new PagingParamsVO(page, 35); 
+		List<NoticeBoardVO> boardList = Bdao.SelectPageNoticeBoard(ppv);
+		mav.addObject("BoardList", boardList);
 		
 		System.out.println("\n=========================================");
 		System.out.println("page : " + ppv.getPage());
@@ -38,6 +38,9 @@ public class ConsumerCenterService {
 		System.out.println("begin : " + ppv.getBegin());
 		System.out.println("end : " + ppv.getEnd());
 		System.out.println("=========================================\n");
+		
+		mav.addObject("pageBegin", ppv.getBegin());
+		mav.addObject("pageEnd", ppv.getEnd());
 		
 		return mav;
 	}

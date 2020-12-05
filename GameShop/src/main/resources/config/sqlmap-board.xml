@@ -7,4 +7,12 @@
 	<select id="SelectAllNoticeBoard" resultType="NoticeBoardVO">
 		select * from noticeboard order by id desc
 	</select>
+	
+	<select id="SelectPageNoticeBoard" resultType="NoticeBoardVO" parameterType="PagingParamsVO">
+		select * from 
+			(select rownum as st, a.* from 
+				(select * from noticeboard order by id desc)
+			a where rownum <![CDATA[<=]]> #{last })
+		where st <![CDATA[>=]]> #{first }
+	</select>
 </mapper>

@@ -31,6 +31,10 @@
 				</tr>
 			</c:forEach>
 		</table>
+		
+		<c:forEach varStatus="pageNumber" begin="${pageBegin }" end="${pageEnd }">
+			<a href="${cpath }/CCNotice/${pageNumber.current }/">${pageNumber.current }</a>
+		</c:forEach>
 	</div>
 </div>
 
