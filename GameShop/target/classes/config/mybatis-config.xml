@@ -12,6 +12,7 @@
 		<typeAlias type="com.cws.vo.PagingParamsVO" alias="PagingParamsVO"/>
 		<typeAlias type="com.cws.vo.UserVO" alias="UserVO"/>
 		<typeAlias type="com.cws.vo.NoticeBoardVO" alias="NoticeBoardVO"/>
+		<typeAlias type="com.cws.vo.FAQBoardVO" alias="FAQBoardVO"/>
 <!-- 		<typeAlias type="com.cws.vo.QABoardVO" alias="QABoardVO"/> -->
 <!-- 		<typeAlias type="com.cws.vo.QACommentVO" alias="QACommentVO"/> -->
 	</typeAliases>

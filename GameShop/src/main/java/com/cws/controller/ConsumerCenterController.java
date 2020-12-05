@@ -1,5 +1,6 @@
 package com.cws.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,13 +20,17 @@ public class ConsumerCenterController {
 		return ccs.CCNotice(1);
 	}
 	@RequestMapping(value = "/CCNotice/{page}/", method = RequestMethod.GET)
-	public ModelAndView NoticeBoard(@PathVariable("page")int page) {
+	public ModelAndView NoticeBoard(@PathVariable("page") int page) {
 		return ccs.CCNotice(page);
+	}
+	@RequestMapping(value = "/CCNotice/Board/", method = RequestMethod.GET)
+	public ModelAndView NoticeBoardView(@Param("id") int id) {
+		return ccs.NoticeViewPage(id);
 	}
 	
 	@RequestMapping(value = "/CCFAQ/", method = RequestMethod.GET)
-	public ModelAndView FAQBoard() {
-		return ccs.CCFAQ();
+	public ModelAndView FAQBoard(@Param("flag") String flag) {
+		return ccs.CCFAQ(flag);
 	}
 	
 	@RequestMapping(value = "/CCQnA/", method = RequestMethod.GET)

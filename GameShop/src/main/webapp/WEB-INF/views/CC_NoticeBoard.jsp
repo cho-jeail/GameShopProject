@@ -25,7 +25,7 @@
 			<c:forEach var="NBoard" items="${BoardList }">
 				<tr>
 					<td>${NBoard.id }</td>
-					<td>${NBoard.title }</td>
+					<td><a href="${cpath }/CCNotice/Board/?id=${NBoard.id }">${NBoard.title }</a></td>
 					<td><fmt:formatDate value="${NBoard.writedate }" pattern="yyyy-MM-dd HH:mm"/></td>
 					<td>${NBoard.views }</td>
 				</tr>

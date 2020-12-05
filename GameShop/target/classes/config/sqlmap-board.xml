@@ -8,11 +8,24 @@
 		select * from noticeboard order by id desc
 	</select>
 	
+	<select id="SelectNoticeCount" resultType="Integer">
+		select count(*) from noticeboard
+	</select>
+	
 	<select id="SelectPageNoticeBoard" resultType="NoticeBoardVO" parameterType="PagingParamsVO">
 		select * from 
 			(select rownum as st, a.* from 
 				(select * from noticeboard order by id desc)
 			a where rownum <![CDATA[<=]]> #{last })
 		where st <![CDATA[>=]]> #{first }
+	</select>
+	
+	<select id="SelectOneNotice" parameterType="Integer" resultType="NoticeBoardVO">
+		select * from noticeboard where id = #{id }
+	</select>
+	
+	<select id="SelectFAQBoardList" resultType="FAQBoardVO" parameterType="String">
+		select * from faqboard
+			<if test="_parameter != null">where category = #{_parameter }</if>
 	</select>
 </mapper>
