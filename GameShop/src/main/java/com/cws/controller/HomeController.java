@@ -51,5 +51,8 @@ public class HomeController {
 	@RequestMapping(value = "/join")
 	public void joinMain() {}
 	
+	@RequestMapping(value = "/jusoPopup")
+	public void jusoPopupMain() {}
+	
 	
 }

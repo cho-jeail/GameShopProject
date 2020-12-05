@@ -5,7 +5,7 @@ import java.util.Date;
 public class UserVO {
 	private String id;
 	private String email;
-	private String passWord;
+	private String password;
 	private String name;
 	private String address;
 	private String nickName;
@@ -23,11 +23,11 @@ public class UserVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPassWord() {
-		return passWord;
+	public String getPassword() {
+		return password;
 	}
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getName() {
 		return name;
