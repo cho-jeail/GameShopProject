@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
-<link rel="stylesheet" type="text/css" href="${cpath }/css/join.css" />
+<link rel="stylesheet" type="text/css" href="${cpath }/css/policy.css" />
 	<section class="joinSection">
 		<div class="joinContainer">
 			<div class="joinTOSTitleBox"> 
@@ -31,11 +31,11 @@
 			
 			<div class="joinBtns1">
 				<input type="button" onclick="location.href='${cpath}'" value="취소하기">
-				<input type="button" onclick="location.href='${cpath}/join/'" value="다음으로">
+				<input type="button" onclick="checkedPolicy()" value="다음으로">
 			</div>
 			
 		</div>
 	</section>
-<script type="text/javascript" src="${cpath }/js/join.js"></script>
+<script type="text/javascript" src="${cpath }/js/policy.js"></script>
 	
 <%@ include file="footer.jsp" %>

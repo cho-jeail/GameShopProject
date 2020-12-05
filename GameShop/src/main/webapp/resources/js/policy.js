@@ -19,10 +19,48 @@ function readTextFile(filePath){
 	            if(policyFile.status === 200 || policyFile.status == 0){
 					let num = filePath.charAt(filePath.length-1)
 	                textFile = policyFile.responseText;
-					console.log(textFile);
 					policyArr[num-1].innerHTML = textFile;
 	            }
 	        }
 		}
 	    policyFile.send();
 }
+
+function checkedPolicy(){
+	let checkArr = [];
+	for(i = 0; i < 3; i++){
+		checkArr[i] = document.getElementById('ckBox' + i);
+	}
+	
+	for(i = 0; i < checkArr.length; i++){
+		if(checkArr[i].checked === false){ 
+			alert('*필수 사항을 체크해주세요.');
+			break; 
+		}
+		else if(i === (checkArr.length-1)){
+			location.href='/gameshop/join/';
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

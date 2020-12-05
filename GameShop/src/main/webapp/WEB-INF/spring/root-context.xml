@@ -29,6 +29,7 @@
 			<list>
 				<value>classpath:config/sqlmap-home.xml</value>
 				<value>classpath:config/sqlmap-board.xml</value>
+				<value>classpath:config/sqlmap-user.xml</value>
 			</list>
 		</property>
 	</bean>
