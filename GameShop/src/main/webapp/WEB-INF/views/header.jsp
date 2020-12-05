@@ -26,8 +26,8 @@
 						type="button" onclick="" value="돋보기 그림">
 				</div>
 				<div class="LoginArea">
-					<input type="button" onclick="" id="Login" value="로그인">
-					<input type="button" onclick="" id="AddAccount" value="회원가입">
+					<input type="button" onclick="location.href='${cpath}/login/'" id="Login" value="로그인">
+					<input type="button" onclick="location.href='${cpath}/policy/'" id="AddAccount" value="회원가입">
 				</div>
 			</div>
 			<div class="Menu">

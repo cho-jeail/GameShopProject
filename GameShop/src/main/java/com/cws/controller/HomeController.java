@@ -42,4 +42,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/login")
+	public void loginMain() {}
+	
+	@RequestMapping(value = "/policy")
+	public void policyMain() {}
+	
+	@RequestMapping(value = "/join")
+	public void joinMain() {}
+	
+	
 }
