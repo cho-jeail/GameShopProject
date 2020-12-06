@@ -4,6 +4,8 @@ import com.cws.vo.UserVO;
 
 public interface UserDAO {
 
-	int joinUser(UserVO vo);
+	UserVO checkNickname(String checking);
+
+	UserVO checkEmail(String checking);
 	
 }

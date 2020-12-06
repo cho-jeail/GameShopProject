@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.HomeService;
+import com.cws.vo.UserVO;
 
 /**
  * Handles requests for the application home page.
@@ -42,6 +44,7 @@ public class HomeController {
 		return "home";
 	}
 	
+	
 	@RequestMapping(value = "/login")
 	public void loginMain() {}
 	
@@ -54,5 +57,8 @@ public class HomeController {
 	@RequestMapping(value = "/jusoPopup")
 	public void jusoPopupMain() {}
 	
-	
+	@RequestMapping(value = "join/", method = RequestMethod.POST)
+	public ModelAndView joinForm(UserVO vo) {
+		return HServ.joinUser(vo);
+	}
 }

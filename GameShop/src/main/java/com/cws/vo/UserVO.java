@@ -8,7 +8,7 @@ public class UserVO {
 	private String password;
 	private String name;
 	private String address;
-	private String nickName;
+	private String nickname;
 	private Date registDate;
 	
 	public String getId() {
@@ -41,11 +41,11 @@ public class UserVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getNickName() {
-		return nickName;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public Date getRegistDate() {
 		return registDate;
