@@ -4,8 +4,13 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.cws.dao.UserDAO">
-	<insert id="joinUser" parameterType="UserVO">
-		insert into userlogin (id, name, nickName, email, password, address)
-			values (#{id}, #{name}, #{nickName}, #{email}, #{password}, #{address})
-	</insert>
+
+	<select id="checkNickname" parameterType="String" resultType="com.cws.vo.UserVO">
+		select * from userlogin where nickname='${value}'
+	</select>
+	
+	<select id="checkEmail" parameterType="String" resultType="com.cws.vo.UserVO">
+		select * from userlogin where email='${value}'
+	</select>
+
 </mapper>

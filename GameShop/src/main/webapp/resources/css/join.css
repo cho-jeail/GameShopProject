@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.joinSection{
+	padding-top: 20px;
+}
+
+.joinContainer{
+	display: flex;
+	flex-direction: column;
+	width: 580px;
+	height: 900px;
+	border: 1px solid blue;
+	margin: 0 auto 0 auto;
+	padding: 20px 30px 20px 30px;
+}
+
+.joinLogo{
+	width: 60px;
+	height: 70px;
+	border: 1px solid black;
+	margin: 0 auto 20px auto;
+}
+
+.joinForm{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}

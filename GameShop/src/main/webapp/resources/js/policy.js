@@ -5,7 +5,7 @@ readTextFiles();
 
 function readTextFiles(){
 	for(i = 0; i < 4; i++){
-		policyArr[i] = document.getElementById('joinPolicy' + i);
+		policyArr[i] = document.getElementById('policyPolicy' + i);
 		readTextFile(path + (i+1));
 	}
 }
@@ -38,7 +38,7 @@ function checkedPolicy(){
 			break; 
 		}
 		else if(i === (checkArr.length-1)){
-			location.href='/gameshop/join/';
+			location.href='/gameshop/join';
 		}
 	}
 }
