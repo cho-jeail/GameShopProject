@@ -17,6 +17,9 @@ public class PagingParamsVO {
 	private int begin;		// 현 section에서 시작 페이지 번호
 	private int end;		// 현 section에서 마지막 페이지 번호
 	
+	private boolean prev;
+	private boolean next;
+	
 	public PagingParamsVO(int page, int AllCount) {
 		perPage = 10;
 		perSection = 10;
@@ -32,6 +35,9 @@ public class PagingParamsVO {
 		section = (page - 1) / perPage;
 		begin = section * perSection + 1;
 		end = PageCount <= begin + perSection - 1 ? PageCount : begin + perSection - 1;
+		
+		prev = section > 0 ? true : false;
+		next = end < PageCount ? true : false;
 	}
 	
 	public int getPage() {
@@ -68,4 +74,11 @@ public class PagingParamsVO {
 	public int getEnd() {
 		return end;
 	}
+
+	public boolean isPrev() {
+		return prev;
+	}
+	public boolean isNext() {
+		return next;
+	}	
 }

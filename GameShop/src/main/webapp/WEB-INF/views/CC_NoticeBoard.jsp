@@ -2,7 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="header.jsp" %>
-
+<script type="text/javascript">
+	prev = ${PageParam.prev };
+	next = ${PageParam.next };
+	perSection = ${PageParam.perSection };
+	begin = ${PageParam.begin };
+	end = ${PageParam.end };
+</script>
 <div style="display: flex; ">
 	<div class="CC_SideMenu">
 		<h2>고객 센터</h2>
@@ -32,10 +38,22 @@
 			</c:forEach>
 		</table>
 		
-		<c:forEach varStatus="pageNumber" begin="${pageBegin }" end="${pageEnd }">
-			<a href="${cpath }/CCNotice/${pageNumber.current }/">${pageNumber.current }</a>
-		</c:forEach>
+		<div class="SearchDiv">
+		
+		</div>
+		
+		<div class="PagingDiv">
+			<p>prev : ${PageParam.prev } || next : ${PageParam.next }</p>
+			<a id="PagePrev">&lt;</a>
+			
+			<c:forEach varStatus="pageNumber" begin="${PageParam.begin }" end="${PageParam.end }">
+				<a href="${cpath }/CCNotice/${pageNumber.current }/">${pageNumber.current }</a>
+			</c:forEach>
+		
+			<a id="PageNext">&gt;</a>
+		</div>
 	</div>
 </div>
 
+<script type="text/javascript" src="${cpath }/js/Paging.js"></script>
 <%@ include file="footer.jsp" %>

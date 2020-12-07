@@ -25,20 +25,25 @@ public class ConsumerCenterService {
 		List<NoticeBoardVO> boardList = Bdao.SelectPageNoticeBoard(ppv);
 		mav.addObject("BoardList", boardList);
 		
-//		System.out.println("\n=========================================");
-//		System.out.println("page : " + ppv.getPage());
-//		System.out.println("perPage : " + ppv.getPerPage());
-//		System.out.println("perSection : " + ppv.getPerSection());
-//		System.out.println("AllCount : " + ppv.getAllCount());
-//		System.out.println("PageCount : " + ppv.getPageCount());
-//		System.out.println();
-//		System.out.println("first : " + ppv.getFirst());
-//		System.out.println("Last : " + ppv.getLast());
-//		System.out.println();
-//		System.out.println("section : " + ppv.getSection());
-//		System.out.println("begin : " + ppv.getBegin());
-//		System.out.println("end : " + ppv.getEnd());
-//		System.out.println("=========================================\n");
+		System.out.println("\n=========================================");
+		System.out.println("page : " + ppv.getPage());
+		System.out.println("perPage : " + ppv.getPerPage());
+		System.out.println("perSection : " + ppv.getPerSection());
+		System.out.println("AllCount : " + ppv.getAllCount());
+		System.out.println("PageCount : " + ppv.getPageCount());
+		System.out.println();
+		System.out.println("first : " + ppv.getFirst());
+		System.out.println("Last : " + ppv.getLast());
+		System.out.println();
+		System.out.println("section : " + ppv.getSection());
+		System.out.println("begin : " + ppv.getBegin());
+		System.out.println("end : " + ppv.getEnd());
+		System.out.println();
+		System.out.println("prev : " + ppv.isPrev());
+		System.out.println("next : " + ppv.isNext());
+		System.out.println("=========================================\n");
+		
+		mav.addObject("PageParam", ppv);
 		
 		mav.addObject("pageBegin", ppv.getBegin());
 		mav.addObject("pageEnd", ppv.getEnd());
