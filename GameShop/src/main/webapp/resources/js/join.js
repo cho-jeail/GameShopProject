@@ -6,9 +6,10 @@ let joinPw = document.getElementById('joinPw');
 let flagList = [];
 
 document.getElementById('joinSubmit').addEventListener('click', submit);
+document.getElementById('pwComfirm').addEventListener('blur', pwComfirm);
 
 joinName.addEventListener('blur', nameRegexp);
-joinEmail.addEventListener('blur', nickRegexp);
+joinNick.addEventListener('blur', nickRegexp);
 joinEmail.addEventListener('blur', emailRegexp);
 joinPw.addEventListener('blur', pwRegexp);
 
@@ -153,6 +154,32 @@ function pwRegexp(){
 	}
 }
 
+// 비밀번호 확인
+function pwComfirm(){
+	let pwC = document.getElementById('pwComfirm');
+	let pwCmf2 = document.getElementById('pwCmf2');
+	if(joinPw.value !== pwC.value){
+		pwCmf2.innerText = '일치하지 않습니다.';
+		pwCmf2.style.color = 'red';
+		pwC.style.color = 'black';
+		pwC.focus();
+		flagList[4] = false;
+	}
+	else if(pwC.value === ''){
+		pwCmf2.innerText = '필수 입력바랍니다.'
+		pwCmf2.style.color = 'red';
+		pwC.style.color = 'black';
+		pwC.focus();
+		flagList[4] = false;
+	}
+	else{
+		pwCmf2.innerText = '일치합니다.'
+		pwCmf2.style.color = 'green';
+		pwC.style.color = 'black';
+		flagList[4] = true;
+	}
+}
+
 function submit(event){
 	event.preventDefault();
 	
@@ -178,10 +205,9 @@ function submit(event){
 	}
 	
 	if(inputs.length === blankCnt && flagList.length === flagCnt){
-		alert('회원가입 완료');
 		let joinForm = document.getElementById('joinForm');
-		joinForm.submit();
 		console.log(joinForm);
+		joinForm.submit();
 	}
 	else{
 		alert('항목을 확인하세요');

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <link rel="stylesheet" type="text/css" href="${cpath }/css/join.css" />
-<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 <script type="text/javascript">
 // opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
 //document.domain = "abc.go.kr";
@@ -43,8 +42,13 @@ function jusoCallBack(roadFullAddr){
 			
 			<div>
 				<input type="password" class="joinInput" id="joinPw" name="password" placeholder="비밀번호">
-				<div id="joinPwRuleMsg">※비밀번호는 8~20글자 사이, 영어 대(소)문자, 특수문자를 사용해주세요.</div>
+				<div id="joinPwRuleMsg">※비밀번호는 8~20글자 사이, 영어 대(소)문자, 숫자, 특수문자가 포함되어야 합니다.</div>
 				<div class="pwCmf" id="pwCmf"></div>
+			</div>
+			
+			<div>
+				<input type="password" class="pwComfirm" id="pwComfirm" placeholder="비밀번호 확인">
+				<div class="pwCmf2" id="pwCmf2"></div>
 			</div>
 			
 			<div class="joinAddrDiv">

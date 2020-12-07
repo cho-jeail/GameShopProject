@@ -1,5 +1,8 @@
 package com.cws.service;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +19,30 @@ public class HomeService {
 	private HomeDAO HDAO;
 	
 	public ModelAndView joinUser(UserVO vo) {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("alert");
 		String id =  UUID.randomUUID().toString().replace("-", "");
+		System.out.println("id : " + id);
 		vo.setId(id);
 		
-		int result = HDAO.joinUser(vo);
-		System.out.println(result == 0 ? "회원가입 실패 ㅠㅠ" : "회원가입 성공 !!");
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-256");	
+			String pw = vo.getPassword();
+			md.update(id.getBytes());
+			md.update(pw.getBytes());
+			pw = String.format("%064x", new BigInteger(1, md.digest()));
+			System.out.println("pw : " + pw);
+			vo.setPassword(pw);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
 		
-		mav.setViewName("redirect:/");
+		int rltInt = HDAO.joinUser(vo);
+		System.out.println(rltInt == 0 ? "회원가입 실패" : "회원가입 성공");
+		String result = rltInt == 0 ? "회원가입 실패" : "회원가입 성공";
 		
+		mav.addObject("msg", result);
+		mav.addObject("url", "");
+	
 		return mav;
 	}
 	
