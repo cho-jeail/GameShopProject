@@ -12,5 +12,9 @@
 	<select id="checkEmail" parameterType="String" resultType="com.cws.vo.UserVO">
 		select * from userlogin where email='${value}'
 	</select>
+	
+	<select id="checkPw" parameterType="String" resultType="com.cws.vo.UserVO">
+		select * from userlogin where password='${value}'
+	</select>
 
 </mapper>

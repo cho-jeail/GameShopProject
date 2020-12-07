@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.signinSection{
+	padding-top: 20px;
+}
+
+.signinContainer{
+	display: flex;
+	flex-direction: column;
+	width: 580px;
+	height: 900px;
+	border: 1px solid blue;
+	margin: 0 auto 0 auto;
+	padding: 20px 30px 20px 30px;
+}
+
+.signinLogo{
+	width: 60px;
+	height: 70px;
+	border: 1px solid black;
+	margin: 0 auto 20px auto;
+}
+
+.signinForm{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.signinCmf{ color: red; }

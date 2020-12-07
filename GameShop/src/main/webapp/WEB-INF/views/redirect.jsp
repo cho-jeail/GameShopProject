@@ -21,6 +21,9 @@
 		alert("회원가입에 실패하셨습니다. 잠시 후 다시 시도해주세요.");
 		location.href="${cpath}/${url}";
 	}
+	else if(msg === "로그인성공"){
+		location.href="${cpath}/${url}";
+	}
 	
 	location.replace("${cpath}/${url}");
 </script>

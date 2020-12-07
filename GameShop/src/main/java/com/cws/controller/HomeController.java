@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/signin")
 	public void loginMain() {}
 	
 	@RequestMapping(value = "/policy")
@@ -60,5 +62,10 @@ public class HomeController {
 	@RequestMapping(value = "join/", method = RequestMethod.POST)
 	public ModelAndView joinForm(UserVO vo) {
 		return HServ.joinUser(vo);
+	}
+	
+	@RequestMapping(value = "signin/", method = RequestMethod.POST)
+	public ModelAndView signinForm(UserVO vo, HttpSession session) {
+		return HServ.signinUser(vo, session);
 	}
 }

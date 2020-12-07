@@ -57,7 +57,7 @@ function jusoCallBack(roadFullAddr){
 				<div class="addrCmf" id="addrCmf"></div>
 			</div>
 			
-			<button id="joinSubmit">회원가입</button>
+			<button type="button" id="joinSubmit">회원가입</button>
 		</form>
 	</div>
 </section>

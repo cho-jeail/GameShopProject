@@ -22,6 +22,7 @@ public class UserService {
 		}
 	}
 	
+	
 	public String checkEmail(String checking) {
 		System.out.println("checking : " + checking);
 		UserVO result  = udao.checkEmail(checking);
@@ -32,7 +33,6 @@ public class UserService {
 			return "1";
 		}
 	}
-	
-	
+
 	
 }

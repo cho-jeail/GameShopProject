@@ -7,5 +7,7 @@ public interface UserDAO {
 	UserVO checkNickname(String checking);
 
 	UserVO checkEmail(String checking);
+
+	UserVO checkPw(String pw);
 	
 }
