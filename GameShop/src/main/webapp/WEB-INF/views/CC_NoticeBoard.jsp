@@ -8,7 +8,11 @@
 	perSection = ${PageParam.perSection };
 	begin = ${PageParam.begin };
 	end = ${PageParam.end };
+	NSearchWord = '${NoticeSearchWord }';
+	NSearchType = '${NoticeSearchType }';
 </script>
+<script type="text/javascript" src="${cpath }/js/NoticeBoard.js"></script>
+
 <div style="display: flex; ">
 	<div class="CC_SideMenu">
 		<h2>고객 센터</h2>
@@ -39,16 +43,27 @@
 		</table>
 		
 		<div class="SearchDiv">
-		
+			<input id="NoticeSearchWord" type="text" value="${NoticeSearchWord }">
+			<select id="NoticeSearchType" >
+				<option value="title" ${NoticeSearchType == 'title' ? 'selected' : '' }>제목</option>
+				<option value="content" ${NoticeSearchType == 'content' ? 'selected' : '' }>내용</option>
+				<option value="titleAndContent" ${NoticeSearchType == 'titleAndContent' ? 'selected' : '' }>제목+내용</option>
+			</select>
+			<input id="NoticeSearchClick" type="button" value="검색" onclick="CCN_ClickSearch()">
 		</div>
 		
 		<div class="PagingDiv">
-			<p>prev : ${PageParam.prev } || next : ${PageParam.next }</p>
 			<a id="PagePrev">&lt;</a>
-			
-			<c:forEach varStatus="pageNumber" begin="${PageParam.begin }" end="${PageParam.end }">
-				<a href="${cpath }/CCNotice/${pageNumber.current }/">${pageNumber.current }</a>
-			</c:forEach>
+			<c:if test="${NoticeSearchWord == null }">
+				<c:forEach varStatus="pageNumber" begin="${PageParam.begin }" end="${PageParam.end }">
+					<a href="${cpath }/CCNotice/?page=${pageNumber.current }">${pageNumber.current }</a>
+				</c:forEach>			
+			</c:if>
+			<c:if test="${NoticeSearchWord != null }">
+				<c:forEach varStatus="pageNumber" begin="${PageParam.begin }" end="${PageParam.end }">
+					<a href="${cpath }/CCNotice/?NoticeSearchType=${NoticeSearchType }&NoticeSearchWord=${NoticeSearchWord }&page=${pageNumber.current }">${pageNumber.current }</a>
+				</c:forEach>			
+			</c:if>
 		
 			<a id="PageNext">&gt;</a>
 		</div>

@@ -1,5 +1,6 @@
 package com.cws.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.cws.vo.FAQBoardVO;
@@ -10,11 +11,11 @@ public interface BoardDAO {
 
 	List<NoticeBoardVO> SelectAllNoticeBoard();
 	
-	List<NoticeBoardVO> SelectPageNoticeBoard(PagingParamsVO ppv);
+	List<NoticeBoardVO> SelectPageNoticeBoard(HashMap<String, String> searchMap);
 
 	NoticeBoardVO SelectOneNotice(int id);
 	
-	int SelectNoticeCount();
+	int SelectNoticeCount(HashMap<String, String> searchMap);
 
 	List<FAQBoardVO> SelectFAQBoardList(String flag);
 }

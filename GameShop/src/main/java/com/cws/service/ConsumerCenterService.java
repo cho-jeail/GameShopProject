@@ -1,5 +1,6 @@
 package com.cws.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,38 +17,42 @@ public class ConsumerCenterService {
 	
 	@Autowired private BoardDAO Bdao;	
 	
-	public ModelAndView CCNotice(int page) {
+	public ModelAndView CCNotice(int page, HashMap<String, String> searchMap) {
+		System.out.println("searchMap : " + searchMap);
 		ModelAndView mav = new ModelAndView("CC_NoticeBoard");
-		int AllCount = Bdao.SelectNoticeCount();
 		mav.addObject("BoardMainName", "공지사항");
 		
-		PagingParamsVO ppv = new PagingParamsVO(page, AllCount); 
-		List<NoticeBoardVO> boardList = Bdao.SelectPageNoticeBoard(ppv);
+		int AllCount = Bdao.SelectNoticeCount(searchMap);
+		System.out.println("AllCount : " + AllCount);
+		
+		PagingParamsVO ppv = new PagingParamsVO(page, AllCount);
+		searchMap.put("first", ppv.getFirst() + "");
+		searchMap.put("last", ppv.getLast() + "");
+		
+		List<NoticeBoardVO> boardList = Bdao.SelectPageNoticeBoard(searchMap);
+		
+//		System.out.println("\n=========================================");
+//		System.out.println("page : " + ppv.getPage());
+//		System.out.println("perPage : " + ppv.getPerPage());
+//		System.out.println("perSection : " + ppv.getPerSection());
+//		System.out.println("AllCount : " + ppv.getAllCount());
+//		System.out.println("PageCount : " + ppv.getPageCount());
+//		System.out.println();
+//		System.out.println("first : " + ppv.getFirst());
+//		System.out.println("Last : " + ppv.getLast());
+//		System.out.println();
+//		System.out.println("section : " + ppv.getSection());
+//		System.out.println("begin : " + ppv.getBegin());
+//		System.out.println("end : " + ppv.getEnd());
+//		System.out.println();
+//		System.out.println("prev : " + ppv.isPrev());
+//		System.out.println("next : " + ppv.isNext());
+//		System.out.println("=========================================\n");
+		
+		mav.addObject("NoticeSearchWord", searchMap.get("word"));
+		mav.addObject("NoticeSearchType", searchMap.get("type"));
 		mav.addObject("BoardList", boardList);
-		
-		System.out.println("\n=========================================");
-		System.out.println("page : " + ppv.getPage());
-		System.out.println("perPage : " + ppv.getPerPage());
-		System.out.println("perSection : " + ppv.getPerSection());
-		System.out.println("AllCount : " + ppv.getAllCount());
-		System.out.println("PageCount : " + ppv.getPageCount());
-		System.out.println();
-		System.out.println("first : " + ppv.getFirst());
-		System.out.println("Last : " + ppv.getLast());
-		System.out.println();
-		System.out.println("section : " + ppv.getSection());
-		System.out.println("begin : " + ppv.getBegin());
-		System.out.println("end : " + ppv.getEnd());
-		System.out.println();
-		System.out.println("prev : " + ppv.isPrev());
-		System.out.println("next : " + ppv.isNext());
-		System.out.println("=========================================\n");
-		
-		mav.addObject("PageParam", ppv);
-		
-		mav.addObject("pageBegin", ppv.getBegin());
-		mav.addObject("pageEnd", ppv.getEnd());
-		
+		mav.addObject("PageParam", ppv);	
 		return mav;
 	}
 

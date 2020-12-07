@@ -9,7 +9,7 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	<typeAliases>
-		<typeAlias type="com.cws.vo.PagingParamsVO" alias="PagingParamsVO"/>
+<!-- 		<typeAlias type="com.cws.vo.PagingParamsVO" alias="PagingParamsVO"/> -->
 		<typeAlias type="com.cws.vo.UserVO" alias="UserVO"/>
 		<typeAlias type="com.cws.vo.NoticeBoardVO" alias="NoticeBoardVO"/>
 		<typeAlias type="com.cws.vo.FAQBoardVO" alias="FAQBoardVO"/>
