@@ -26,8 +26,16 @@
 						type="button" onclick="" value="돋보기 그림">
 				</div>
 				<div class="LoginArea">
-					<input type="button" onclick="location.href='${cpath}/login/'" id="Login" value="로그인">
-					<input type="button" onclick="location.href='${cpath}/policy/'" id="AddAccount" value="회원가입">
+					<c:choose>
+						<c:when test="${not empty signin }">
+							<input type="button" onclick="location.href='${cpath}/signout/'" id="Signout" value="로그아웃">
+							<input type="button" onclick="location.href='${cpath}/mypage/'" id="MyPage" value="마이페이지">
+						</c:when>
+						<c:otherwise>
+							<input type="button" onclick="location.href='${cpath}/signin/'" id="Login" value="로그인">
+							<input type="button" onclick="location.href='${cpath}/policy/'" id="AddAccount" value="회원가입">
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			<div class="Menu">

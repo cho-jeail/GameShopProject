@@ -181,7 +181,7 @@ function pwComfirm(){
 }
 
 function submit(event){
-	event.preventDefault();
+	event.preventDefault(); // 창 이동을 막음
 	
 	inputs = document.querySelectorAll('input.joinInput');
 	
