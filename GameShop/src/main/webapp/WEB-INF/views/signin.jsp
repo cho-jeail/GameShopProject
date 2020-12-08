@@ -7,11 +7,12 @@
 	<div class="signinContainer">
 		<div class="signinLogo"></div>
 		<form class="signinForm" id="signinForm" method="post" action="${cpath }/signin/" >
-			<input type="text" class="signinInput" id="signinEmail" name="email" placeholder="이메일">
+			<input type="text" class="signinInput" id="signinEmail" name="email" placeholder="이메일" value="${signEmail }">
 			<div class="signEmailCmf" id="signEmailCmf"></div>
 			<input type="password" class="signinInput" id="signinPw" name="password" placeholder="비밀번호">
 			<div class="signPwCmf" id="signPwCmf"></div>
 			<div class="signinCmf" id="signinCmf">${signResult }</div>
+			<input type="checkbox" class="signinCk" id="signinCk" name="regCk" >계정 기억
 			<button type="button" id="signinBtn">SignIn</button>
 		</form>
 	</div>

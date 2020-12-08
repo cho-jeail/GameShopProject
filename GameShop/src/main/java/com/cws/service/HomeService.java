@@ -66,7 +66,7 @@ public class HomeService {
 				md.update(pw.getBytes());
 				pw = String.format("%064x", new BigInteger(1, md.digest()));	
 			} catch (NoSuchAlgorithmException e) {
-				System.out.println("NoSuchAlgorithmException 오류");
+				System.out.println("NoSuchAlgorithmException 오류, 로그인 실패");
 				e.printStackTrace();
 			}
 		
@@ -74,10 +74,12 @@ public class HomeService {
 			System.out.println("password확인 : " + pvo);
 			if(pvo == null) {
 				mav.setViewName("signin");
+				mav.addObject("signEmail", vo.getEmail());
 				mav.addObject("signResult", "계정이 없거나 비밀번호가 틀렸습니다.");
 				return mav;
 			}
 			else {
+				System.out.println("로그인 성공!");
 				session.setAttribute("signin", pvo);
 				mav.setViewName("redirect");
 				mav.addObject("msg", "로그인성공");
@@ -86,8 +88,9 @@ public class HomeService {
 			}
 			
 		} catch (NullPointerException e) {
-			System.out.println("null 오류");
+			System.out.println("null 오류, 로그인 실패");
 			mav.setViewName("signin");
+			mav.addObject("signEmail", vo.getEmail());
 			mav.addObject("signResult", "계정이 없거나 비밀번호가 틀렸습니다.");
 			return mav;
 		}
