@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <!-- 게임 소개 페이지 -->
-
+<h2>게임 소개 페이지</h2>
 
 
 

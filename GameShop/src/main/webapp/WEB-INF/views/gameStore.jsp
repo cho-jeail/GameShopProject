@@ -43,8 +43,10 @@
 		<div>
 			<ul style="list-style: none;" class="sideProduct">
 				<li>
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-				style="width: 160px; height: 150px; margin-bottom: 5px;"></a>
+					<a href="${cpath }/gameStore/gameIntro/">
+						<img src="${cpath }/resources/image/image1.jpg"
+						style="width: 160px; height: 150px; margin-bottom: 5px;" name="테스트성공">
+					</a>
 				</li>
 				<li>
 					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
@@ -74,324 +76,32 @@
 	
 	<!-- 게임 리스트 첫번째 열 -->
 	<div>
-		<div>
-			<div class="product">
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-		
 		<div class="product">
 			<div>
+				<c:forEach var="list" items="${storeList }">
+				<form action="/gameStore/gameIntro/${list.name }/" method="POST">
 				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
+					<input type="image" src="${cpath }/resources/image/image1.jpg"
+					style="width: 290px; height: 150px" name="${list.name }">
 				</div>
 				
 				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
+					<h5><a href="#">${list.name }</a></h5>
 					<div>
-						<h5>FPS</h5>
+						<h5>${list.kind }</h5>
 					</div>
 				</div>
-				
+				</form>
 				<div class="gameprice">
 					<span>판매가 : </span>
 					<span>
 						<span>
-							33000
+							${list.price }
 						</span>
 					</span>
 					<span><a href="#">장바구니 담기</a></span>
 				</div>
-			</div>
-		</div>
-		
-		<div class="product">
-			<div>
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="product">
-			<div>
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-		
-	</div>
-	
-	<!-- 게임 리스트 두번째 열 -->
-	<div>
-		<div>
-			<div class="product">
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="product">
-			<div>
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="product">
-			<div>
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="product">
-			<div>
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-		
-	</div>
-	
-	
-	<!-- 게임 리스트 세번째 열 -->
-	<div>
-		<div>
-			<div class="product">
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-	
-		<div class="product">
-			<div>
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="product">
-			<div>
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="product">
-			<div>
-				<div class="imgsize">
-					<a href="#"><img src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px"></a>
-				</div>
-				
-				<div class="gamename">
-					<h5><a href="#">포트나이트</a></h5>
-					<div>
-						<h5>FPS</h5>
-					</div>
-				</div>
-				
-				<div class="gameprice">
-					<span>판매가 : </span>
-					<span>
-						<span>
-							33000
-						</span>
-					</span>
-					<span><a href="#">장바구니 담기</a></span>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 		

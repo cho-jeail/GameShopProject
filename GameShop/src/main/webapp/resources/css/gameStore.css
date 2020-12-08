@@ -13,6 +13,34 @@
 	margin: 0px;
 }
 
+.StoreSide a {
+	text-decoration: none;
+}
+
+.Store-menu {
+	display: flex;
+	margin: 0px;
+	padding: 0px;
+}
+
+.Store-menu ul {
+	display: flex;
+	margin-bottom: 20px;
+	padding: 0px;
+}
+
+.Store-menu ul li {
+	list-style: none;
+	height: 65px;
+	margin-left: 10px;
+	border: 1px solid black;
+	line-height: 65px;
+}
+
+.Store-menu ul li a {
+	text-decoration: none;
+}
+
 .NoticeBoard {
 	width: 80%;
 	background-color: #F5D0A9;
@@ -30,6 +58,10 @@
 	border: 1px solid black;
 	margin-left: 40px;
 	margin-bottom: 15px;
+}
+
+.product a {
+	text-decoration: none;
 }
 
 .sideProduct {
