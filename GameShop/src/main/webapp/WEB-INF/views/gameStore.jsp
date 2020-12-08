@@ -79,10 +79,11 @@
 		<div class="product">
 			<div>
 				<c:forEach var="list" items="${storeList }">
-				<form action="/gameStore/gameIntro/${list.name }/" method="POST">
 				<div class="imgsize">
-					<input type="image" src="${cpath }/resources/image/image1.jpg"
-					style="width: 290px; height: 150px" name="${list.name }">
+					<a href="${cpath }/gameStore/gameIntro/${list.name }/">
+						<img src="${cpath }/resources/image/image1.jpg"
+						style="width: 290px; height: 150px">
+					</a>
 				</div>
 				
 				<div class="gamename">
@@ -91,7 +92,6 @@
 						<h5>${list.kind }</h5>
 					</div>
 				</div>
-				</form>
 				<div class="gameprice">
 					<span>판매가 : </span>
 					<span>

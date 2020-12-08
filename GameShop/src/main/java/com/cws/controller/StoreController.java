@@ -2,12 +2,17 @@ package com.cws.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.StoreService;
 import com.cws.vo.ProductVO;
@@ -28,11 +33,14 @@ public class StoreController {
 	}
 	
 	// 게임 소개하고 구매하는 페이지
-		@RequestMapping(value = "gameStore/gameIntro/{product}/", method = RequestMethod.POST)
-		public String introImage(@PathVariable("product") String product, Model model) {
-			System.out.println("product : " + product);
-			model.addAttribute("product", ss.select(product));
-			return "/gameStore/gameIntro/";
+		@RequestMapping(value = "/gameStore/gameIntro/{product}/", method = RequestMethod.GET)
+		public ModelAndView introImage(@PathVariable("product") String prod) {
+//			String product = request.getParameter(name);
+			System.out.println("product : " + prod);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("gameIntro");
+			mav.addObject("product", ss.select(prod));
+			return mav;
 		}
 	
 	// 게임 구매 결제창
