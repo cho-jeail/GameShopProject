@@ -23,13 +23,13 @@ public class ConsumerCenterController {
 		String SearchType = req.getParameter("NoticeSearchType");
 		String SearchWord = req.getParameter("NoticeSearchWord");
 		String page = req.getParameter("page");
-		System.out.println("SearchType : " + SearchType + ", SearchWord : " + SearchWord + ", page : " + page);
 		
 		HashMap<String, String> SearchMap = new HashMap<String, String>();
 		SearchMap.put("type", SearchType);
 		SearchMap.put("word", SearchWord);
 		return page != null ? ccs.CCNotice(Integer.parseInt(page), SearchMap) : ccs.CCNotice(1, SearchMap);
 	}
+	
 	@RequestMapping(value = "/CCNotice/Board/", method = RequestMethod.GET)
 	public ModelAndView NoticeBoardView(@Param("id") int id) {
 		return ccs.NoticeViewPage(id);
