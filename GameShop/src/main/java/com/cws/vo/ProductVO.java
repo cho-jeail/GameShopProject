@@ -15,6 +15,7 @@ public class ProductVO {
 	private int controller;
 	private int rating;
 	private String languages;
+	private String kind;
 	
 	public String getId() {
 		return id;
@@ -87,6 +88,12 @@ public class ProductVO {
 	}
 	public void setLanguages(String languages) {
 		this.languages = languages;
+	}
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 	
 }
