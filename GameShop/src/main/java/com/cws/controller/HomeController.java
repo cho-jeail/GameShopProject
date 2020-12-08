@@ -48,7 +48,7 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/signin")
-	public void loginMain() {}
+	public void signInMain() {}
 	
 	@RequestMapping(value = "/policy")
 	public void policyMain() {}
@@ -68,4 +68,14 @@ public class HomeController {
 	public ModelAndView signinForm(UserVO vo, HttpSession session) {
 		return HServ.signinUser(vo, session);
 	}
+	
+	@RequestMapping(value = "/signout")
+	public ModelAndView signOut(HttpSession session){
+		ModelAndView mav = new ModelAndView("redirect:/");
+		System.out.println("로그아웃 완료");
+		session.invalidate();
+		return mav;
+	}
+	
+	
 }
