@@ -14,7 +14,7 @@
 	</div>
 	<div class="CC_BoardMain">
 		<h3>${BoardMainName }</h3>
-		<form action="#">
+		<form action="" method="post">
 			<div class="CCQnA_FormDiv">
 				<label>구분</label>
 				<select name="category" required="required">

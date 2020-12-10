@@ -14,7 +14,6 @@
 		cpath = '${cpath}';
 	</script>
 	<script type="text/javascript" src="${cpath }/js/header.js"></script>
-
 	<header>
 		<div class="LOGO">
 			<a href="${cpath }/"><img alt="" src=""></a>

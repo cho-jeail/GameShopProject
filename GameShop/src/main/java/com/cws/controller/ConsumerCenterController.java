@@ -3,6 +3,7 @@ package com.cws.controller;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.ConsumerCenterService;
+import com.cws.vo.UserVO;
 
 @Controller
 public class ConsumerCenterController {
@@ -41,7 +43,21 @@ public class ConsumerCenterController {
 	}
 	
 	@RequestMapping(value = "/CCQnA/", method = RequestMethod.GET)
-	public ModelAndView QnABoard() {
-		return ccs.CCQnA();
+	public ModelAndView QnABoard(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		UserVO login = (UserVO)session.getAttribute("signin");
+		if(login != null) {
+			System.out.println("email : " + login.getEmail());
+			return ccs.CCQnA();
+		}
+		else {
+			System.out.println("login 비어있음.");
+			return ccs.DonLoginReturn();
+		}
+	}
+	
+	@RequestMapping(value = "/CCQnA/", method = RequestMethod.POST)
+	public ModelAndView UploadQnaBoard(HttpServletRequest req) {
+		return ccs.UploadQnaBoard(req);
 	}
 }

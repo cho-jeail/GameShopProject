@@ -3,6 +3,8 @@ package com.cws.service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,7 +50,6 @@ public class ConsumerCenterService {
 
 	public ModelAndView CCQnA() {
 		ModelAndView mav = new ModelAndView("CC_QnABoard");
-		
 		mav.addObject("BoardMainName", "문의하기");
 		
 		return mav;
@@ -61,5 +62,17 @@ public class ConsumerCenterService {
 		mav.addObject("NoticeVO", nbvo);
 		
 		return mav;
+	}
+
+	public ModelAndView DonLoginReturn() {
+		ModelAndView mav = new ModelAndView("errorPage");
+		mav.addObject("errorText", "로그인 이후 이용해주세요.");
+		mav.addObject("UriPath", "/signin/");
+		return mav;
+	}
+
+	public ModelAndView UploadQnaBoard(HttpServletRequest req) {
+		
+		return null;
 	}
 }
