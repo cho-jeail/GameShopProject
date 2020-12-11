@@ -16,5 +16,14 @@
 	<select id="checkPw" parameterType="String" resultType="com.cws.vo.UserVO">
 		select * from userlogin where password='${value}'
 	</select>
+	
+	<insert id="joinUser" parameterType="UserVO">
+		insert into userlogin (id, name, nickname, email, password, address)
+			values (#{id}, #{name}, #{nickname}, #{email}, #{password}, #{address})
+	</insert>
+	
+	<update id="updatePw" parameterType="UserVO">
+		update userlogin set password=#{password} where email=#{email}
+	</update>
 
 </mapper>

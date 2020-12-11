@@ -15,9 +15,9 @@
 			<input type="checkbox" class="signinCk" id="signinCk" name="regCk" >계정 기억
 			<button type="button" id="signinBtn">SignIn</button>
 		</form>
+		<a href="${cpath }/findpwd/">비밀번호를 잊으셨나요?</a> <a href="${cpath }/policy/">회원가입</a>
 	</div>
 </section>
 
 <script type="text/javascript" src="${cpath}/js/signin.js"></script>
-</body>
-</html>
+<%@ include file="footer.jsp" %>

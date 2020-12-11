@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.fpwdSection{
+	padding-top: 20px;
+}
+
+.fpwdContainer{
+	display: flex;
+	flex-direction: column;
+	width: 580px;
+	height: 900px;
+	border: 1px solid blue;
+	margin: 0 auto 0 auto;
+	padding: 20px 30px 20px 30px;
+}
+
+.fmailCmf{ color: red; }
