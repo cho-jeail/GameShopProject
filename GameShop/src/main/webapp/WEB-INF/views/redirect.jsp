@@ -24,6 +24,10 @@
 	else if(msg === "로그인성공"){
 		location.href="${cpath}/${url}";
 	}
+	else if(msg === "메일발송"){
+		alert("이메일이 발송되었습니다.");
+		location.href="${cpath}/${url}";
+	}
 	
 	location.replace("${cpath}/${url}");
 </script>

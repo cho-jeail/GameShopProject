@@ -18,13 +18,12 @@ function nickChecked(){
 	const request = new XMLHttpRequest();
     request.open("GET", path + '/checkNickname/' + joinNick.value + '/', true); // false 사용 안됨
     request.setRequestHeader('Content-type', 'text; charset=UTF-8');
-   
+
 	request.onreadystatechange = function(){
 		if(request.readyState == 4 || request.status == 200){
 			let response = request.response;
-			console.log("resp : " + response);
-			let result = response
-			if(result === '0'){
+			console.log('닉네임 resp : ' + response);
+			if(response === '사용중'){
 				nkCmf.innerText = '이미 사용중입니다.';
 				nkCmf.style.color = 'red';
 				joinNick.style.color = 'black';
@@ -54,9 +53,8 @@ function emailChecked(){
 	request.onreadystatechange = function(){
 		if(request.readyState == 4 || request.status == 200){
 			let response = request.response;
-			console.log("resp : " + response);
-			let result = response
-			if(result === '0'){
+			console.log("이메일 resp : " + response);
+			if(response === "사용중"){
 				emailCmf.innerText = '이미 사용중입니다.';
 				emailCmf.style.color = 'red';
 				joinEmail.style.color = 'black';

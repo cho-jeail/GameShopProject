@@ -9,5 +9,9 @@ public interface UserDAO {
 	UserVO checkEmail(String checking);
 
 	UserVO checkPw(String pw);
+
+	int joinUser(UserVO vo);
+
+	void updatePw(UserVO svo);
 	
 }

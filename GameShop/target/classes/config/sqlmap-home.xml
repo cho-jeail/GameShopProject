@@ -5,9 +5,6 @@
 	
 <mapper namespace="com.cws.dao.HomeDAO">
 	
-	<insert id="joinUser" parameterType="UserVO">
-		insert into userlogin (id, name, nickname, email, password, address)
-			values (#{id}, #{name}, #{nickname}, #{email}, #{password}, #{address})
-	</insert>
+
 	
 </mapper>
