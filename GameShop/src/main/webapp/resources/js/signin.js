@@ -8,6 +8,9 @@ let signinCk = document.getElementById('signinCk');
 signinEmail.addEventListener('blur', emailRegexp);
 document.getElementById('signinBtn').addEventListener('click', signSubmit);
 
+function enterkey() {
+	 if (window.event.keyCode == 13) { signSubmit(event); } 
+}
 
 // 이메일 정규 표현식 및 중복확인
 function emailRegexp(){

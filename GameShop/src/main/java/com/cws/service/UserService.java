@@ -80,6 +80,7 @@ public class UserService {
 			else {
 				System.out.println("로그인 성공!");
 				session.setAttribute("signin", pvo);
+				session.setMaxInactiveInterval(60*60); // 세션유지시간 1시간(초 * 분)
 				mav.addObject("msg", "로그인성공");
 				mav.addObject("url", "");
 				return mav;	

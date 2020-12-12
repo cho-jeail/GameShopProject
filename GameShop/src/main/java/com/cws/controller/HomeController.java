@@ -61,9 +61,17 @@ public class HomeController {
 	@RequestMapping(value = "/findpwd")
 	public void findpwd() {}
 	
+	@RequestMapping(value = "/mypage")
+	public void mypage() {}
+	
 	@RequestMapping(value = "join/", method = RequestMethod.POST)
 	public ModelAndView joinForm(UserVO vo) {
 		return UServ.joinUser(vo);
+	}
+	
+	@RequestMapping(value = "updateInfo/", method = RequestMethod.POST)
+	public ModelAndView updateInfo(UserVO vo) {
+		return null;
 	}
 	
 }
