@@ -13,22 +13,17 @@ public class StoreService {
 	
 	@Autowired private StoreDAO sd;
 
+	// 전체 상품목록을 불러옴
 	public List<ProductVO> selectAll() {
 		System.out.println("넘어옴");
-//		ModelAndView mav = new ModelAndView();
 		List<ProductVO> storeList = sd.storeSelectAll();
-//		mav.setViewName("/gameStore/");
-//		mav.addObject("storeList", storeList);
 		return storeList;
 	}
 	
+	// 단일 상품의 정보를 불러옴
 	public List<ProductVO> select(String product) {
 		System.out.println("product : " + product);
-//		ModelAndView mav = new ModelAndView();
 		List<ProductVO> gameList = sd.storeSelect(product);
-//		mav.setViewName("/gameStore/gameIntro/"+ product + "/");
-//		mav.addObject("gameList", gameList);
-//		return mav;
 		return gameList;
 	}
 	
