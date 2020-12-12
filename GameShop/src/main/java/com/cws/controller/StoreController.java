@@ -45,22 +45,13 @@ public class StoreController {
 	
 	// 게임구매 팝업창
 	@RequestMapping(value = "/purchasePopup/", method=RequestMethod.GET)
-	public String popup() {
-		
-		return "purchasePopup()";
-	}
-
-	// 게임 구매 결제창
-	@RequestMapping(value = "/gameStore/gameIntro/payment/", method = RequestMethod.GET)
-	public String payment() {
-
-		return "payment";
-	}
+	public void popup() {}
 
 	// 게임 구매"완료" 결제창
-	@RequestMapping(value = "/gameStore/gameIntro/payment/paymentFinish/", method = RequestMethod.GET)
-	public String paymentFinish() {
-
+	@RequestMapping(value = "/gameStore/gameIntro/paymentFinish/", method = RequestMethod.POST)
+	public String paymentFinish(String game, Model model) {
+		System.out.println("결제창 들어옴 : " + game);
+		model.addAttribute("product", ss.select(game));
 		return "paymentFinish";
 	}
 
