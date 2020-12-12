@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Error Page</title>
+<title>${TitleName }</title>
 </head>
 <body>
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
 <script type="text/javascript">
 	cpath = '${cpath }';
-    alert('${errorText }');
+    alert('${PopupText }');
     location.replace(cpath + '${UriPath }');
 </script>
 </body>

@@ -14,7 +14,8 @@
 	</div>
 	<div class="CC_BoardMain">
 		<h3>${BoardMainName }</h3>
-		<form action="" method="post">
+		<form action="" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="writer" value="${sessionScope.signin.email }">
 			<div class="CCQnA_FormDiv">
 				<label>구분</label>
 				<select name="category" required="required">
@@ -35,15 +36,15 @@
 			</div>
 			<div class="CCQnA_FormDiv">
 				<label>첨부파일1</label>			
-				<input type="file" name="img1">
+				<input type="file" name="imgFile1">
 			</div>			
 			<div class="CCQnA_FormDiv">
 				<label>첨부파일2</label>			
-				<input type="file" name="img2">
+				<input type="file" name="imgFile2">
 			</div>			
 			<div class="CCQnA_FormDiv">
 				<label>첨부파일3</label>			
-				<input type="file" name="img3">
+				<input type="file" name="imgFile3">
 			</div>
 			<div class="CCQnA_FormDiv">
 				<input type="submit" value="확인">

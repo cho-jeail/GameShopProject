@@ -49,4 +49,11 @@
 		select * from faqboard
 			<if test="_parameter != null">where category = #{_parameter }</if>
 	</select>
+	
+	<insert id="InsertQna" parameterType="QABoardVO">
+		insert into qaboard 
+			(category, title, content, writer, image1, image2, image3) 
+		values 
+			(#{category }, #{title }, #{content }, #{writer }, #{image1 }, #{image2 }, #{image3 })
+	</insert>
 </mapper>

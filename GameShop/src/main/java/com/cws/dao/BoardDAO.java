@@ -6,6 +6,7 @@ import java.util.List;
 import com.cws.vo.FAQBoardVO;
 import com.cws.vo.NoticeBoardVO;
 import com.cws.vo.PagingParamsVO;
+import com.cws.vo.QABoardVO;
 
 public interface BoardDAO {
 
@@ -18,4 +19,6 @@ public interface BoardDAO {
 	int SelectNoticeCount(HashMap<String, String> searchMap);
 
 	List<FAQBoardVO> SelectFAQBoardList(String flag);
+
+	int InsertQna(QABoardVO qAVO);
 }

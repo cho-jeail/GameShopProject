@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.ConsumerCenterService;
@@ -47,17 +49,17 @@ public class ConsumerCenterController {
 		HttpSession session = req.getSession();
 		UserVO login = (UserVO)session.getAttribute("signin");
 		if(login != null) {
-			System.out.println("email : " + login.getEmail());
+//			System.out.println("email : " + login.getEmail());
 			return ccs.CCQnA();
 		}
 		else {
-			System.out.println("login 비어있음.");
+//			System.out.println("login 비어있음.");
 			return ccs.DonLoginReturn();
 		}
 	}
 	
 	@RequestMapping(value = "/CCQnA/", method = RequestMethod.POST)
-	public ModelAndView UploadQnaBoard(HttpServletRequest req) {
+	public ModelAndView UploadQnaBoard(MultipartHttpServletRequest req) {
 		return ccs.UploadQnaBoard(req);
 	}
 }
