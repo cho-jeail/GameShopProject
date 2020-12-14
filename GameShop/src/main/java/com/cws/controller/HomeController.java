@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +72,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "updateInfo/", method = RequestMethod.POST)
-	public ModelAndView updateInfo(UserVO vo) {
-		return null;
+	public ModelAndView updateInfo(UserVO vo, HttpSession session) {
+		return UServ.updateUser(vo, session);
+	}
+	
+	@RequestMapping(value = "chkPwd/", method = RequestMethod.POST)
+	public String updateInfo(UserVO vo) {
+		return UServ.checkPwd(vo);
 	}
 	
 }

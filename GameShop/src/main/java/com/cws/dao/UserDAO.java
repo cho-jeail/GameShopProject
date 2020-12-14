@@ -13,5 +13,9 @@ public interface UserDAO {
 	int joinUser(UserVO vo);
 
 	void updatePw(UserVO svo);
+
+	int updateUser(UserVO vo);
+
+	UserVO selectUser(UserVO vo);
 	
 }

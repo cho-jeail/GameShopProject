@@ -13,13 +13,13 @@ public class JoinController {
 	
 	@Autowired private UserService us;	
 	
-	@RequestMapping(value = "join/checkNickname/{jk}/", produces = "application/text; charset=UTF-8")
+	@RequestMapping(value = "/checkNickname/{jk}/", produces = "application/text; charset=UTF-8")
 	public String checkNickname(@PathVariable("jk")String checking) {
 		UserVO result = us.checkNickname(checking);
 		return result != null ? "사용중" : "생성가능";
 	}
 	
-	@RequestMapping(value = "join/checkEmail/{jk}/", produces = "application/text; charset=UTF-8")
+	@RequestMapping(value = "/checkEmail/{jk}/", produces = "application/text; charset=UTF-8")
 	public String checkEmail(@PathVariable("jk")String checking) {
 		UserVO result =  us.checkEmail(checking);
 		return result != null ? "사용중" : "생성가능";

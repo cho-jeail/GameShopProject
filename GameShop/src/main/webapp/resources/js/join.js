@@ -1,4 +1,6 @@
 let path = document.location.pathname;
+console.log(path);
+console.log(cpath);
 let joinName = document.getElementById('joinName');
 let joinNick = document.getElementById('joinNick');
 let joinEmail = document.getElementById('joinEmail');
@@ -16,7 +18,7 @@ joinPw.addEventListener('blur', pwRegexp);
 function nickChecked(){
 	let nkCmf = document.getElementById('nkCmf');
 	const request = new XMLHttpRequest();
-    request.open("GET", path + '/checkNickname/' + joinNick.value + '/', true); // false 사용 안됨
+    request.open("GET", cpath + '/checkNickname/' + joinNick.value + '/', true); // false 사용 안됨
     request.setRequestHeader('Content-type', 'text; charset=UTF-8');
 
 	request.onreadystatechange = function(){
@@ -47,7 +49,7 @@ function nickChecked(){
 function emailChecked(){
 	let emailCmf = document.getElementById('emailCmf');
 	const request = new XMLHttpRequest();
-    request.open("GET", path + '/checkEmail/' + joinEmail.value + '/', true); // false 사용 안됨
+    request.open("GET", cpath + '/checkEmail/' + joinEmail.value + '/', true); // false 사용 안됨
     request.setRequestHeader('Content-type', 'text; charset=UTF-8');
    
 	request.onreadystatechange = function(){
