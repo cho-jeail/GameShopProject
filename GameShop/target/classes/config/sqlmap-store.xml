@@ -13,4 +13,24 @@
 		select * from product where name=#{_parameter}
 	</select>
 	
+	<select id="selectGetUser" resultType="UserVO" parameterType="String">
+		select * from userlogin where id=#{userSession}
+	</select>
+	
+	<insert id="compareInsert" parameterType="CompareProductVO">
+		insert into comparedproduct (userid, id, name, price, info, developer, 
+				publisher, tags, platform, controller, rating, languages, kind)
+			values(#{userid}, #{id}, #{name}, #{price}, 
+			#{info}, #{developer}, #{publisher}, #{tags}, 
+			#{platform}, #{controller}, #{rating}, #{languages}, #{kind})
+	</insert>
+	
+	<select id="compareSelect" parameterType="String" resultType="CompareProductVO">
+		select * from comparedproduct where userid=#{userid}
+	</select>
+	
+	<select id="productSelect" parameterType="String" resultType="ProductVO">
+		select * from product where name=#{game}
+	</select>
+	
 </mapper>

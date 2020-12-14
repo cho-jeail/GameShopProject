@@ -3,7 +3,6 @@
 <%@ include file="header.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${cpath }/css/gameStore.css">
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- 게임 소개 페이지 -->
 <h2>게임 소개 페이지</h2>
 
@@ -97,11 +96,16 @@
 		else if (pk.checked === true) {
 			var conPk = confirm("정말로 구매 하시겠습니까?");
 			var game = $("#name");
+			var userID = "${sessionScope.signin.id}";
 
 			if (conPk === true) {
 				console.log("게임이름 : " + game);
+				console.log("유저이름 : " + userID);
+				
 				var form = document.createElement("form");
 				var input_pd = document.createElement("input");
+				var input_user = document.createElement("input");
+				
 
 				form.setAttribute("method", "post");
 				form.setAttribute("action",
@@ -109,9 +113,14 @@
 				input_pd.setAttribute("type", "hidden");
 				input_pd.setAttribute("name", "game");
 				input_pd.setAttribute("value", game.text());
+				input_user.setAttribute("type", "hidden");
+				input_user.setAttribute("name", "userID");
+				input_user.setAttribute("value", userID);
 				document.body.appendChild(form);
+				console.log("userID : " + userID);
 				form.appendChild(input_pd);
-
+				form.appendChild(input_user);
+				
 				form.submit();
 			}
 		}
