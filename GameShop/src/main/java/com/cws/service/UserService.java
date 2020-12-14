@@ -153,6 +153,57 @@ public class UserService {
 		else { return null; }
 	}
 
-	
-	
+	//회원정보 수정
+	public ModelAndView updateUser(UserVO vo, HttpSession session) {
+		ModelAndView mav = new ModelAndView("redirect");
+		UserVO uvo = udao.selectUser(vo);
+		if(!(vo.getPassword().equals(""))) {
+			try {
+				MessageDigest md = MessageDigest.getInstance("SHA-256");
+				md.update(vo.getId().getBytes());
+				md.update(vo.getPassword().getBytes());
+				vo.setPassword(String.format("%064x", new BigInteger(1, md.digest())));
+			} catch (NoSuchAlgorithmException e) {
+				System.out.println("NoSuchAlgorithmException 오류");
+				e.printStackTrace();
+			}
+		}
+		else {
+			vo.setPassword(uvo.getPassword());
+		}
+		
+		int rltInt = udao.updateUser(vo);
+		System.out.println(rltInt == 0 ? "정보수정실패" : "정보수정성공");
+		String result = rltInt == 0 ? "정보수정실패" : "정보수정성공";
+		UserVO rvo = udao.selectUser(vo);
+		System.out.println("세션 시간 : " + session.getMaxInactiveInterval());
+		session.setAttribute("signin", rvo);
+		mav.addObject("msg", result);
+		mav.addObject("url", "mypage");
+		
+		return mav;
+	}
+
+	public String checkPwd(UserVO ob) {
+		UserVO uvo = udao.selectUser(ob);
+		String pwd;
+		if(uvo != null) {
+			try {
+				MessageDigest md = MessageDigest.getInstance("SHA-256");
+				md.update(ob.getId().getBytes());
+				md.update(ob.getPassword().getBytes());
+				pwd = String.format("%064x", new BigInteger(1, md.digest()));	
+				if(uvo.getPassword().equals(pwd)) {
+					return "인증완료";
+				}
+				else {
+					return "인증실패";
+				}
+			} catch (NoSuchAlgorithmException e) {
+				System.out.println("NoSuchAlgorithmException 오류");
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 }

@@ -26,4 +26,12 @@
 		update userlogin set password=#{password} where email=#{email}
 	</update>
 
+	<update id="updateUser" parameterType="UserVO">
+		update userlogin set nickname=#{nickname}, email=#{email}, password=#{password}, address=#{address} where id=#{id} 
+	</update>
+	
+	<select id="selectUser" parameterType="UserVO" resultType="UserVO">
+		select * from userlogin where id=#{id}
+	</select>
+	
 </mapper>

@@ -28,6 +28,14 @@
 		alert("이메일이 발송되었습니다.");
 		location.href="${cpath}/${url}";
 	}
+	else if(msg === "정보수정실패"){
+		alert("회원정보 수정이 실패했습니다.");
+		location.href="${cpath}/${url}";
+	}
+	else if(msg === "정보수정성공"){
+		alert("회원정보 수정완료.");
+		location.href="${cpath}/${url}";
+	}
 	
 	location.replace("${cpath}/${url}");
 </script>

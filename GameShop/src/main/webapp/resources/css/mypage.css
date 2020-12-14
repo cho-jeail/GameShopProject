@@ -36,19 +36,25 @@
 	background-color: #eeeced;
 }
 
-.mypInfo{
+.mypInfoContent{
+	display: flex;
 	width: 100%;
 	height: 100%;
 	background-color: white;
 }
 
-.mypPurchaseList, .mypWishList, .mypQnAList, .mypMemberOut{
+.mypInfo, .mypPurchaseList, .mypWishList, .mypQnAList, mypCoupon,.mypMemberOut {
 	display: none;
+	width: 100%;
+	height: 100%;
+	background-color: white;
 }
 
 .cxBtn, .sBtn{
 	display: none;
 }
+
+.mypChkPwCmf{ color: red; }
 
 
 
