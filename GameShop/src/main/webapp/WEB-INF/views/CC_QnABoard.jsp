@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="header.jsp" %>
 
+<script type="text/javascript" src="${cpath }/js/QnaBoard.js"></script>
 <div style="display: flex; ">
 	<div class="CC_SideMenu">
 		<h2>고객 센터</h2>
@@ -36,15 +37,15 @@
 			</div>
 			<div class="CCQnA_FormDiv">
 				<label>첨부파일1</label>			
-				<input type="file" name="imgFile1">
+				<input type="file" name="imgFile1" class="UploadImg" accept=".png, .jpeg, .gif, .jpg" onchange="FileSizeCheck(this)">
 			</div>			
 			<div class="CCQnA_FormDiv">
 				<label>첨부파일2</label>			
-				<input type="file" name="imgFile2">
+				<input type="file" name="imgFile2" class="UploadImg" accept=".png, .jpeg, .gif, .jpg" onchange="FileSizeCheck(this)">
 			</div>			
 			<div class="CCQnA_FormDiv">
 				<label>첨부파일3</label>			
-				<input type="file" name="imgFile3">
+				<input type="file" name="imgFile3" class="UploadImg" accept=".png, .jpeg, .gif, .jpg" onchange="FileSizeCheck(this)">
 			</div>
 			<div class="CCQnA_FormDiv">
 				<input type="submit" value="확인">

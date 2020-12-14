@@ -88,16 +88,6 @@ public class ConsumerCenterService {
 		QAVO.setImage2(req.getFile("imgFile2").getSize() == 0 ? "null" : ImageUpload(req.getFile("imgFile2")));
 		QAVO.setImage3(req.getFile("imgFile3").getSize() == 0 ? "null" : ImageUpload(req.getFile("imgFile3")));
 		
-		System.out.println("==================================");
-		System.out.println("category : " + QAVO.getCategory());
-		System.out.println("title : " + QAVO.getTitle());
-		System.out.println("content : " + QAVO.getContent());
-		System.out.println("writer : " + QAVO.getWriter());
-		System.out.println("img1 : " + QAVO.getImage1());
-		System.out.println("img2 : " + QAVO.getImage2());
-		System.out.println("img3 : " + QAVO.getImage3());
-		System.out.println("==================================");
-		
 		int result = Bdao.InsertQna(QAVO);
 		
 		if(result != 1) {
