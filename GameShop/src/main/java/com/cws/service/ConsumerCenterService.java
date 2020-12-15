@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -122,5 +124,10 @@ public class ConsumerCenterService {
 		}
 		
 		return SaveFileName;
+	}
+
+	public ModelAndView MypageQna(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("mypageQna");
+		return mav;
 	}
 }

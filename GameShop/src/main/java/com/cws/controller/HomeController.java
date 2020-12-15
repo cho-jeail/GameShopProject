@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cws.service.ConsumerCenterService;
 import com.cws.service.HomeService;
 import com.cws.service.UserService;
 import com.cws.vo.UserVO;
@@ -29,6 +31,7 @@ public class HomeController {
 	
 	@Autowired private HomeService HServ;
 	@Autowired private UserService UServ;
+	@Autowired private ConsumerCenterService CCS;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -81,4 +84,8 @@ public class HomeController {
 		return UServ.checkPwd(vo);
 	}
 	
+	@RequestMapping(value = "/mypage/mypQna/", method = RequestMethod.GET)
+	public ModelAndView MypageQna(HttpServletRequest req) {
+		return CCS.MypageQna(req);
+	}
 }

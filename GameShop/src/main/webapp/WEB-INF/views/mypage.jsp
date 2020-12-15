@@ -20,7 +20,7 @@
 				<li>구매내역</li>
 				<li>위시리스트</li>
 				<li>COUPON</li>
-				<li>문의내역</li>
+				<li><a href="${cpath }/mypage/mypQna/">문의내역</a></li>
 				<li>회원탈퇴</li>
 			</ul>
 		</div>
