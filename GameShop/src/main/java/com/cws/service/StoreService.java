@@ -32,7 +32,7 @@ public class StoreService {
 	}
 
 	// 결제한 게임을 개인의 유저목록에 추가함
-	public List<CompareProductVO> update(String game, UserVO user) {
+	public List<CompareProductVO> update(String game, UserVO user, int cnt) {
 		CompareProductVO compare = new CompareProductVO();
 		ProductVO pvo = sd.productSelect(game);
 		
@@ -50,10 +50,20 @@ public class StoreService {
 		compare.setLanguages(pvo.getLanguages());
 		compare.setKind(pvo.getKind());
 		System.out.println("이건 대체 뭘까 : " + compare.getUserid());
-		sd.compareInsert(compare);
 		
 		List<CompareProductVO> compareList = sd.compareSelect(compare.getUserid());
-		System.out.println("compareList.ID : " + compareList.get(0).getId());
+		System.out.println("game : " + game);
+		System.out.println(compareList.size());
+		System.out.println(cnt);
+		
+		if(compareList.size() == 0)
+			sd.compareInsert(compare);
+		else {
+			for(int i = 0; i < cnt; i ++) {
+				if(!game.equals(compareList.get(i).getName()))
+					sd.compareInsert(compare);
+			}
+		}
 		
 		return compareList;
 	}
@@ -61,6 +71,11 @@ public class StoreService {
 	// 게임을 결제한 유저의 ID값을 받아옴
 	public UserVO selectGetUser(String userSession) {
 		return sd.selectGetUser(userSession);
+	}
+
+	// 한 유저가 보유한 게임 개수
+	public int count(String userID) {
+		return sd.count(userID);
 	}
 	
 }

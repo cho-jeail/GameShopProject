@@ -18,7 +18,7 @@
 	</tr>
 	<c:forEach var="compare" items="${compareList }" varStatus="str">
 		<tr>
-			<td>${str.count }</td>
+			<td>${str.index + 1}</td>
 			<td>${compare.name}</td>
 			<td>${compare.price }</td>
 			<td>${compare.kind }</td>
