@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ import com.cws.vo.FAQBoardVO;
 import com.cws.vo.NoticeBoardVO;
 import com.cws.vo.PagingParamsVO;
 import com.cws.vo.QABoardVO;
+import com.cws.vo.UserVO;
 
 @Service
 public class ConsumerCenterService {
@@ -128,6 +131,20 @@ public class ConsumerCenterService {
 
 	public ModelAndView MypageQna(HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("mypageQna");
+		HttpSession session = req.getSession();
+		String userID = ((UserVO)session.getAttribute("signin")).getId();
+		
+		List<QABoardVO> QnaList = Bdao.SelectQnaBoard(userID);
+		
+		mav.addObject("QnaList", QnaList);
+		return mav;
+	}
+
+	public ModelAndView QnaBoardView(int id) {
+		ModelAndView mav = new ModelAndView("mypageQnaBoardView");
+		QABoardVO qavo = Bdao.SelectOneQnaBoard(id);
+		 
+		mav.addObject("QnaBoard", qavo);
 		return mav;
 	}
 }

@@ -21,4 +21,8 @@ public interface BoardDAO {
 	List<FAQBoardVO> SelectFAQBoardList(String flag);
 
 	int InsertQna(QABoardVO qAVO);
+
+	List<QABoardVO> SelectQnaBoard(String userID);
+
+	QABoardVO SelectOneQnaBoard(int id);
 }
