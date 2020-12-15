@@ -26,8 +26,8 @@
 		</div>
 		<div class="mypContents">
 			<div class="mypInfoContent">
-				<div class="mypCheckPwd">					 
-					<form class="mypChkPwForm" id="mypChkPwForm" method="post" action="${cpath }/chkPwd/">
+				<div class="mypCheckPwd" id="mypCheckPwd">					 
+					<form class="mypChkPwForm" id="mypChkPwForm">
 						<span>확인을 위해 비밀번호를 입력하여주세요</span>
 						<input type="password" class="mypChkPw" id="mypChkPw" name="password">
 						<div class="mypChkPwCmf" id="mypChkPwCmf"></div>

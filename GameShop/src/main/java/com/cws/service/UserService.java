@@ -3,6 +3,7 @@ package com.cws.service;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -184,14 +185,16 @@ public class UserService {
 		return mav;
 	}
 
-	public String checkPwd(UserVO ob) {
-		UserVO uvo = udao.selectUser(ob);
+	public String checkPwd(HashMap<String, String> param) {
+		UserVO vo = new UserVO();
+		vo.setId(param.get("id"));
+		UserVO uvo = udao.selectUser(vo);
 		String pwd;
 		if(uvo != null) {
 			try {
 				MessageDigest md = MessageDigest.getInstance("SHA-256");
-				md.update(ob.getId().getBytes());
-				md.update(ob.getPassword().getBytes());
+				md.update(uvo.getId().getBytes());
+				md.update(param.get("password").getBytes());
 				pwd = String.format("%064x", new BigInteger(1, md.digest()));	
 				if(uvo.getPassword().equals(pwd)) {
 					return "인증완료";

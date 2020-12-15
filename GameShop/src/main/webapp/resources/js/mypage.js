@@ -3,6 +3,9 @@ console.log(seEmail);
 console.log(sePwd);
 console.log(seAddr);
 
+let mypCPdiv = document.getElementById('mypCheckPwd');
+let mypIFdiv = document.getElementById('mypInfo');
+
 let mypName = document.getElementById('mypName');
 let mypNick = document.getElementById('mypNick');
 let mypEmail = document.getElementById('mypEmail');
@@ -233,17 +236,46 @@ function setCookie(name, value, cday){
 
 function mypChkPwd(){
 	let mypChkPwCmf = document.getElementById('mypChkPwCmf');
-	let mypChkPwForm = document.getElementById('mypChkPwForm');
+	let mypChkPwForm = document.getElementById('mypChkPwForm'); // form = document.forms[0]; <- 같은거
 	if(mypChkPw.value === ''){
 		mypChkPwCmf.innerText = '입력바랍니다.'
 		return false;
 	}
 	else{
-		let result = mypChkPwForm.submit();
-		console.log(result);
+		formData = new FormData(mypChkPwForm);
+		ent = formData.entries();		// done(완료 여부), value ([0], [1])
+		ob = {};
+		while(true){
+			next = ent.next();	
+			console.log(next);
+			if(next.done == true)	break;
+			ob[next.value[0]] = next.value[1];
+		}
+		
+		jsonData = JSON.stringify(ob);	//	json형태로 만든다
+		
+		const request = new XMLHttpRequest();
+		request.open("POST", cpath + '/chkPwd/', true);
+		request.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+		request.onreadystatechange = function(){
+			if(request.readState == 4 || request.status == 200){
+				let response = request.response;
+				console.log('resp : ' + response);
+				if(response === '인증완료'){
+					mypCPdiv.style.display = 'none';
+					mypIFdiv.style.display = 'flex';					
+				}
+				else{
+					mypChkPwCmf.innerText = '일치하지 않습니다.';
+				}
+			}
+			else{
+				alert('통신 실패!');
+			}
+		}
+		request.send(jsonData);
 	}
 }
-
 
 
 
