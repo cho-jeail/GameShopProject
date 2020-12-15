@@ -35,7 +35,6 @@ public class StoreController {
 	// 게임 소개하고 구매하는 페이지
 	@RequestMapping(value = "/gameStore/gameIntro/{product}/", method = RequestMethod.GET)
 	public ModelAndView introImage(@PathVariable("product") String prod) {
-		//			String product = request.getParameter(name);
 		System.out.println("product : " + prod);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("gameIntro");
@@ -50,17 +49,18 @@ public class StoreController {
 	// 게임 구매"완료" 결제창
 	@RequestMapping(value = "/gameStore/gameIntro/paymentFinish/", method = RequestMethod.POST)
 	public String paymentFinish(String game, String userID, Model model, HttpSession session) {
-		System.out.println("결제창 들어옴 : " + game);
-		System.out.println("결제창 들어옴 : " + userID);
+//		System.out.println("결제창 들어옴 : " + game);
+//		System.out.println("결제창 들어옴 : " + userID);
 		
 		UserVO user = new UserVO();
 		user = ss.selectGetUser(userID);
-		System.out.println("userid : " + user.getId());
+//		System.out.println("userid : " + user.getId());
+		int cnt = ss.count(userID);		// 보유중인 게임 개수
+//		System.out.println("cnt : " + cnt);
 		
-		List<CompareProductVO> compareList = ss.update(game, user);
-		if(compareList.size() != 0) { 
-			model.addAttribute("compareList", compareList);
-		}
+		List<CompareProductVO> compareList = ss.update(game, user, cnt);
+		
+		model.addAttribute("compareList", compareList);
 		
 		return "paymentFinish";
 	}

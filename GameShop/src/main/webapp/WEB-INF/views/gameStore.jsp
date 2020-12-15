@@ -87,7 +87,7 @@
 				</div>
 				
 				<div class="gamename">
-					<h5><a href="#">${list.name }</a></h5>
+					<h5>${list.name }</h5>
 					<div>
 						<h5>${list.kind }</h5>
 					</div>
@@ -99,7 +99,7 @@
 							${list.price }
 						</span>
 					</span>
-					<span><a href="#">장바구니 담기</a></span>
+					<span><a href="#">위시리스트 추가</a></span>
 				</div>
 				</c:forEach>
 			</div>

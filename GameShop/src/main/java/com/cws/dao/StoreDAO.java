@@ -20,5 +20,7 @@ public interface StoreDAO {
 
 	ProductVO productSelect(String game);
 
+	int count(String userID);
+
 	
 }
