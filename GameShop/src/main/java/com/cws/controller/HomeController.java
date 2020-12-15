@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.ConsumerCenterService;
-import com.cws.service.HomeService;
 import com.cws.service.UserService;
 import com.cws.vo.UserVO;
 
@@ -29,7 +28,6 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@Autowired private HomeService HServ;
 	@Autowired private UserService UServ;
 	@Autowired private ConsumerCenterService CCS;
 	
@@ -78,12 +76,7 @@ public class HomeController {
 	public ModelAndView updateInfo(UserVO vo, HttpSession session) {
 		return UServ.updateUser(vo, session);
 	}
-	
-	@RequestMapping(value = "chkPwd/", method = RequestMethod.POST)
-	public String updateInfo(UserVO vo) {
-		return UServ.checkPwd(vo);
-	}
-	
+		
 	@RequestMapping(value = "/mypage/mypQna/", method = RequestMethod.GET)
 	public ModelAndView MypageQna(HttpServletRequest req) {
 		return CCS.MypageQna(req);

@@ -11,7 +11,7 @@
 }
 
 .mypContainer{
-	display: inline-flex;
+	display: flex;
 	justify-content: space-between;
 	width: 880px;
 	height: 900px;
@@ -28,7 +28,6 @@
 }
 
 .mypContents{
-	display: flex;
 	width: 670px;
 	height: 700px;
 	border: 1px solid black;
@@ -43,7 +42,7 @@
 	background-color: white;
 }
 
-.mypInfo, .mypPurchaseList, .mypWishList, .mypQnAList, mypCoupon,.mypMemberOut {
+.mypInfo, .mypPurchaseList, .mypWishList, .mypQnAList, .mypCoupon, .mypMemberOut {
 	display: none;
 	width: 100%;
 	height: 100%;
@@ -56,8 +55,26 @@
 
 .mypChkPwCmf{ color: red; }
 
+.mypUl{
+	list-style: none;
+	padding-left: 0px;
+	width: 100%;
 
+}
 
+.mypUl li{
+	height: 50px;
+	background-color: #7f7f7f;
+	color: white;
+	text-align: center;
+	line-height: 50px;
+	margin-bottom: 10px;
+}
+
+.mypUl li:hover {
+	background-color: #dcd6dc;
+	cursor: pointer;
+}
 
 
 
