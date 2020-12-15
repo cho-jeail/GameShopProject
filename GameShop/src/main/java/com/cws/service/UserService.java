@@ -6,6 +6,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.UUID;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.dao.UserDAO;
 import com.cws.mail.MailUtil;
+import com.cws.vo.OutReasonVO;
 import com.cws.vo.UserVO;
 
 @Service
@@ -208,5 +212,41 @@ public class UserService {
 			}
 		}
 		return null;
+	}
+
+	public ModelAndView memberOut(OutReasonVO vo, HttpSession session, HttpServletRequest req, HttpServletResponse resp) {
+		ModelAndView mav = new ModelAndView("redirect");
+		Cookie[] cookies = req.getCookies();
+		boolean cookieflag = false;
+		for(Cookie c : cookies) {
+			if(c.getName().equals("cookie_email")) {
+				cookieflag = true;
+			}
+		}
+		if(!(vo.getOutreason().equals(""))) {
+			int reg = udao.insertOutReason(vo);
+			if(reg != 0) {
+				System.out.println("사유 등록 완료");
+			}
+		}
+		
+		int result = udao.deleteUser(vo);
+		if(result != 0) {
+			System.out.println("유저 삭제 완료");
+			if(cookieflag) {
+				Cookie ck = new Cookie("cookie_email", null);
+				ck.setMaxAge(0);
+				resp.addCookie(ck);	
+			}
+			session.removeAttribute("signin");
+			mav.addObject("msg", "탈퇴완료");
+			mav.addObject("url", "");
+		}
+		else {
+			System.out.println("삭제 실패");
+			mav.addObject("msg", "탈퇴실패");
+			mav.addObject("url", "mypage");
+		}	
+		return mav;
 	}
 }

@@ -36,6 +36,14 @@
 		alert("회원정보 수정완료.");
 		location.href="${cpath}/${url}";
 	}
+	else if(msg === "탈퇴완료"){
+		alert("회원탈되가 완료되었습니다.");
+		location.href="${cpath}/${url}";
+	}
+	else if(msg === "탈퇴실패"){
+		alert("오류로 인하여 탈퇴가 실패되었습니다.");
+		location.href="${cpath}/${url}";
+	}
 	
 	location.replace("${cpath}/${url}");
 </script>

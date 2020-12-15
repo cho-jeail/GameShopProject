@@ -34,4 +34,12 @@
 		select * from userlogin where id=#{id}
 	</select>
 	
+	<insert id="insertOutReason" parameterType="com.cws.vo.OutReasonVO">
+		insert into outreason values (#{outreason})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="com.cws.vo.OutReasonVO">
+		delete from userlogin where id=#{id}
+	</delete>
+	
 </mapper>
