@@ -1,27 +1,31 @@
-console.log(seNick);
-console.log(seEmail);
-console.log(sePwd);
-console.log(seAddr);
-
 let mypCPdiv = document.getElementById('mypCheckPwd');
 let mypIFdiv = document.getElementById('mypInfo');
+let mypCPdiv2 = document.getElementById('mypCheckPwd2');
+let mypMOdiv = document.getElementById('MemberOut');
+
+let mypIFC = document.getElementById('mypInfoContent');
+let mypMO = document.getElementById('mypMemberOut');
 
 let mypName = document.getElementById('mypName');
 let mypNick = document.getElementById('mypNick');
 let mypEmail = document.getElementById('mypEmail');
 let mypPwd = document.getElementById('mypPwd');
 let mypChkPw = document.getElementById('mypChkPw');
+let mypChkPw2 = document.getElementById('mypChkPw2');
 
 let mypNameCmf = document.getElementById('mypNameCmf');
 let mypNickCmf = document.getElementById('mypNickCmf');
 let mypEmailCmf = document.getElementById('mypEmailCmf');
 let mypPwdCmf = document.getElementById('mypPwdCmf');
+let mypChkPwCmf = document.getElementById('mypChkPwCmf');
+let mypChkPwCmf2 = document.getElementById('mypChkPwCmf2');
 
 let updBtn = document.getElementById('updBtn');
 let cxBtn = document.getElementById('cxBtn');
 let sBtn = document.getElementById('sBtn');
 
 let mypCPBtn = document.getElementById('mypChkPwBtn');
+let mypCPBtn2 = document.getElementById('mypChkPwBtn2');
 
 let infoList = [mypNick, mypEmail, mypPwd];
 let flag = false;
@@ -36,6 +40,15 @@ updBtn.addEventListener('click', updBtnClk);
 cxBtn.addEventListener('click', cxBtnClk);
 sBtn.addEventListener('click', submit);
 mypCPBtn.addEventListener('click', mypChkPwd);
+mypCPBtn2.addEventListener('click', mypChkPwd);
+
+document.getElementById('info').addEventListener('click', checkingPwd);
+document.getElementById('mbOut').addEventListener('click', checkingPwd2);
+document.getElementById('MOBtn').addEventListener('click', outConfirm);
+
+function enterkey() {
+	 if (window.event.keyCode == 13) { mypChkPwd(event); } 
+}
 
 function updBtnClk(){
 	for(i = 0; i < infoList.length; i++){
@@ -234,20 +247,48 @@ function setCookie(name, value, cday){
 
 }
 
-function mypChkPwd(){
-	let mypChkPwCmf = document.getElementById('mypChkPwCmf');
-	let mypChkPwForm = document.getElementById('mypChkPwForm'); // form = document.forms[0]; <- 같은거
-	if(mypChkPw.value === ''){
-		mypChkPwCmf.innerText = '입력바랍니다.'
+function checkingPwd(){
+	mypIFC.style.display = 'flex';
+	mypMO.style.display = 'none';
+	mypChkPw.value = '';
+	mypChkPwCmf.innerText = '';
+}
+
+function checkingPwd2(){
+	mypIFC.style.display = 'none';
+	mypMO.style.display = 'flex';
+	mypChkPw2.value = '';
+	mypChkPwCmf2.innerText = '';
+}
+
+function mypChkPwd(event){
+	event.preventDefault();
+	let cmf = document.querySelectorAll('.mypChkPwCmf');
+	let pwd = document.querySelectorAll('.mypChkPw');
+	let form = document.querySelectorAll('.mypChkPwForm'); // form = document.forms[0]; <- 같은거
+
+	if(mypIFC.style.display === 'none'){
+		pwd = pwd[1];
+		form = form[1];
+		cmf = cmf[1];
+	}
+	else{
+		pwd = pwd[0];
+		form = form[0];
+		cmf = cmf[0];
+	}
+	
+	if(pwd.value === ''){
+		cmf.innerText = '입력바랍니다.'
 		return false;
 	}
 	else{
-		formData = new FormData(mypChkPwForm);
+		formData = new FormData(form);
 		ent = formData.entries();		// done(완료 여부), value ([0], [1])
 		ob = {};
 		while(true){
 			next = ent.next();	
-			console.log(next);
+//			console.log(next);
 			if(next.done == true)	break;
 			ob[next.value[0]] = next.value[1];
 		}
@@ -260,13 +301,26 @@ function mypChkPwd(){
 		request.onreadystatechange = function(){
 			if(request.readState == 4 || request.status == 200){
 				let response = request.response;
-				console.log('resp : ' + response);
-				if(response === '인증완료'){
-					mypCPdiv.style.display = 'none';
-					mypIFdiv.style.display = 'flex';					
+				console.log(pwd.id);
+				if(pwd.id === 'mypChkPw'){
+					if(response === '인증완료'){
+						mypCPdiv.style.display = 'none';
+						mypIFdiv.style.display = 'flex';						
+					}
+					else{
+						cmf.innerText = '일치하지 않습니다.';
+						pwd.value = '';
+					}
 				}
 				else{
-					mypChkPwCmf.innerText = '일치하지 않습니다.';
+					if(response === '인증완료'){
+						mypCPdiv2.style.display = 'none';
+						mypMOdiv.style.display = 'flex';
+					}
+					else{
+						cmf.innerText = '일치하지 않습니다.';
+						pwd.value = '';
+					}
 				}
 			}
 			else{
@@ -277,7 +331,17 @@ function mypChkPwd(){
 	}
 }
 
-
+// 회원탈퇴
+function outConfirm(){
+	if(confirm('정말 탈퇴하시겠습니까?') === true){
+		outForm = document.getElementById('MOutForm');
+		console.log('확인');
+		outForm.submit();
+	}
+	else{
+		return;
+	}
+}
 
 
 

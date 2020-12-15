@@ -1,5 +1,6 @@
 package com.cws.dao;
 
+import com.cws.vo.OutReasonVO;
 import com.cws.vo.UserVO;
 
 public interface UserDAO {
@@ -17,5 +18,9 @@ public interface UserDAO {
 	int updateUser(UserVO vo);
 
 	UserVO selectUser(UserVO vo);
+
+	int insertOutReason(OutReasonVO vo);
+
+	int deleteUser(OutReasonVO vo);
 	
 }

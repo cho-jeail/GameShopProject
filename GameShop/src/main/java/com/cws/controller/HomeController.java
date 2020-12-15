@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.ConsumerCenterService;
 import com.cws.service.UserService;
+import com.cws.vo.OutReasonVO;
 import com.cws.vo.UserVO;
 
 /**
@@ -48,7 +50,6 @@ public class HomeController {
 		
 		return "home";
 	}
-	
 	
 	@RequestMapping(value = "/signin")
 	public void signInMain() {}
@@ -86,5 +87,10 @@ public class HomeController {
 	@RequestMapping(value = "/mypage/mypQna/{id}/", method = RequestMethod.GET)
 	public ModelAndView QnaBoardView(@PathVariable("id") int id) {
 		return CCS.QnaBoardView(id);
+	}
+	
+	@RequestMapping(value = "memberOut/", method = RequestMethod.POST)
+	public ModelAndView memberOut(OutReasonVO vo, HttpSession session, HttpServletRequest req, HttpServletResponse resp) {
+		return UServ.memberOut(vo, session, req, resp);
 	}
 }
