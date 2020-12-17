@@ -1,5 +1,9 @@
 package com.cws.dao;
 
+import java.util.List;
+
+import com.cws.vo.CouponBoxVO;
+import com.cws.vo.CouponVO;
 import com.cws.vo.OutReasonVO;
 import com.cws.vo.UserVO;
 
@@ -21,6 +25,14 @@ public interface UserDAO {
 
 	int insertOutReason(OutReasonVO vo);
 
-	int deleteUser(OutReasonVO vo);
+	int deleteUser(String id);
+
+	List<CouponVO> selectCoupons(String userId);
+
+	CouponBoxVO selectCouponBox(String id);
+
+	int insertCoupon(CouponVO vo);
+
+	CouponVO havingCoupon(CouponVO vo);
 	
 }
