@@ -1,0 +1,137 @@
+@charset "UTF-8";
+a {
+	text-decoration: none;
+	color: blue;
+}
+ul {
+	padding: 0px;	
+}
+ul li {
+	list-style: none;
+}
+
+.CC_SideMenu {
+	padding-top: 10px;
+	padding-left: 20px;
+	width: 200px;
+	border-right: 2px solid gray;
+}
+.CC_SideMenu li {
+	margin-bottom: 10px;
+}
+
+.CC_BoardMain {
+	width: 1078px;
+	padding-top: 20px;
+	padding-left: 40px;
+}
+.CC_BoardMain table {
+	height: 550px;
+	width: 700px;
+	border: 1px solid gray;
+	border-collapse: collapse;
+	margin-bottom: 25px;
+}
+.CC_BoardMain th, .CC_BoardMain td {
+	border: 1px solid gray;
+}
+.CC_TableNum, .CC_Date, .CC_ViewCount {
+	text-align: center;
+}
+.CC_TableNum {
+	width: 50px;		
+}
+.CC_TableTitle {
+	padding-left: 15px;
+}
+.CC_Date {
+	width: 150px;
+}
+.CC_ViewCount{
+	width: 80px;
+}
+
+.SearchDiv {
+	margin-bottom: 20px;
+}
+
+#NoticeSearchWord{
+	width: 300px;
+	height: 20px;
+}
+#NoticeSearchType {
+	height: 25px;
+}
+#NoticeSearchClick {
+	width: 50px;
+	height: 25px;
+}
+
+.PagingDiv{
+	text-align: center;
+	width: 700px;
+	margin-bottom: 35px;
+}
+.PagingDiv a {
+	border: 1px solid gray;
+	padding: 10px;
+}
+
+
+
+
+
+
+.CC_FAQSubMenu {
+	display: flex;
+	width: 550px;
+	margin-bottom: 20px;
+}
+.CC_FAQSubMenu li {
+	border: 1px solid gray;
+	height: 50px;
+	line-height: 50px;
+}
+.CC_FAQSubMenu a {
+	padding: 15px 30px;
+}
+
+.CC_FAQBoardList {
+	margin-bottom: 50px;
+}
+.CC_FAQ {
+	border: 1px solid gray;
+	width: 700px;
+	margin-bottom: 10px;
+}
+.CC_FAQTitle {
+	height: 50px;
+	line-height: 50px;
+}
+.CC_FAQTitle a {
+	padding: 15px 20px;
+}
+.CC_FAQContent {
+	display: none;
+	border-top: 1px solid gray;
+	padding: 0px 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

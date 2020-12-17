@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="header.jsp" %>
+<link rel="stylesheet" type="text/css" href="${cpath }/css/CC_Board.css">
 <script type="text/javascript">
 	prev = ${PageParam.prev };
 	next = ${PageParam.next };
@@ -25,7 +26,7 @@
 	<div class="CC_BoardMain">
 		<h3>${BoardMainName }</h3>
 
-		<table border="1">
+		<table>
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
@@ -34,10 +35,10 @@
 			</tr>
 			<c:forEach var="NBoard" items="${BoardList }">
 				<tr>
-					<td>${NBoard.id }</td>
-					<td><a href="${cpath }/CCNotice/Board/?id=${NBoard.id }">${NBoard.title }</a></td>
-					<td><fmt:formatDate value="${NBoard.writedate }" pattern="yyyy-MM-dd HH:mm"/></td>
-					<td>${NBoard.views }</td>
+					<td class="CC_TableNum">${NBoard.id }</td>
+					<td class="CC_TableTitle"><a href="${cpath }/CCNotice/Board/?id=${NBoard.id }">${NBoard.title }</a></td>
+					<td class="CC_Date"><fmt:formatDate value="${NBoard.writedate }" pattern="yyyy-MM-dd HH:mm"/></td>
+					<td class="CC_ViewCount">${NBoard.views }</td>
 				</tr>
 			</c:forEach>
 		</table>
