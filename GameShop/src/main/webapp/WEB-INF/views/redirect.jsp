@@ -44,6 +44,22 @@
 		alert("오류로 인하여 탈퇴가 실패되었습니다.");
 		location.href="${cpath}/${url}";
 	}
+	else if(msg === "쿠폰등록"){
+		alert("쿠폰이 등록되었습니다. 쿠폰내역을 클릭하여 확인해주세요.");
+		location.href="${cpath}/${url}";
+	}
+	else if(msg === "쿠폰등록실패"){
+		alert("오류로 인하여 쿠폰등록이 실패하였습니다. 잠시후 다시 시도해주세요.");
+		location.href="${cpath}/${url}";
+	}
+	else if(msg === "쿠폰없음"){
+		alert("쿠폰번호가 존재하지 않습니다.");
+		location.href="${cpath}/${url}";
+	}
+	else if(msg === "쿠폰중복"){
+		alert("이미 등록된 쿠폰입니다. 내역을 확인바랍니다.");
+		location.href="${cpath}/${url}";
+	}
 	
 	location.replace("${cpath}/${url}");
 </script>

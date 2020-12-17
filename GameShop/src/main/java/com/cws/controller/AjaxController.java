@@ -1,6 +1,7 @@
 package com.cws.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cws.service.UserService;
+import com.cws.vo.CouponVO;
 import com.cws.vo.UserVO;
 
 @RestController
@@ -34,4 +36,5 @@ public class AjaxController {
 		System.out.println("param : " + param.toString());
 		return us.checkPwd(param);
 	}
+	
 }

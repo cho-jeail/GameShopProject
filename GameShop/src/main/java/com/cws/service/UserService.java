@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -13,10 +14,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.dao.UserDAO;
 import com.cws.mail.MailUtil;
+import com.cws.vo.CouponBoxVO;
+import com.cws.vo.CouponVO;
 import com.cws.vo.OutReasonVO;
 import com.cws.vo.UserVO;
 
@@ -189,6 +193,7 @@ public class UserService {
 		return mav;
 	}
 
+	//비밀번호 확인
 	public String checkPwd(HashMap<String, String> param) {
 		UserVO vo = new UserVO();
 		vo.setId(param.get("id"));
@@ -214,6 +219,7 @@ public class UserService {
 		return null;
 	}
 
+	// 회원 탈퇴
 	public ModelAndView memberOut(OutReasonVO vo, HttpSession session, HttpServletRequest req, HttpServletResponse resp) {
 		ModelAndView mav = new ModelAndView("redirect");
 		Cookie[] cookies = req.getCookies();
@@ -223,14 +229,19 @@ public class UserService {
 				cookieflag = true;
 			}
 		}
+		System.out.println("삭제 서비스부분 실행");
 		if(!(vo.getOutreason().equals(""))) {
 			int reg = udao.insertOutReason(vo);
 			if(reg != 0) {
 				System.out.println("사유 등록 완료");
 			}
 		}
+		System.out.println("사유 확인");
+		System.out.println("id확인 : " + vo.getId());
 		
-		int result = udao.deleteUser(vo);
+		int result = udao.deleteUser(vo.getId());
+		System.out.println("삭제 결과를 가져옴");
+		
 		if(result != 0) {
 			System.out.println("유저 삭제 완료");
 			if(cookieflag) {
@@ -246,7 +257,69 @@ public class UserService {
 			System.out.println("삭제 실패");
 			mav.addObject("msg", "탈퇴실패");
 			mav.addObject("url", "mypage");
-		}	
+		}
+		System.out.println("끝남");
 		return mav;
 	}
+
+	// 사용자 쿠폰들
+	public ModelAndView selectCoupons(String userId) {
+		ModelAndView mav = new ModelAndView("mypageCoupon");
+		List<CouponVO> cList = udao.selectCoupons(userId);
+		
+		for(CouponVO c : cList) {
+			System.out.println(c.getValidity());
+		}
+		
+		mav.addObject("userCoupons", cList);
+		return mav;
+	}
+
+	// 쿠폰등록
+	@Transactional(timeout = 5)
+	public ModelAndView insertCoupon(CouponVO vo) {
+		ModelAndView mav = new ModelAndView("redirect");
+		CouponBoxVO cBox = udao.selectCouponBox(vo.getId());
+		System.out.println("cBox:" + cBox);
+		CouponVO uvo = udao.havingCoupon(vo);
+		System.out.println("uvo:" + uvo);
+		if(cBox == null) {	// 쿠폰박스에 쿠폰이 있는가?
+			System.out.println("쿠폰없음");
+			mav.addObject("msg", "쿠폰없음");
+			mav.addObject("url", "mypage/mypageCoupon/");	
+		}
+		else if(uvo != null) {	// 사용자에게 쿠폰이 등록되어 있는가?
+			System.out.println("쿠폰중복");
+			mav.addObject("msg", "쿠폰중복");
+			mav.addObject("url", "mypage/mypageCoupon/");	
+		}
+		else {
+			vo.setName(cBox.getName());
+			vo.setSalePrice(cBox.getSalePrice());
+			vo.setValidity(cBox.getValidity());
+			vo.setFileUrl(cBox.getFileUrl());
+			System.out.println("입력 완료");
+			int result = udao.insertCoupon(vo);
+			System.out.println("등록 완료");
+			if(result != 0) {
+				mav.addObject("msg", "쿠폰등록");
+				mav.addObject("url", "mypage/mypageCoupon/");
+			}
+			else {
+				mav.addObject("msg", "쿠폰등록실패");
+				mav.addObject("url", "mypage/mypageCoupon/");
+			}
+		}
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

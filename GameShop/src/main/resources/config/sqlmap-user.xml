@@ -4,42 +4,70 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.cws.dao.UserDAO">
-
+	<!-- 닉네임 중복확인 -->
 	<select id="checkNickname" parameterType="String" resultType="com.cws.vo.UserVO">
 		select * from userlogin where nickname='${value}'
 	</select>
 	
+	<!-- 이메일 중복확인 -->
 	<select id="checkEmail" parameterType="String" resultType="com.cws.vo.UserVO">
 		select * from userlogin where email='${value}'
 	</select>
 	
+	<!-- 비밀번호 확인 -->
 	<select id="checkPw" parameterType="String" resultType="com.cws.vo.UserVO">
 		select * from userlogin where password='${value}'
 	</select>
 	
+	<!-- 회원가입 -->
 	<insert id="joinUser" parameterType="UserVO">
 		insert into userlogin (id, name, nickname, email, password, address)
 			values (#{id}, #{name}, #{nickname}, #{email}, #{password}, #{address})
 	</insert>
 	
+	<!-- 임시비밀번호 설정 -->
 	<update id="updatePw" parameterType="UserVO">
 		update userlogin set password=#{password} where email=#{email}
 	</update>
 
+	<!-- 회원정보 수정 -->
 	<update id="updateUser" parameterType="UserVO">
 		update userlogin set nickname=#{nickname}, email=#{email}, password=#{password}, address=#{address} where id=#{id} 
 	</update>
 	
+	<!-- 사용자확인 -->
 	<select id="selectUser" parameterType="UserVO" resultType="UserVO">
 		select * from userlogin where id=#{id}
 	</select>
 	
+	<!-- 탈퇴사유 등록-->
 	<insert id="insertOutReason" parameterType="com.cws.vo.OutReasonVO">
 		insert into outreason values (#{outreason})
 	</insert>
 	
-	<delete id="deleteUser" parameterType="com.cws.vo.OutReasonVO">
-		delete from userlogin where id=#{id}
+	<!-- 회원탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+		delete from userlogin where id='${value}'
 	</delete>
+	
+	<!-- 사용자 쿠폰 불러오기 -->
+	<select id="selectCoupons" parameterType="String" resultType="com.cws.vo.CouponVO">
+		select * from coupon where userid='${value}'
+	</select>
+	
+	<!-- 쿠폰함에서 쿠폰 유무 확인용 -->
+	<select id="selectCouponBox" parameterType="String" resultType="com.cws.vo.CouponBoxVO">
+		select * from couponbox where id='${value}'
+	</select>
+	
+	<select id="havingCoupon" parameterType="com.cws.vo.CouponVO" resultType="com.cws.vo.CouponVO">
+		select * from coupon where userid=#{userId} and id=#{id}
+	</select>
+	
+	<!-- 쿠폰 등록하기 -->
+	<insert id="insertCoupon" parameterType="com.cws.vo.CouponVO">
+		insert into coupon (userid, id, saleprice, validity, name, fileurl)
+			values (#{userId}, #{id}, #{salePrice}, #{validity}, #{name}, #{fileUrl})
+	</insert>
 	
 </mapper>

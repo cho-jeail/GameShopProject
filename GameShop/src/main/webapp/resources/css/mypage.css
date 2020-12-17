@@ -42,7 +42,7 @@
 	background-color: white;
 }
 
-.mypInfo, .mypPurchaseList, .mypWishList, .mypQnAList, .mypCoupon, .mypMemberOut, .MemberOut {
+.mypDiv1{
 	display: none;
 	width: 100%;
 	height: 100%;
@@ -81,8 +81,13 @@
 	resize: none;
 }
 
+#searchCoup:hover {
+	cursor: pointer;
+}
 
-
+#couponList{
+/* 	display: none; */
+}
 
 
 

@@ -5,6 +5,7 @@
 <script type="text/javascript" src="${cpath }/js/jusopop.js"></script>
 <c:set var="signInfo" value="${signin }" />
 <script type="text/javascript">
+	signin = "${signInfo}";
 	seId = "${signInfo.id}";
 	seNick = "${signInfo.nickname}";
 	seEmail = "${signInfo.email}";
@@ -16,12 +17,12 @@
 	<div class="mypContainer">
 		<div class="mypMenu"> 
 			<ul class="mypUl">
-				<li id="info">회원정보</li>
+				<li><a href="${cpath }/mypage">회원정보</a></li>
 				<li>구매내역</li>
 				<li>위시리스트</li>
-				<li>COUPON</li>
+				<li><a href="${cpath }/mypage/mypageCoupon/">COUPON</a></li>
 				<li><a href="${cpath }/mypage/mypQna/">문의내역</a></li>
-				<li id="mbOut">회원탈퇴</li>
+				<li><a href="${cpath }/mypage/mypageMemberOut/">회원탈퇴</a></li>
 			</ul>
 		</div>
 		<div class="mypContents">
@@ -36,7 +37,7 @@
 						<button type="button" id="mypChkPwBtn">확인</button>
 					</form>
 				</div>
-				<div class="mypInfo" id="mypInfo">
+				<div class="mypDiv1" id="mypDiv1">
 					<form name="mypForm" class="mypForm" id="mypForm" method="post" action="${cpath }/updateInfo/" onsubmit="return false">
 						<div>
 							<span>이름</span>
@@ -75,49 +76,12 @@
 					<button type="button" class="sBtn" id="sBtn">저장</button>
 				</div>
 			</div>
-			
-			<div class="mypPurchaseList">
-				
-			</div>
-			
-			<div class="mypWishList">
-				
-			</div>
-			
-			<div class="mypCoupon">
-				
-			</div>
-			
-			<div class="mypQnAList">
-				
-			</div>
-			
-			<div class="mypMemberOut" id="mypMemberOut">
-				<div class="mypCheckPwd" id="mypCheckPwd2">
-					<h2>탈퇴</h2>					 
-					<form class="mypChkPwForm" id="mypChkPwForm2" onSubmit="return false">
-						<span>확인을 위해 비밀번호를 입력하여주세요</span>
-						<input type="password" class="mypChkPw" id="mypChkPw2" name="password" onkeyup="enterkey()">
-						<div class="mypChkPwCmf" id="mypChkPwCmf2"></div>
-						<input type="hidden" name="id" value="${signin.id }">
-						<button type="button" id="mypChkPwBtn2">확인</button>
-					</form>
-				</div>
-				<div class="MemberOut" id="MemberOut">
-					<h2>탈퇴</h2>
-					<p>정말로 탈퇴하시겠습니까? 탈퇴하시고 다시 가입하셔도 이전 쿠폰들을 이용할 수 없습니다.</p>
-					<p>탈퇴 사유를 자유롭게 작성하여 주세요(필수 아님)</p>
-					<form class="MOutForm" id="MOutForm" method="post" action="${cpath }/memberOut/" onsubmit="return false" >
-						<textarea rows="5" cols="40" name="outreason" id="outReason" class="outReason" maxlength="300"></textarea>
-						<input type="hidden" name="id" value="${signin.id }">
-						<button type="button" id="MOBtn">회원탈퇴</button>
-					</form>
-				</div>
-			</div>
+	
 			
 		</div>
 	</div>
 </section>
 
 <script type="text/javascript" src="${cpath }/js/mypage.js"></script>
+<script type="text/javascript" src="${cpath }/js/mypCheckPwd.js"></script>
 <%@ include file="footer.jsp" %>

@@ -1,11 +1,3 @@
-let mypCPdiv = document.getElementById('mypCheckPwd');
-let mypIFdiv = document.getElementById('mypInfo');
-let mypCPdiv2 = document.getElementById('mypCheckPwd2');
-let mypMOdiv = document.getElementById('MemberOut');
-
-let mypIFC = document.getElementById('mypInfoContent');
-let mypMO = document.getElementById('mypMemberOut');
-
 let mypName = document.getElementById('mypName');
 let mypNick = document.getElementById('mypNick');
 let mypEmail = document.getElementById('mypEmail');
@@ -18,14 +10,10 @@ let mypNickCmf = document.getElementById('mypNickCmf');
 let mypEmailCmf = document.getElementById('mypEmailCmf');
 let mypPwdCmf = document.getElementById('mypPwdCmf');
 let mypChkPwCmf = document.getElementById('mypChkPwCmf');
-let mypChkPwCmf2 = document.getElementById('mypChkPwCmf2');
 
 let updBtn = document.getElementById('updBtn');
 let cxBtn = document.getElementById('cxBtn');
 let sBtn = document.getElementById('sBtn');
-
-let mypCPBtn = document.getElementById('mypChkPwBtn');
-let mypCPBtn2 = document.getElementById('mypChkPwBtn2');
 
 let infoList = [mypNick, mypEmail, mypPwd];
 let flag = false;
@@ -39,15 +27,10 @@ mypPwd2.addEventListener('blur', pwComfirm);
 updBtn.addEventListener('click', updBtnClk);
 cxBtn.addEventListener('click', cxBtnClk);
 sBtn.addEventListener('click', submit);
-mypCPBtn.addEventListener('click', mypChkPwd);
-mypCPBtn2.addEventListener('click', mypChkPwd);
 
-document.getElementById('info').addEventListener('click', checkingPwd);
-document.getElementById('mbOut').addEventListener('click', checkingPwd2);
-document.getElementById('MOBtn').addEventListener('click', outConfirm);
-
-function enterkey() {
-	 if (window.event.keyCode == 13) { mypChkPwd(event); } 
+if(signin === ''){
+	alert('로그인 후 이용바랍니다.');
+	window.location.href = cpath + '/signin/';
 }
 
 function updBtnClk(){
@@ -68,6 +51,7 @@ function cxBtnClk(){
 	sBtn.style.display = 'none';
 }
 
+// 닉네임 중복확인
 function nickChecked(){
 	const request = new XMLHttpRequest();
     request.open("GET", cpath + '/checkNickname/' + mypNick.value + '/', true); // false 사용 안됨
@@ -103,6 +87,7 @@ function nickChecked(){
 	request.send();   // GET
 }
 
+// 이메일 중복확인
 function emailChecked(){
 	const request = new XMLHttpRequest();
     request.open("GET", cpath + '/checkEmail/' + mypEmail.value + '/', true); // false 사용 안됨
@@ -219,6 +204,7 @@ function pwComfirm(){
 	}
 }
 
+// 회원정보수정
 function submit(event){
 	event.preventDefault(); // 창 이동을 막음
 	let mypAddr = document.getElementById('roadFullAddr');
@@ -238,6 +224,7 @@ function submit(event){
 	}
 }
 
+// 쿠키변경
 function setCookie(name, value, cday){
 	let expire = new Date();
 	expire.setDate(expire.getDate() + cday);
@@ -247,101 +234,9 @@ function setCookie(name, value, cday){
 
 }
 
-function checkingPwd(){
-	mypIFC.style.display = 'flex';
-	mypMO.style.display = 'none';
-	mypChkPw.value = '';
-	mypChkPwCmf.innerText = '';
-}
 
-function checkingPwd2(){
-	mypIFC.style.display = 'none';
-	mypMO.style.display = 'flex';
-	mypChkPw2.value = '';
-	mypChkPwCmf2.innerText = '';
-}
 
-function mypChkPwd(event){
-	event.preventDefault();
-	let cmf = document.querySelectorAll('.mypChkPwCmf');
-	let pwd = document.querySelectorAll('.mypChkPw');
-	let form = document.querySelectorAll('.mypChkPwForm'); // form = document.forms[0]; <- 같은거
 
-	if(mypIFC.style.display === 'none'){
-		pwd = pwd[1];
-		form = form[1];
-		cmf = cmf[1];
-	}
-	else{
-		pwd = pwd[0];
-		form = form[0];
-		cmf = cmf[0];
-	}
-	
-	if(pwd.value === ''){
-		cmf.innerText = '입력바랍니다.'
-		return false;
-	}
-	else{
-		formData = new FormData(form);
-		ent = formData.entries();		// done(완료 여부), value ([0], [1])
-		ob = {};
-		while(true){
-			next = ent.next();	
-//			console.log(next);
-			if(next.done == true)	break;
-			ob[next.value[0]] = next.value[1];
-		}
-		
-		jsonData = JSON.stringify(ob);	//	json형태로 만든다
-		
-		const request = new XMLHttpRequest();
-		request.open("POST", cpath + '/chkPwd/', true);
-		request.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-		request.onreadystatechange = function(){
-			if(request.readState == 4 || request.status == 200){
-				let response = request.response;
-				console.log(pwd.id);
-				if(pwd.id === 'mypChkPw'){
-					if(response === '인증완료'){
-						mypCPdiv.style.display = 'none';
-						mypIFdiv.style.display = 'flex';						
-					}
-					else{
-						cmf.innerText = '일치하지 않습니다.';
-						pwd.value = '';
-					}
-				}
-				else{
-					if(response === '인증완료'){
-						mypCPdiv2.style.display = 'none';
-						mypMOdiv.style.display = 'flex';
-					}
-					else{
-						cmf.innerText = '일치하지 않습니다.';
-						pwd.value = '';
-					}
-				}
-			}
-			else{
-				alert('통신 실패!');
-			}
-		}
-		request.send(jsonData);
-	}
-}
-
-// 회원탈퇴
-function outConfirm(){
-	if(confirm('정말 탈퇴하시겠습니까?') === true){
-		outForm = document.getElementById('MOutForm');
-		console.log('확인');
-		outForm.submit();
-	}
-	else{
-		return;
-	}
-}
 
 
 
