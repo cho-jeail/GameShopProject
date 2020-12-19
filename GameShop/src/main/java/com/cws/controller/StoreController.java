@@ -2,20 +2,22 @@ package com.cws.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.StoreService;
 import com.cws.vo.CompareProductVO;
 import com.cws.vo.ProductVO;
 import com.cws.vo.UserVO;
+import com.cws.vo.WishVO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class StoreController {
@@ -32,7 +34,7 @@ public class StoreController {
 
 	}
 
-	// 게임 소개하고 구매하는 페이지
+	// 게임 소개 페이지
 	@RequestMapping(value = "/gameStore/gameIntro/{product}/", method = RequestMethod.GET)
 	public ModelAndView introImage(@PathVariable("product") String prod) {
 		System.out.println("product : " + prod);
@@ -41,34 +43,71 @@ public class StoreController {
 		mav.addObject("product", ss.select(prod));
 		return mav;
 	}
-	
+
 	// 게임구매 팝업창
 	@RequestMapping(value = "/purchasePopup/", method=RequestMethod.GET)
 	public void popup() {}
 
 	// 게임 구매"완료" 결제창
-	@RequestMapping(value = "/gameStore/gameIntro/paymentFinish/", method = RequestMethod.POST)
-	public String paymentFinish(String game, String userID, Model model, HttpSession session) {
-//		System.out.println("결제창 들어옴 : " + game);
-//		System.out.println("결제창 들어옴 : " + userID);
-		
-		UserVO user = new UserVO();
-		user = ss.selectGetUser(userID);
+	@RequestMapping(value = "/gameStore/gameIntro/{game}/", method = RequestMethod.POST)
+	public String paymentFinish(@PathVariable("game")String game, 
+			@RequestParam("name")String name,
+			@RequestParam("userID")String userID, 
+			Model model) throws NullPointerException {
+		System.out.println("결제창 들어옴!!! : " + game);
+		System.out.println("결제창 들어옴 : " + name);
+//		ProductVO pvo = ss.selectName(name);	// 게임 이름
+		ProductVO pvo = ss.selectInfo(name);	// 게임 정보
+//		System.out.println("pvo : " + name.equals(pvo.getName()));
+//		System.out.println("list" + list.size());
+		UserVO user = ss.selectGetUser(userID);
 //		System.out.println("userid : " + user.getId());
-		int cnt = ss.count(userID);		// 보유중인 게임 개수
+
 //		System.out.println("cnt : " + cnt);
-		
-		List<CompareProductVO> compareList = ss.update(game, user, cnt);
-		
-		model.addAttribute("compareList", compareList);
-		
-		return "paymentFinish";
+//		System.out.println(pvo2.getName());
+		if(name.equals(game)) {		// 구매하기
+//			System.out.println("구매하기" + pvo.getName());
+			int cnt = 0;		// 보유중인 게임 개수
+			cnt = ss.count(userID);
+			List<CompareProductVO> compareList = ss.update(name, user, cnt);
+			model.addAttribute("compareList", compareList);
+			return "redirect:/";
+		}
+		else if(name.equals(pvo.getId())) {	// 위시리스트
+//			System.out.println("위시리스트" + pvo.get(i).getInfo());
+			System.out.println("위시리스트 들어옴");
+			System.out.println("game : " + game);
+			int cnt = 0;		// 보유중인 게임 개수
+			cnt = ss.wishCount(userID);
+			List<WishVO> wishList = ss.addWish(game, user, cnt);
+			model.addAttribute("wishList", wishList);
+
+			return "redirect:/";
+		}
+		else return "exhaust";
 	}
 
-	// 게임 구매 장바구니
+	// 위시리스트
 	@RequestMapping(value = "/basket/", method = RequestMethod.GET)
-	public String basket() {
-
+	public String basket(Model model) {
+		List<WishVO> wishList = ss.wishList();
+		model.addAttribute("wishList", wishList);
 		return "basket";
+	}
+
+	// 위시리스트 항목 삭제
+	@RequestMapping(value = "/gameStore/gameIntro/wishList/", 
+			produces="application/text;charset=utf8")
+	public String delProduct(@PathVariable("product")String product) {
+		System.out.println("삭제product : " + product);
+		String jsonString = null;
+		ObjectMapper jsonMapper = new ObjectMapper();
+		try {
+			jsonString = jsonMapper.writeValueAsString(ss.delProduct(product));
+			System.out.println("요것은" + jsonString);
+		} catch (JsonProcessingException e) {
+			System.out.println("JSON 파싱 에러 !!");
+		}
+		return jsonString;
 	}
 }
