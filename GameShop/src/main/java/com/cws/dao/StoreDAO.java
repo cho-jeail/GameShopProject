@@ -5,6 +5,7 @@ import java.util.List;
 import com.cws.vo.CompareProductVO;
 import com.cws.vo.ProductVO;
 import com.cws.vo.UserVO;
+import com.cws.vo.WishVO;
 
 public interface StoreDAO {
 
@@ -18,9 +19,24 @@ public interface StoreDAO {
 
 	List<CompareProductVO> compareSelect(String userid);
 
-	ProductVO productSelect(String game);
+	ProductVO productSelect(String name);
 
 	int count(String userID);
 
+	List<WishVO> wishSelect(String userid);
+
+	void wishInsert(WishVO wv);
+
+	List<WishVO> wishSelectAll(String product);
+
+	void delProduct(String product);
+
+	ProductVO selectName(String game);
+
+	ProductVO selectInfo(String name);
+
+	int wishCount(String userID);
+
+	List<WishVO> wishList();
 	
 }

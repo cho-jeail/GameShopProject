@@ -99,7 +99,6 @@
 							${list.price }
 						</span>
 					</span>
-					<span><a href="#">위시리스트 추가</a></span>
 				</div>
 				</c:forEach>
 			</div>

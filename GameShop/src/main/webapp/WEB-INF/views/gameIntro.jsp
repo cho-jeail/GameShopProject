@@ -28,7 +28,7 @@
 		<button onclick="javascript:openModal()">
 			구매하기
 		</button>
-		<button onclick="">위시리스트 추가</button>
+		<button onclick="javascript:wish()">위시리스트 추가</button>
 	</div>
 
 	<!-- Modal창 -->
@@ -37,6 +37,7 @@
 			<c:forEach var="game" items="${product }">
 				<div class="page-header">
 					<h1 id="name">${game.name }</h1>
+					<h1 id="info" style="display: none;">${game.id }</h1>
 				</div>
 			</c:forEach>
 
@@ -85,7 +86,7 @@
 		$('.searchModal').hide();
 	}
 
-	function purchaseConfirm() { // 구매 확인 페이지
+	function purchaseConfirm() { // 구매 확인 함수
 		var pk = document.getElementById('pk');
 		console.log("나타남 : " + pk);
 
@@ -95,11 +96,11 @@
 
 		else if (pk.checked === true) {
 			var conPk = confirm("정말로 구매 하시겠습니까?");
-			var game = $("#name");
+			var name = $("#name");
 			var userID = "${sessionScope.signin.id}";
 
 			if (conPk === true) {
-				console.log("게임이름 : " + game);
+				console.log("게임이름 : " + name);
 				console.log("유저이름 : " + userID);
 				
 				var form = document.createElement("form");
@@ -108,11 +109,11 @@
 				
 
 				form.setAttribute("method", "post");
-				form.setAttribute("action",
-						"${cpath}/gameStore/gameIntro/paymentFinish/");
+// 				form.setAttribute("action",
+// 						"${cpath}/gameStore/gameIntro/paymentFinish/");
 				input_pd.setAttribute("type", "hidden");
-				input_pd.setAttribute("name", "game");
-				input_pd.setAttribute("value", game.text());
+				input_pd.setAttribute("name", "name");
+				input_pd.setAttribute("value", name.text());
 				input_user.setAttribute("type", "hidden");
 				input_user.setAttribute("name", "userID");
 				input_user.setAttribute("value", userID);
@@ -124,11 +125,51 @@
 				form.submit();
 			}
 		}
+		alert("구매가 완료됬습니다");
 	}
 
 	function purchasePopup() {
 		window.open("/gameshop/purchasePopup/", "_blank",
 				"width=600, height=450, left=70, top=60, scrollbars=yes");
+	}
+	
+	function wish() {
+		var wishPK = confirm("위시리스트에 추가 하시겠습니까?");
+		var game = $("#info");
+		var userID = "${sessionScope.signin.id}";
+		
+		if(userID === '') {
+			alert('로그인을 한 후 이용해 주세요');
+			location.href = '${cpath}/signin/';
+		}
+		else if(wishPK === true) {
+			var form = document.createElement("form");
+			var input_pd = document.createElement("input");
+			var input_user = document.createElement("input");
+			
+			form.setAttribute("method", "post");
+// 			form.setAttribute("action",
+// 					"${cpath}/gameStore/gameIntro/");
+			input_pd.setAttribute("type", "hidden");
+			input_pd.setAttribute("name", "name");
+			input_pd.setAttribute("value", game.text());
+			input_user.setAttribute("type", "hidden");
+			input_user.setAttribute("name", "userID");
+			input_user.setAttribute("value", userID);
+			document.body.appendChild(form);
+			console.log("userID : " + userID);
+			form.appendChild(input_pd);
+			form.appendChild(input_user);
+			
+			form.submit();
+		}
+		alert("장바구니에 추가되었습니다.");
+		
+// 		var wishlist = confirm("장바구니 목록으로 이동 하시겠습니까?");
+		
+// 		if(wishlist === true) {
+// 			location.href = '${cpath}/basket/';
+// 		}
 	}
 </script>
 

@@ -30,11 +30,43 @@
 	</select>
 	
 	<select id="productSelect" parameterType="String" resultType="ProductVO">
-		select * from product where name=#{game}
+		select * from product where name=#{name}
 	</select>
 	
 	<select id="count" parameterType="String" resultType="Integer">
 		select count(#{userID}) from comparedproduct
+	</select>
+	
+	<select id="wishCount" parameterType="String" resultType="Integer">
+		select count(#{userID}) from wish
+	</select>
+	
+	<select id="wishSelect" parameterType="String" resultType="com.cws.vo.WishVO">
+		select * from wish where userid=#{userid}
+	</select>
+	
+	<insert id="wishInsert" parameterType="com.cws.vo.WishVO">
+		insert into wish (userid, id, name, price, info, developer, 
+				publisher, tags, platform, controller, rating, languages, kind)
+			values(#{userid}, #{id}, #{name}, #{price}, 
+			#{info}, #{developer}, #{publisher}, #{tags}, 
+			#{platform}, #{controller}, #{rating}, #{languages}, #{kind})
+	</insert>
+	
+	<select id="wishSelectAll" parameterType="String" resultType="com.cws.vo.WishVO">
+		select * from wish where name=#{product}
+	</select>
+	
+	<select id="selectName" parameterType="String" resultType="ProductVO">
+		select * from product where name=#{game}
+	</select>
+	
+	<select id="selectInfo" parameterType="String" resultType="ProductVO">
+		select * from product where id=#{name}
+	</select>
+	
+	<select id="wishList" resultType="com.cws.vo.WishVO">
+		select * from wish
 	</select>
 	
 </mapper>
