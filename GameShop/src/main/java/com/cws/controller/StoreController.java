@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.StoreService;
@@ -88,16 +89,17 @@ public class StoreController {
 	}
 
 	// 위시리스트
-	@RequestMapping(value = "/basket/", method = RequestMethod.GET)
-	public String basket(Model model) {
-		List<WishVO> wishList = ss.wishList();
-		model.addAttribute("wishList", wishList);
-		return "basket";
-	}
+//	@RequestMapping(value = "/basket/", method = RequestMethod.GET)
+//	public String basket(Model model) {
+//		List<WishVO> wishList = ss.wishList();
+//		model.addAttribute("wishList", wishList);
+//		return "basket";
+//	}
 
 	// 위시리스트 항목 삭제
-	@RequestMapping(value = "/gameStore/gameIntro/wishList/", 
+	@RequestMapping(value = "/mypage/basket/{product}", 
 			produces="application/text;charset=utf8")
+	@ResponseBody
 	public String delProduct(@PathVariable("product")String product) {
 		System.out.println("삭제product : " + product);
 		String jsonString = null;

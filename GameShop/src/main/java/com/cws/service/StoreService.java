@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.dao.StoreDAO;
 import com.cws.vo.CompareProductVO;
@@ -147,8 +148,18 @@ public class StoreService {
 	}
 
 	// 전체 위시리스트 항목
-	public List<WishVO> wishList() {
-		return sd.wishList();
+	public ModelAndView wishList(String name) {
+		System.out.println("위시리스트mpg - service");
+		ModelAndView mav = new ModelAndView("basket");
+		List<WishVO> wishList = sd.wishList(name);
+		mav.addObject("wishList", wishList);
+		return mav;
+	}
+
+	public ModelAndView compareSelectAll(String name) {
+		ModelAndView mav = new ModelAndView("paymentFinish");
+		mav.addObject("compareList", sd.compareSelect(name));
+		return mav;
 	}
 	
 }

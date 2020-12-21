@@ -34,17 +34,18 @@
 	function delProduct() {
 		console.log("삭제 넘어옴");
 		
-		var product = $("#product");
+		var product = $("#product").text();
 		console.log("삭제 product" + product);
 		
 		$.ajax({
-			url : "${cpath}/gameStore/gameIntro/wishList/" + product + "/",
+			url : "${cpath}/mypage/basket/" + product + "/",
 			method : "post",
 			dataType : "text",
 			data : {product:product},
 			success : function(data) {
 				console.log("성공");
 				alert('삭제완료하였습니다.');
+				location.href = "${cpath}/mypage/basket/";
 			},
 			error : function(data) {
 				console.log("실패");

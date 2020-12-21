@@ -37,6 +37,6 @@ public interface StoreDAO {
 
 	int wishCount(String userID);
 
-	List<WishVO> wishList();
+	List<WishVO> wishList(String name);
 	
 }
