@@ -25,6 +25,10 @@
 			#{platform}, #{controller}, #{rating}, #{languages}, #{kind})
 	</insert>
 	
+	<delete id="delProduct" parameterType="String">
+		delete from wish where name=#{product}
+	</delete>
+	
 	<select id="compareSelect" parameterType="String" resultType="CompareProductVO">
 		select * from comparedproduct where userid=#{userid}
 	</select>
@@ -65,8 +69,8 @@
 		select * from product where id=#{name}
 	</select>
 	
-	<select id="wishList" resultType="com.cws.vo.WishVO">
-		select * from wish
+	<select id="wishList" parameterType="String" resultType="com.cws.vo.WishVO">
+		select * from wish where userid=#{name}
 	</select>
 	
 </mapper>

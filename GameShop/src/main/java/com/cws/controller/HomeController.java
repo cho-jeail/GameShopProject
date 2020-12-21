@@ -2,6 +2,7 @@ package com.cws.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.ConsumerCenterService;
+import com.cws.service.StoreService;
 import com.cws.service.UserService;
+import com.cws.vo.CompareProductVO;
 import com.cws.vo.CouponVO;
 import com.cws.vo.OutReasonVO;
 import com.cws.vo.UserVO;
@@ -34,6 +37,7 @@ public class HomeController {
 	
 	@Autowired private UserService UServ;
 	@Autowired private ConsumerCenterService CCS;
+	@Autowired private StoreService ss;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -112,5 +116,20 @@ public class HomeController {
 	public ModelAndView insertCoupon(CouponVO vo) {
 		System.out.println("id확인 : " + vo.getUserId());
 		return UServ.insertCoupon(vo);
+	}
+	
+	@RequestMapping(value = "/mypage/compareProduct/", method = RequestMethod.GET)
+	public ModelAndView compareProduct (HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String name = ((UserVO)session.getAttribute("signin")).getId();
+		return ss.compareSelectAll(name);
+	}
+	
+	@RequestMapping(value = "/mypage/basket/", method = RequestMethod.GET)
+	public ModelAndView basket (HttpServletRequest request) {
+		System.out.println("위시리스트mpg");
+		HttpSession session = request.getSession();
+		String name = ((UserVO)session.getAttribute("signin")).getId();
+		return ss.wishList(name);
 	}
 }
