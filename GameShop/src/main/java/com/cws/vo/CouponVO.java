@@ -9,7 +9,14 @@ public class CouponVO {
 	private Date validity;
 	private String name;
 	private String fileUrl;
+	private String strDate;
 	
+	public String getStrDate() {
+		return strDate;
+	}
+	public void setStrDate(String strDate) {
+		this.strDate = strDate;
+	}
 	public String getUserId() {
 		return userId;
 	}

@@ -3,6 +3,7 @@ package com.cws.service;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -268,7 +269,7 @@ public class UserService {
 		List<CouponVO> cList = udao.selectCoupons(userId);
 		
 		for(CouponVO c : cList) {
-			System.out.println(c.getValidity());
+			c.setStrDate(new SimpleDateFormat("yyyy년 MM월 dd일").format(c.getValidity()));
 		}
 		
 		mav.addObject("userCoupons", cList);

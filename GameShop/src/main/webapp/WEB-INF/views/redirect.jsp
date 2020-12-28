@@ -60,6 +60,10 @@
 		alert("이미 등록된 쿠폰입니다. 내역을 확인바랍니다.");
 		location.href="${cpath}/${url}";
 	}
+	else if(msg === "로그인필요"){
+		alert("로그인이 필요합니다.");
+		location.href="${cpath}/${url}";
+	}
 	
 	location.replace("${cpath}/${url}");
 </script>

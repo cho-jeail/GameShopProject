@@ -1,11 +1,6 @@
 document.getElementById('searchCoup').addEventListener('click', selectCoup);
 document.getElementById('regBtn').addEventListener('click', insertCoup);
 
-if(signin === ''){
-	alert('로그인 후 이용바랍니다.');
-	window.location.href = cpath + '/signin/';
-}
-
 function enterkey() {
 	 if (window.event.keyCode == 13) { insertCoup(); } 
 }

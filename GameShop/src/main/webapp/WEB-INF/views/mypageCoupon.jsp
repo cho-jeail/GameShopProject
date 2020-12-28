@@ -39,7 +39,7 @@
 									<p>이름:${vo.name}</p>
 									<p>번호:${vo.id }</p>
 									<p>가격:${vo.salePrice }</p>
-									<p>날짜:${vo.validity }</p>
+									<p>날짜:${vo.strDate }</p>
 									<p>약관:${vo.fileUrl }</p>
 								</c:forEach>
 							</c:when>

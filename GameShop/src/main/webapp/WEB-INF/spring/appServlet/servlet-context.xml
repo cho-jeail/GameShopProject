@@ -27,4 +27,16 @@
 	
 	<context:component-scan base-package="com.cws.controller" />
 	
+	<!-- 인터셉터 -->
+	<interceptors>
+		<interceptor>
+			<!-- 최상위 -->
+<!-- 		<mapping path="/**/"/> -->
+			<mapping path="/mypage/**"/>
+			<!-- 제외 항목 -->	
+			<exclude-mapping path="/"/>	
+			<beans:bean id="LoginInterceptor" class="com.cws.interceptor.LoginInterceptor" />
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
