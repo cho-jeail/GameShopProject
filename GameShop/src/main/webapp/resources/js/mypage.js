@@ -28,11 +28,6 @@ updBtn.addEventListener('click', updBtnClk);
 cxBtn.addEventListener('click', cxBtnClk);
 sBtn.addEventListener('click', submit);
 
-if(signin === ''){
-	alert('로그인 후 이용바랍니다.');
-	window.location.href = cpath + '/signin/';
-}
-
 function updBtnClk(){
 	for(i = 0; i < infoList.length; i++){
 		infoList[i].readOnly = '';

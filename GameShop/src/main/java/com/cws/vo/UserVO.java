@@ -53,5 +53,4 @@ public class UserVO {
 	public void setRegistDate(Date registDate) {
 		this.registDate = registDate;
 	}
-	
 }
