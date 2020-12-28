@@ -46,16 +46,7 @@ public class ConsumerCenterController {
 	
 	@RequestMapping(value = "/CCQnA/", method = RequestMethod.GET)
 	public ModelAndView QnABoard(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		UserVO login = (UserVO)session.getAttribute("signin");
-		if(login != null) {
-//			System.out.println("email : " + login.getEmail());
-			return ccs.CCQnA();
-		}
-		else {
-//			System.out.println("login 비어있음.");
-			return ccs.DonLoginReturn();
-		}
+		return ccs.CCQnA();
 	}
 	
 	@RequestMapping(value = "/CCQnA/", method = RequestMethod.POST)

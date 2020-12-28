@@ -33,6 +33,7 @@
 			<!-- 최상위 -->
 <!-- 		<mapping path="/**/"/> -->
 			<mapping path="/mypage/**"/>
+			<mapping path="/CCQnA/**"/>
 			<!-- 제외 항목 -->	
 			<exclude-mapping path="/"/>	
 			<beans:bean id="LoginInterceptor" class="com.cws.interceptor.LoginInterceptor" />

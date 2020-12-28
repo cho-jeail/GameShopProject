@@ -74,14 +74,6 @@ public class ConsumerCenterService {
 		return mav;
 	}
 
-	public ModelAndView DonLoginReturn() {
-		ModelAndView mav = new ModelAndView("errorPage");
-		mav.addObject("TitleName", "Error Page");
-		mav.addObject("PopupText", "로그인 이후 이용해주세요.");
-		mav.addObject("UriPath", "/signin/");
-		return mav;
-	}
-
 	public ModelAndView UploadQnaBoard(MultipartHttpServletRequest req) {
 		ModelAndView mav = new ModelAndView();
 		QABoardVO QAVO = new QABoardVO();
