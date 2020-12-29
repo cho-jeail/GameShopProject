@@ -1,7 +1,13 @@
 @charset "UTF-8";
 a {
 	text-decoration: none;
-	color: blue;
+	color: #d4d4d4;
+}
+a:hover {
+	color: #949494;
+}
+a:active {
+	color: #696969;	
 }
 ul {
 	padding: 0px;	
@@ -11,19 +17,29 @@ ul li {
 }
 
 .CC_SideMenu {
+	color: #d4d4d4;
 	padding-top: 10px;
 	padding-left: 20px;
 	width: 200px;
 	border-right: 2px solid gray;
+}
+.CC_SideMenu h2 {
+	width: 130px;
+	border-bottom: 5px solid green;
 }
 .CC_SideMenu li {
 	margin-bottom: 10px;
 }
 
 .CC_BoardMain {
+	color: #d4d4d4;
 	width: 1078px;
 	padding-top: 20px;
 	padding-left: 40px;
+}
+.CC_BoardMain h3 {
+	width: 150px;
+	border-bottom: 3px solid green;
 }
 .CC_BoardMain table {
 	height: 550px;
@@ -52,7 +68,7 @@ ul li {
 }
 
 .SearchDiv {
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 }
 
 #NoticeSearchWord{
@@ -76,11 +92,6 @@ ul li {
 	border: 1px solid gray;
 	padding: 10px;
 }
-
-
-
-
-
 
 .CC_FAQSubMenu {
 	display: flex;
