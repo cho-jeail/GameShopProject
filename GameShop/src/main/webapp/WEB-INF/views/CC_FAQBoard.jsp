@@ -26,10 +26,11 @@
 				<div class="CC_FAQ">
 					<div class="CC_FAQTitle">
 						<a href="javascript:void(0)" onclick="FAQViewContent(this)">
-							<font>
+							<font style="color: #b5702e;">
 								<c:if test="${FAQVO.category == 0 }">Q. [웹사이트 및 계정]</c:if>
 								<c:if test="${FAQVO.category == 1 }">Q. [결제가격 및 프로모션]</c:if>
-							</font>&nbsp;${FAQVO.title }							
+							</font>
+							<font>${FAQVO.title }</font>							
 						</a>
 					</div>
 					<div class="CC_FAQContent">

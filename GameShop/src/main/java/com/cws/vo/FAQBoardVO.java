@@ -35,6 +35,6 @@ public class FAQBoardVO {
 		return content;
 	}
 	public void setContent(String content) {
-		this.content = content;
+		this.content = content.replace("\n", "<br>");
 	}
 }

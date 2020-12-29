@@ -36,26 +36,27 @@ ul li {
 	width: 1078px;
 	padding-top: 20px;
 	padding-left: 40px;
+	min-height: 500px;
 }
 .CC_BoardMain h3 {
 	width: 150px;
 	border-bottom: 3px solid green;
 }
 .CC_BoardMain table {
-	height: 550px;
-	width: 700px;
+	width: 900px;
 	border: 1px solid gray;
 	border-collapse: collapse;
 	margin-bottom: 25px;
 }
 .CC_BoardMain th, .CC_BoardMain td {
+	height: 50px;
 	border: 1px solid gray;
 }
 .CC_TableNum, .CC_Date, .CC_ViewCount {
 	text-align: center;
 }
 .CC_TableNum {
-	width: 50px;		
+	width: 65px;		
 }
 .CC_TableTitle {
 	padding-left: 15px;
@@ -85,12 +86,25 @@ ul li {
 
 .PagingDiv{
 	text-align: center;
-	width: 700px;
+	width: 900px;
 	margin-bottom: 35px;
 }
 .PagingDiv a {
 	border: 1px solid gray;
-	padding: 10px;
+	padding: 10px 15px;
+	margin-right: 3px;
+}
+.PagingDiv a:hover {
+	background-color: gray;
+	color: white;
+}
+.PagingDiv a:active {
+	background-color: #595959;
+	color: white;
+}
+.SelectedPage {
+	background-color: #595959;
+	color: white;
 }
 
 .CC_FAQSubMenu {
@@ -128,13 +142,106 @@ ul li {
 	padding: 0px 20px;
 }
 
+.NoticeViewDiv {
+	width: 1000px;
+	border: 1px solid gray;
+	padding: 20px;
+	padding-bottom: 50px;
+}
+.NoticeViewTitle {
+	font-weight: bolder;
+	font-size: 15pt;
+	color: white;
+}
+.NoticeViewStatus {
+	color: gray;
+}
+.NoticeViewContent {
+	color: white;
+}
+.NoticeViewDiv input[type=button] {
+	width: 60px;
+	height: 30px;
+	float: right;
+	clear: both;
+	background-color: #0facc8;
+	color: white;
+	border-radius: 5px;
+	border: 0px;
+	margin-right: 10px;
+	font-weight: bold;
+	font-size: 12pt;
+}
+.NoticeViewDiv input[type=button]:hover {
+	background-color: #0d8ea6;
+}
 
+.CC_QNAForm {
+	border: 1px solid gray;
+	width: 1000px;
+	padding: 25px;
+	margin-bottom: 50px;
+	padding-bottom: 60px;
+}
+.CCQnA_FormDiv {
+	margin-bottom: 10px;
+}
+.CCQnA_FormDiv label {
+	display: block;
+	float: left;
+	padding: 1px 20px;
+	width: 100px;
+	text-align: right;
+	margin-right: 10px;
+}
+.CCQnA_FormDiv select {
+	width: 350px;
+	height: 30px;
+	background-color: #09223c;
+	color: white;
+}
+.CCQnA_FormDiv input[type=text] {
+	width: 700px;
+	height: 25px;
+	background-color: #09223c;
+	color: white;
+}
+.CCQnA_FormDiv input[type=text]:focus {
+	outline: none;
+}
+.CCQnA_FormDiv textarea {
+	resize: none;
+	width: 700px;
+	height: 500px;
+	font-size: 10pt;
+	background-color: #09223c;
+	color: white;
+}
+.CCQnA_FormDiv textarea:focus {
+	outline: none;
+}
 
-
-
-
-
-
+.CCQnA_FormDiv input[type=submit], .CCQnA_FormDiv button[type=reset] {
+	width: 60px;
+	height: 30px;
+	background-color: #0facc8;
+	color: white;
+	border-radius: 5px;
+	border: 0px;
+	margin-right: 10px;
+	font-weight: bold;
+	font-size: 12pt;
+}
+.CCQnA_FormDiv input[type=submit]:hover, .CCQnA_FormDiv button[type=reset]:hover {
+	background-color: #0d8ea6;
+}
+.CCQnA_FormDiv input[type=file] {
+	border: 1px solid gray;
+	width: 700px;
+	margin-bottom: 5px;
+	padding: 3px;
+	padding-left: 10px;
+}
 
 
 

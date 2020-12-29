@@ -43,7 +43,7 @@
 					<li style="width: 65px;"><a href="${cpath }/">홈</a></li>
 					<li style="width: 85px;"><a href="#">소개</a></li>
 					<li style="width: 85px;"><a href="${cpath}/gameStore/">상점</a></li>
-					<li style="width: 125px;"><a href="${cpath }/CCNotice/">고객센터</a></li>
+					<li style="width: 125px;"><a href="${cpath }/CCNotice/?page=1">고객센터</a></li>
 				</ul>
 			</div>
 		</div>
