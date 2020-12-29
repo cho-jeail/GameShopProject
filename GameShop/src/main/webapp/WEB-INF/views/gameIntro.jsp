@@ -25,10 +25,15 @@
 	</c:forEach>
 
 	<div>
-		<button onclick="javascript:openModal()">
-			구매하기
-		</button>
-		<button onclick="javascript:wish()">위시리스트 추가</button>
+		<c:if test="${empty compare }">
+			<button onclick="javascript:openModal()">
+				구매하기
+			</button>
+			<button onclick="javascript:wish()">위시리스트 추가</button>
+		</c:if>
+		<c:if test="${not empty compare }">
+			<h5>${compare }</h5>
+		</c:if>
 	</div>
 
 	<!-- Modal창 -->
@@ -71,8 +76,9 @@
 	function openModal() { // 구매 Modal창을 열기
 		console.log("Modal 들어옴");
 		var singin = "<c:out value="${signin.id }" />";
-		// 		console.log("singing : " + singin);		// 아이디 정보 확인
-
+		var product = $("#name").text();
+		var arr = [singin, product];
+		
 		if (singin === '') { // 로그인을 하지 않으면 로그인 창으로
 			alert('로그인을 한 후 이용해 주세요');
 			location.href = '${cpath}/signin/';

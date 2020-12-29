@@ -73,4 +73,8 @@
 		select * from wish where userid=#{name}
 	</select>
 	
+	<select id="selHistory" parameterType="String" resultType="CompareProductVO">
+		select * from comparedproduct where userid = #{singin}
+	</select>
+	
 </mapper>

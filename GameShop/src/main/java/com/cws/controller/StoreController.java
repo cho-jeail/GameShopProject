@@ -2,6 +2,9 @@ package com.cws.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,11 +40,18 @@ public class StoreController {
 
 	// 게임 소개 페이지
 	@RequestMapping(value = "/gameStore/gameIntro/{product}/", method = RequestMethod.GET)
-	public ModelAndView introImage(@PathVariable("product") String prod) {
+	public ModelAndView introImage(@PathVariable("product") String prod, 
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserVO user = (UserVO) session.getAttribute("signin");
 		System.out.println("product : " + prod);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("gameIntro");
 		mav.addObject("product", ss.select(prod));
+		if(user != null) {
+			String singin = user.getId();
+			mav.addObject("compare", ss.selHistory(singin));
+		}
 		return mav;
 	}
 
@@ -57,7 +67,6 @@ public class StoreController {
 			Model model) throws NullPointerException {
 		System.out.println("결제창 들어옴!!! : " + game);
 		System.out.println("결제창 들어옴 : " + name);
-//		ProductVO pvo = ss.selectName(name);	// 게임 이름
 		ProductVO pvo = ss.selectInfo(name);	// 게임 정보
 //		System.out.println("pvo : " + name.equals(pvo.getName()));
 //		System.out.println("list" + list.size());
@@ -87,14 +96,6 @@ public class StoreController {
 		}
 		else return "exhaust";
 	}
-
-	// 위시리스트
-//	@RequestMapping(value = "/basket/", method = RequestMethod.GET)
-//	public String basket(Model model) {
-//		List<WishVO> wishList = ss.wishList();
-//		model.addAttribute("wishList", wishList);
-//		return "basket";
-//	}
 
 	// 위시리스트 항목 삭제
 	@RequestMapping(value = "/mypage/basket/{product}", 
