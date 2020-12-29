@@ -156,10 +156,24 @@ public class StoreService {
 		return mav;
 	}
 
+	// 구매내역 확인
 	public ModelAndView compareSelectAll(String name) {
 		ModelAndView mav = new ModelAndView("paymentFinish");
 		mav.addObject("compareList", sd.compareSelect(name));
 		return mav;
+	}
+
+	// 이미 구매한 상품 탐색
+	public String selHistory(String singin) {
+		CompareProductVO compare = sd.selHistory(singin);
+		System.out.println("selHistory" + compare.getName());
+		List<ProductVO> storeList = sd.storeSelectAll();
+		
+		for(int i = 0; i < storeList.size(); i++) {
+			if(compare.getName().equals(storeList.get(i).getName()))
+				return "이미 구매한 상품입니다.";
+		}
+		return null;				
 	}
 	
 }
