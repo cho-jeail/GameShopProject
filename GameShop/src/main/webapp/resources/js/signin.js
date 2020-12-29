@@ -23,7 +23,6 @@ function emailRegexp(){
 	}
 	else{
 		signEmailCmf.innerText = '';
-		signinEmail.style.border = '1px solid black';
 	}
 }
 
@@ -44,10 +43,10 @@ function signSubmit(event){
 		}
 		else{
 			cList[i].innerText = '항목을 확인하세요.';
-			cList[i].style.color = 'red';
-			inputs[i].style.border = '1px solid red';
+			inputs[i].focus();
 			signinCmf.innerText = '';
 			bList[i] = false;
+			return false;
 		}
 	}
 	

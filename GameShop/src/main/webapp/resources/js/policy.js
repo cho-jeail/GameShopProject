@@ -35,6 +35,7 @@ function checkedPolicy(){
 	for(i = 0; i < checkArr.length; i++){
 		if(checkArr[i].checked === false){ 
 			alert('*필수 사항을 체크해주세요.');
+			checkArr[i].focus();
 			break; 
 		}
 		else if(i === (checkArr.length-1)){

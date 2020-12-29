@@ -14,7 +14,7 @@
 			<div class="policyTOS" id="policyPolicy0"></div>
 			<label>
 				<input type="checkbox" id="ckBox0" class="ckBoxes"> 
-				<span class="policyUnderLine">이용약관</span>에 동의힙니다. 
+				<span class="policyUnderLine">이용약관</span><span class="otherText">에 동의합니다.</span>
 				<span class="policyRed">*</span>
 			</label>
 		</div>
@@ -23,7 +23,7 @@
 			<div class="policyTOS" id="policyPolicy1"></div>
 			<label>
 				<input type="checkbox" id="ckBox1" class="ckBoxes"> 
-				<span class="policyUnderLine">개인정보 수집 및 사용</span>에 동의힙니다. 
+				<span class="policyUnderLine">개인정보 수집 및 사용</span><span class="otherText">에 동의합니다.</span> 
 				<span class="policyRed">*</span>
 			</label>
 		</div>
@@ -32,7 +32,7 @@
 			<div class="policyTOS" id="policyPolicy2"></div>
 			<label>
 				<input type="checkbox" id="ckBox2" class="ckBoxes"> 
-				<span class="policyUnderLine">개인정보 해외전송</span>에 동의힙니다. 
+				<span class="policyUnderLine">개인정보 해외전송</span><span class="otherText">에 동의합니다.</span>
 				<span class="policyRed">*</span>
 			</label>
 		</div>
@@ -41,7 +41,7 @@
 			<div class="policyTOS" id="policyPolicy3"></div>
 			<label>
 				<input type="checkbox" id="ckBox3" class="ckBoxes"> 
-				<span class="policyUnderLine">홍보성 알림 이메일 수신</span>에 동의힙니다.
+				<span class="policyUnderLine">홍보성 알림 이메일 수신</span><span class="otherText">에 동의합니다.</span>
 			</label>
 		</div>
 		

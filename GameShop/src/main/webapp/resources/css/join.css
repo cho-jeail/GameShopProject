@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 .joinSection{
+	display: flex;
+	justify-content: center;
 	padding-top: 20px;
 }
 
@@ -9,8 +11,7 @@
 	flex-direction: column;
 	width: 580px;
 	height: 900px;
-	border: 1px solid blue;
-	margin: 0 auto 0 auto;
+	border: 0.5px solid #1a64ae;
 	padding: 20px 30px 20px 30px;
 }
 
@@ -26,3 +27,15 @@
 	flex-direction: column;
 	width: 100%;
 }
+
+.joinForm div{
+	margin-bottom: 20px;
+}
+
+.joinInput{
+	box-sizing: border-box;
+	width: 200px;
+	height: 45px;
+}
+
+.joinCmf, .joinPwRuleMsg{ font-size: 0.8rem; }
