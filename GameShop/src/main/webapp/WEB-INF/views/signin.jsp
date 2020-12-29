@@ -7,15 +7,24 @@
 	<div class="signinContainer">
 		<div class="signinLogo"></div>
 		<form class="signinForm" id="signinForm" method="post" action="${cpath }/signin/" >
-			<input type="text" class="signinInput" id="signinEmail" name="email" placeholder="이메일" value="${signEmail }">
-			<div class="signEmailCmf" id="signEmailCmf"></div>
-			<input type="password" class="signinInput" id="signinPw" name="password" onkeyup="enterkey()" placeholder="비밀번호">
-			<div class="signPwCmf" id="signPwCmf"></div>
-			<div class="signinCmf" id="signinCmf">${signResult }</div>
-			<input type="checkbox" class="signinCk" id="signinCk" name="regCk" >계정 기억
-			<button type="button" id="signinBtn">SignIn</button>
+			<div class="signDiv">
+				<input type="text" class="signinInput" id="signinEmail" name="email" placeholder="이메일" value="${signEmail }">
+				<div class="signCmf" id="signEmailCmf"></div>		
+			</div>
+			<div class="signDiv">
+				<input type="password" class="signinInput" id="signinPw" name="password" onkeyup="enterkey()" placeholder="비밀번호">
+				<div class="signCmf" id="signPwCmf"></div>
+				<div class="signCmf" id="signinCmf">${signResult }</div>
+			</div>
+			<label class="signLabel">
+				<input type="checkbox" class="signinCk" id="signinCk" name="regCk" >
+				<span>계정 기억하기</span>
+			</label>
+			<button type="button" id="signinBtn" class="signinBtn">로그인</button>
 		</form>
-		<a href="${cpath }/findpwd/">비밀번호를 잊으셨나요?</a> <a href="${cpath }/policy/">회원가입</a>
+		<div class="atagDiv">
+			<a href="${cpath }/findpwd/">비밀번호를 잊으셨나요?</a> <a href="${cpath }/policy/">처음이신가요?</a>
+		</div>
 	</div>
 </section>
 
