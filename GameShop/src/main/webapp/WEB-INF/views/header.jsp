@@ -43,7 +43,14 @@
 					<li style="width: 65px;"><a href="${cpath }/">홈</a></li>
 					<li style="width: 85px;"><a href="#">소개</a></li>
 					<li style="width: 85px;"><a href="${cpath}/gameStore/">상점</a></li>
-					<li style="width: 125px;"><a href="${cpath }/CCNotice/?page=1">고객센터</a></li>
+					<li style="width: 125px;" class="HeaderCCli">
+						<a href="javascript:viod(0)">고객센터</a>
+						<ul>
+							<li><a href="${cpath }/CCNotice/?page=1">공지사항</a></li>
+							<li><a href="${cpath }/CCFAQ/">자주 묻는 질문</a></li>
+							<li><a href="${cpath }/CCQnA/">Q&amp;A</a></li>							
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>

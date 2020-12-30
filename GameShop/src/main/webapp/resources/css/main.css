@@ -102,3 +102,50 @@ footer font {
 .Menu ul li a:link, .Menu ul li a:visited, .Menu ul li a:hover {
 	color: white;
 }
+
+.HeaderCCli ul {
+	flex-direction: column;
+	display: none;
+	background-color: #6E6E6E;
+	width: 150px;
+	border: 1px solid white;
+}
+.HeaderCCli:hover ul {
+	display: block;
+}
+.HeaderCCli ul li {
+	border: 0px;
+	margin: 0px;
+	height: 40px;
+	line-height: 32px;
+}
+.HeaderCCli ul li a {
+	display: block;
+	width: 120px;
+	font-size: 12pt;
+	padding: 5px 10px;
+	padding-right: 20px;
+}
+.HeaderCCli ul li a:active {
+	background-color: #4c4c4c;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

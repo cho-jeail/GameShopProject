@@ -20,8 +20,9 @@ ul li {
 	color: #d4d4d4;
 	padding-top: 10px;
 	padding-left: 20px;
-	width: 200px;
+	width: 207px;
 	border-right: 2px solid gray;
+	box-sizing: border-box;
 }
 .CC_SideMenu h2 {
 	width: 130px;
@@ -36,7 +37,7 @@ ul li {
 	width: 1078px;
 	padding-top: 20px;
 	padding-left: 40px;
-	min-height: 500px;
+	min-height: 650px;
 }
 .CC_BoardMain h3 {
 	width: 150px;
@@ -73,15 +74,40 @@ ul li {
 }
 
 #NoticeSearchWord{
-	width: 300px;
-	height: 20px;
+	width: 400px;
+	height: 25px;
+	background-color: #09223c;
+	color: white;
+	outline: none;
+	padding-left: 5px;
+	box-sizing: border-box;
 }
 #NoticeSearchType {
+	width: 100px;
 	height: 25px;
+	color: white;
+	background-color: #09223c;
+	outline: none;
+	box-sizing: border-box;
 }
 #NoticeSearchClick {
-	width: 50px;
 	height: 25px;
+	width: 50px;
+	background-color: #0facc8;
+	color: white;
+	border-radius: 5px;
+	border: 0px;
+	margin-left: 5px;
+	font-weight: bold;
+	font-size: 10pt;
+	outline: none;
+}
+#NoticeSearchClick:hover {
+	background-color: #0d8ea6;
+}
+#NoticeSearchClick:active {
+	border-style: inset;
+	border-width: 2px;	
 }
 
 .PagingDiv{
@@ -171,14 +197,19 @@ ul li {
 	margin-right: 10px;
 	font-weight: bold;
 	font-size: 12pt;
+	outline: none;
 }
 .NoticeViewDiv input[type=button]:hover {
 	background-color: #0d8ea6;
 }
+.NoticeViewDiv input[type=button]:active {
+	border-style: inset;
+	border-width: 2px;	
+}
 
 .CC_QNAForm {
 	border: 1px solid gray;
-	width: 1000px;
+	width: 950px;
 	padding: 25px;
 	margin-bottom: 50px;
 	padding-bottom: 60px;
@@ -199,6 +230,9 @@ ul li {
 	height: 30px;
 	background-color: #09223c;
 	color: white;
+	outline: none;
+	border-style: inset;
+	border-width: 2px;
 }
 .CCQnA_FormDiv input[type=text] {
 	width: 700px;
@@ -216,6 +250,8 @@ ul li {
 	font-size: 10pt;
 	background-color: #09223c;
 	color: white;
+	border-style: inset;
+	border-width: 2px;
 }
 .CCQnA_FormDiv textarea:focus {
 	outline: none;
@@ -231,10 +267,20 @@ ul li {
 	margin-right: 10px;
 	font-weight: bold;
 	font-size: 12pt;
+	box-sizing: border-box;
+	outline: none;
+}
+.CCQnA_FormDiv button[type=reset] {
+	width: 70px;
 }
 .CCQnA_FormDiv input[type=submit]:hover, .CCQnA_FormDiv button[type=reset]:hover {
 	background-color: #0d8ea6;
 }
+.CCQnA_FormDiv input[type=submit]:active, .CCQnA_FormDiv button[type=reset]:active {
+	border-style: inset;
+	border-width: 2px;
+}
+
 .CCQnA_FormDiv input[type=file] {
 	border: 1px solid gray;
 	width: 700px;

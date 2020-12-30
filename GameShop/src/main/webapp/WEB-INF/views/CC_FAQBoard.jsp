@@ -9,7 +9,7 @@
 	<div class="CC_SideMenu">
 		<h2>고객 센터</h2>
 		<ul>
-			<li><a href="${cpath }/CCNotice/">공지사항</a></li>
+			<li><a href="${cpath }/CCNotice/?page=1">공지사항</a></li>
 			<li><a href="${cpath }/CCFAQ/">자주 묻는 질문</a></li>
 			<li><a href="${cpath }/CCQnA/">Q&amp;A</a></li>
 		</ul>

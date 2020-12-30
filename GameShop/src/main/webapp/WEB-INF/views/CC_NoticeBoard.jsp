@@ -18,21 +18,25 @@
 	<div class="CC_SideMenu">
 		<h2>고객 센터</h2>
 		<ul>
-			<li><a href="${cpath }/CCNotice/">공지사항</a></li>
+			<li><a href="${cpath }/CCNotice/?page=1">공지사항</a></li>
 			<li><a href="${cpath }/CCFAQ/">자주 묻는 질문</a></li>
 			<li><a href="${cpath }/CCQnA/">Q&amp;A</a></li>
 		</ul>
 	</div>
 	<div class="CC_BoardMain">
 		<h3>${BoardMainName }</h3>
-
 		<table>
 			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성일</th>
-				<th>조회수</th>
+				<th class="CC_TableNum">번호</th>
+				<th class="CC_TableTitle" style="padding-left: 0px;">제목</th>
+				<th class="CC_Date">작성일</th>
+				<th class="CC_ViewCount">조회수</th>
 			</tr>
+			<c:if test="${empty BoardList }">
+				<tr>
+					<td colspan="4" style="text-align: center; font-size: 18pt; font-weight: bold; height: 200px;">조건에 맞는 결과가 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach var="NBoard" items="${BoardList }">
 				<tr>
 					<td class="CC_TableNum">${NBoard.id }</td>
@@ -44,7 +48,7 @@
 		</table>
 
 		<div class="SearchDiv">
-			<input id="NoticeSearchWord" type="text" value="${NoticeSearchWord }">
+			<input id="NoticeSearchWord" type="text" value="${NoticeSearchWord }" onkeydown="keyDownEnter()">
 			<select id="NoticeSearchType">
 				<option value="title" ${NoticeSearchType == 'title' ? 'selected' : '' }>제목</option>
 				<option value="content" ${NoticeSearchType == 'content' ? 'selected' : '' }>내용</option>
@@ -54,7 +58,9 @@
 		</div>
 
 		<div class="PagingDiv">
-			<a id="PagePrev">&lt;</a>
+			<c:if test="${not empty BoardList }">
+				<a id="PagePrev">&lt;</a>
+			</c:if>
 			<c:if test="${NoticeSearchWord == null }">
 				<c:forEach varStatus="pageNumber" begin="${PageParam.begin }" end="${PageParam.end }">
 					<c:choose>
@@ -72,7 +78,9 @@
 					<a href="${cpath }/CCNotice/?NoticeSearchType=${NoticeSearchType }&NoticeSearchWord=${NoticeSearchWord }&page=${pageNumber.current }">${pageNumber.current }</a>
 				</c:forEach>
 			</c:if>
-			<a id="PageNext">&gt;</a>
+			<c:if test="${not empty BoardList }">
+				<a id="PageNext">&gt;</a>			
+			</c:if>
 		</div>
 	</div>
 </div>
