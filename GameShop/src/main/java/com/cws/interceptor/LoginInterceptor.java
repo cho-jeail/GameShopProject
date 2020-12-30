@@ -16,9 +16,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		// referer에서  와서 RequestURI로 향한다
 		// 어디서 왔는지 주소를 알려준다.
-		System.out.println("referer : " + request.getHeader("referer"));
+//		System.out.println("referer : " + request.getHeader("referer"));
 		// 이동할 주소(목적지)
-		System.out.println("RequestURI : " + request.getRequestURI());
+//		System.out.println("RequestURI : " + request.getRequestURI());
 		// 기존 세션이 있다면 그 세션을 리턴하고, 세션이 존재하지 않으면 null을 리턴한다
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("signin") != null) {

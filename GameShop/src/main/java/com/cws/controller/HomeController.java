@@ -102,19 +102,18 @@ public class HomeController {
 	
 	@RequestMapping(value = "/mypage/mypageMemberOut/", method = RequestMethod.POST)
 	public ModelAndView memberOut(OutReasonVO vo, HttpSession session, HttpServletRequest req, HttpServletResponse resp) {
-		System.out.println("삭제준비중");
 		return UServ.memberOut(vo, session, req, resp);
 	}
 	
 	@RequestMapping(value = "/mypage/mypageCoupon/", method = RequestMethod.POST)
 	public ModelAndView mypageCoupons(CouponVO vo) {
-		System.out.println("확인 : " + vo.getUserId());
+//		System.out.println("확인 : " + vo.getUserId());
 		return UServ.selectCoupons(vo.getUserId());
 	}
 	
 	@RequestMapping(value = "/mypage/mypageCoupon/regCoupon/", method = RequestMethod.POST)
 	public ModelAndView insertCoupon(CouponVO vo) {
-		System.out.println("id확인 : " + vo.getUserId());
+//		System.out.println("id확인 : " + vo.getUserId());
 		return UServ.insertCoupon(vo);
 	}
 	

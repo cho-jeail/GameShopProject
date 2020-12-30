@@ -3,16 +3,19 @@
 .joinSection{
 	display: flex;
 	justify-content: center;
-	padding-top: 20px;
+	padding: 20px 0 20px 0;
+	color: white;
 }
 
 .joinContainer{
 	display: flex;
 	flex-direction: column;
+	box-sizing: border-box;
 	width: 580px;
-	height: 900px;
+	height: auto;
 	border: 0.5px solid #1a64ae;
-	padding: 20px 30px 20px 30px;
+	background-color: #0f3964;
+	padding: 40px 55px 40px 55px;
 }
 
 .joinLogo{
@@ -28,14 +31,95 @@
 	width: 100%;
 }
 
-.joinForm div{
-	margin-bottom: 20px;
+.joinDivs{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	height: 100px;
 }
 
 .joinInput{
 	box-sizing: border-box;
-	width: 200px;
+	width: 100%;
 	height: 45px;
+	border: none;
+	background-color: inherit;
+	border-bottom: 2px solid #bdedff;
+	color: white;
+	font-size: 1.0rem;
 }
 
-.joinCmf, .joinPwRuleMsg{ font-size: 0.8rem; }
+.joinInput:focus{outline: none;}
+
+
+.joinCmf{ 
+	height: 20px;
+	margin-top: 3px;
+	font-size: 0.8rem;
+}
+.joinPwRuleMsg{ 
+	margin-top: 5px;
+	font-size: 0.75rem; 
+	color: #c0c0c0;
+}
+
+.joinLabel{
+	display: flex;
+	flex-direction: column;
+}
+
+.joinLabel span{ font-size: 0.8rem }
+
+.pwComfirm{
+	box-sizing: border-box;
+	width: 100%;
+	height: 45px;
+	border: none;
+	background-color: inherit;
+	border-bottom: 2px solid #bdedff;
+}
+
+.pwComfirm:focus{outline: none;}
+
+#joinDivs_pwd{ height: 170px; }
+#joinDivs_addr{ height: 90px; margin-top: 12px; }
+
+.addrBtnDiv{
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 7px;
+}
+
+.addrBtn, #addrClsBtn, #joinSubmit{
+	border: none;	
+	background-color: #4d93d9;
+	color: white;
+}
+
+.addrBtn:hover{background-color: #276fb6;cursor: pointer;}
+#addrClsBtn:hover{background-color: #276fb6;cursor: pointer;}
+#joinSubmit:hover{background-color: #276fb6;cursor: pointer;}
+
+.addrBtn{
+	width: 80px;
+	height: 20px;
+	border-radius: 20px;
+	margin-left: 10px;
+}
+
+#addrClsBtn{
+	height: 20px;
+	border-radius: 20px;	
+}
+
+.addrBtn, #addrClsBtn:focus {outline: none;}
+
+#joinSubmit{
+	height: 50px;
+	margin-top: 30px;
+	border-radius: 10px;
+	font-weight: bolder;
+	font-size: 1.2rem;
+}
+
