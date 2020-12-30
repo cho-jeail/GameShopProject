@@ -4,23 +4,32 @@
 <link rel="stylesheet" type="text/css"
 	href="${cpath }/css/gameStore.css">
 <!-- 게임 소개 페이지 -->
-<h2>게임 소개 페이지</h2>
-
-<hr>
 <div>
+	
 	<c:forEach var="game" items="${product }">
-		<div>
-			<h4>이름 : ${game.name }</h4>
-			<h4>가격 : ${game.price }</h4>
-			<h4>정보 : ${game.info }</h4>
-			<h4>개발사 : ${game.developer }</h4>
-			<h4>배포사 : ${game.publisher }</h4>
-			<h4>태그 : ${game.tags }</h4>
-			<h4>플랫폼 : ${game.platform }</h4>
-			<h4>장르 : ${game.kind }</h4>
-			<h4>조이스틱 사용여부 : ${game.controller }</h4>
-			<h4>나이제한 : ${game.rating }</h4>
-			<h4>지원언어 : ${game.languages }</h4>
+		<div class="intro">
+			<h2>${game.name }</h2>
+			<hr>
+			<div>
+				<img src="${cpath }/resources/image/image1.jpg"
+				style="width: 1280px; height: 550px; display: flex;">
+			</div>
+			<div>
+				<div class="cate">정보</div>
+				<div class="cate">이용사항</div>
+			</div>
+			<div>
+				<h4>가격 : ${game.price }</h4>
+				<h4>정보 : ${game.info }</h4>
+				<h4>개발사 : ${game.developer }</h4>
+				<h4>배포사 : ${game.publisher }</h4>
+				<h4>태그 : ${game.tags }</h4>
+				<h4>플랫폼 : ${game.platform }</h4>
+				<h4>장르 : ${game.kind }</h4>
+				<h4>조이스틱 사용여부 : ${game.controller }</h4>
+				<h4>나이제한 : ${game.rating }</h4>
+				<h4>지원언어 : ${game.languages }</h4>
+			</div>
 		</div>
 	</c:forEach>
 
