@@ -9,11 +9,16 @@ let flagList = [];
 
 document.getElementById('joinSubmit').addEventListener('click', submit);
 document.getElementById('pwComfirm').addEventListener('blur', pwComfirm);
+document.getElementById('addrClsBtn').addEventListener('click', clearAddr);
 
 joinName.addEventListener('blur', nameRegexp);
 joinNick.addEventListener('blur', nickRegexp);
 joinEmail.addEventListener('blur', emailRegexp);
 joinPw.addEventListener('blur', pwRegexp);
+
+function clearAddr(){
+	document.getElementById('roadFullAddr').value = null;
+}
 
 function nickChecked(){
 	let nkCmf = document.getElementById('nkCmf');
@@ -28,13 +33,11 @@ function nickChecked(){
 			if(response === '사용중'){
 				nkCmf.innerText = '이미 사용중입니다.';
 				nkCmf.style.color = 'red';
-				joinNick.style.color = 'black';
 				flagList[1] = false;
 			}
 			else{
 				nkCmf.innerText = '사용가능합니다.';
-				nkCmf.style.color = 'green';
-				joinNick.style.color = 'black';
+				nkCmf.style.color = '#00ff40';
 				flagList[1] = true;
 			}
 			
@@ -59,13 +62,11 @@ function emailChecked(){
 			if(response === "사용중"){
 				emailCmf.innerText = '이미 사용중입니다.';
 				emailCmf.style.color = 'red';
-				joinEmail.style.color = 'black';
 				flagList[2] = false;
 			}
 			else{
 				emailCmf.innerText = '사용가능합니다.';
-				emailCmf.style.color = 'green';
-				joinEmail.style.color = 'black';
+				emailCmf.style.color = '#00ff40';
 				flagList[2] = true;
 			}
 			
@@ -84,7 +85,6 @@ function nameRegexp(){
 	if(joinName.value !== '' && nameRegExp.test(joinName.value) === false){
 		nameCmf.innerText = '잘못된 형식입니다.';
 		nameCmf.style.color = 'red';
-		joinName.style.color = 'black';
 		flagList[0] = false;	
 	}
 	else{
@@ -100,7 +100,6 @@ function nickRegexp(){
 	if(joinNick.value !== '' && nickRegExp.test(joinNick.value) === false){
 		nkCmf.innerText = '잘못된 형식입니다.';
 		nkCmf.style.color = 'red';
-		joinNick.style.color = 'black';
 		flagList[1] = false;
 	}
 	else if(joinNick.value !== ''){
@@ -121,7 +120,6 @@ function emailRegexp(){
 	if(joinEmail.value !== '' && emailRegExp.test(joinEmail.value) === false){
 		emailCmf.innerText = '잘못된 형식입니다.';
 		emailCmf.style.color = 'red';
-		joinEmail.style.color = 'black';
 		flagList[2] = false;
 	}
 	else if(joinEmail.value !== ''){
@@ -140,7 +138,6 @@ function pwRegexp(){
 	if(joinPw.value !== '' && pwRegExp.test(joinPw.value) === false){
 		pwCmf.innerText = '비밀번호 형식이 맞지 않습니다.'
 		pwCmf.style.color = 'red';
-		joinPw.style.color = 'black';
 		flagList[3] = false;
 	}
 	else if(joinPw.value === ''){
@@ -149,7 +146,7 @@ function pwRegexp(){
 	}
 	else{
 		pwCmf.innerText = '사용가능합니다.'
-		pwCmf.style.color = 'green';
+		pwCmf.style.color = '#00ff40';
 		flagList[3] = true;
 	}
 }
@@ -162,19 +159,17 @@ function pwComfirm(){
 		pwCmf2.innerText = '일치하지 않습니다.';
 		pwCmf2.style.color = 'red';
 		pwC.style.color = 'black';
-		pwC.focus();
 		flagList[4] = false;
 	}
 	else if(pwC.value === ''){
 		pwCmf2.innerText = '필수 입력바랍니다.'
 		pwCmf2.style.color = 'red';
 		pwC.style.color = 'black';
-		pwC.focus();
 		flagList[4] = false;
 	}
 	else{
 		pwCmf2.innerText = '일치합니다.'
-		pwCmf2.style.color = 'green';
+		pwCmf2.style.color = '#00ff40';
 		pwC.style.color = 'black';
 		flagList[4] = true;
 	}
@@ -192,12 +187,13 @@ function submit(event){
 			flagCnt++;
 		}
 		else{
-			inputs[i].style.border = '1px solid red';
+			inputs[i].style.borderBottom = '2px solid red';
+			cmf.innerText = '항목을 확인해주세요';
 		}		
 	}
 	for(i = 0; i < inputs.length; i++){
 		if(inputs[i].value === ''){
-			inputs[i].style.border = '1px solid red';
+			inputs[i].style.borderBottom = '2px solid red';
 		}
 		else{			
 			blankCnt++;

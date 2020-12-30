@@ -31,7 +31,7 @@ public class AjaxController {
 	
 	@RequestMapping(value = "/chkPwd/", method = RequestMethod.POST, produces= "application/text; charset=UTF-8")
 	public String updateInfo(@RequestBody HashMap<String, String> param) {
-		System.out.println("param : " + param.toString());
+//		System.out.println("param : " + param.toString());
 		return us.checkPwd(param);
 	}
 	

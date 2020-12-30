@@ -62,11 +62,11 @@ public class UserService {
 	// 로그인
 	public ModelAndView signinUser(UserVO vo, HttpSession session) {		
 		ModelAndView mav = new ModelAndView("redirect");
-		System.out.println("받은 email확인 : " + vo.getEmail());
+//		System.out.println("받은 email확인 : " + vo.getEmail());
 		try {
 			UserVO evo = udao.checkEmail(vo.getEmail());
 			String pw = vo.getPassword();
-			System.out.println("실행 후 email확인 : " + evo.getEmail());
+//			System.out.println("실행 후 email확인 : " + evo.getEmail());
 			try {
 				MessageDigest md = MessageDigest.getInstance("SHA-256");
 				String id = evo.getId();
@@ -149,7 +149,7 @@ public class UserService {
 	
 	// 닉네임 중복확인
 	public UserVO checkNickname(String checking) {
-		System.out.println("닉네임 checking : " + checking);
+//		System.out.println("닉네임 checking : " + checking);
 		UserVO result  = udao.checkNickname(checking);
 		if(result != null) { return result; }			
 		else { return null; }
@@ -157,7 +157,7 @@ public class UserService {
 	
 	// 이메일 중복확인
 	public UserVO checkEmail(String checking) {
-		System.out.println("이메일 checking : " + checking);
+//		System.out.println("이메일 checking : " + checking);
 		UserVO result  = udao.checkEmail(checking);
 		if(result != null) { return result; }				
 		else { return null; }
@@ -230,18 +230,14 @@ public class UserService {
 				cookieflag = true;
 			}
 		}
-		System.out.println("삭제 서비스부분 실행");
 		if(!(vo.getOutreason().equals(""))) {
 			int reg = udao.insertOutReason(vo);
 			if(reg != 0) {
 				System.out.println("사유 등록 완료");
 			}
 		}
-		System.out.println("사유 확인");
 		System.out.println("id확인 : " + vo.getId());
-		
 		int result = udao.deleteUser(vo.getId());
-		System.out.println("삭제 결과를 가져옴");
 		
 		if(result != 0) {
 			System.out.println("유저 삭제 완료");
@@ -259,7 +255,6 @@ public class UserService {
 			mav.addObject("msg", "탈퇴실패");
 			mav.addObject("url", "mypage");
 		}
-		System.out.println("끝남");
 		return mav;
 	}
 
