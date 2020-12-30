@@ -56,6 +56,9 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/siteInfo/")
+	public void siteInfo() {}
+	
 	@RequestMapping(value = "/signin")
 	public void signInMain() {}
 	
