@@ -166,7 +166,7 @@ public class StoreService {
 	// 이미 구매한 상품 탐색
 	public String selHistory(String singin) {
 		CompareProductVO compare = sd.selHistory(singin);
-//		System.out.println("selHistory" + compare.getName());
+		System.out.println("selHistory" + compare.getName());
 		List<ProductVO> storeList = sd.storeSelectAll();
 		
 		for(int i = 0; i < storeList.size(); i++) {
