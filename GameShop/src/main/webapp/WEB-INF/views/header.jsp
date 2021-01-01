@@ -41,7 +41,7 @@
 			<div class="Menu">
 				<ul>
 					<li style="width: 65px;"><a href="${cpath }/">홈</a></li>
-					<li style="width: 85px;"><a href="#">소개</a></li>
+					<li style="width: 85px;"><a href="${cpath }/siteInfo/">소개</a></li>
 					<li style="width: 85px;"><a href="${cpath}/gameStore/">상점</a></li>
 					<li style="width: 125px;" class="HeaderCCli">
 						<a href="javascript:viod(0)">고객센터</a>

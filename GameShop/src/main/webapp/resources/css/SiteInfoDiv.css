@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.SiteInfoDiv {
+	min-height: 650px;
+	width: 1200px;	
+	color: #e4e4e4;
+	margin: 0 auto;
+}
+
+.SiteInfoTitle {
+	border: 2px solid gray;
+	margin-top: calc(150px + 30px);
+}
+.SiteInfoTitle label {
+	display: block;
+	margin: 20px 30px;
+	font-size: 20pt;
+	font-weight: bold;
+	width: 300px;
+	border-bottom: 5px solid green;
+}
+
+.SiteInfoComment {
+	border: 2px solid gray;
+	border-top: 0px;
+	padding: 20px 0px;
+}
+.SiteInfoComment div {
+	width: 1150px;
+	border: 2px solid gray;
+	margin: 0px auto;
+	padding-left: 20px;
+	padding-right: 40px;
+	padding-bottom: 20px;
+	box-sizing: border-box;
+}
+.SiteInfoComment label {
+	display: block;
+	margin: 20px 10px;
+	font-size: 15pt;
+	font-weight: bold;
+	width: 220px;
+	border-bottom: 5px solid green;
+}
