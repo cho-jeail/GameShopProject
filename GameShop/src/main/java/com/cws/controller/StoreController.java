@@ -50,7 +50,7 @@ public class StoreController {
 		mav.addObject("product", ss.select(prod));
 		if(user != null) {
 			String singin = user.getId();
-			mav.addObject("compare", ss.selHistory(singin));
+			mav.addObject("compare", ss.selHistory(singin, prod));
 		}
 		return mav;
 	}

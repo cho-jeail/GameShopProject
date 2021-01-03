@@ -164,16 +164,15 @@ public class StoreService {
 	}
 
 	// 이미 구매한 상품 탐색
-	public String selHistory(String singin) {
-		CompareProductVO compare = sd.selHistory(singin);
+	public String selHistory(String singin, String prod) {
+		List<CompareProductVO> compare = sd.compareSelect(singin);
 //		System.out.println("selHistory" + compare.getName());
-		List<ProductVO> storeList = sd.storeSelectAll();
 		
-		for(int i = 0; i < storeList.size(); i++) {
-			if(compare.getName().equals(storeList.get(i).getName()))
+		for(int i = 0; i < compare.size(); i++) {
+			if(prod.equals(compare.get(i).getName()))
 				return "이미 구매한 상품입니다.";
 		}
-		return null;				
+		return null;	
 	}
 	
 }
