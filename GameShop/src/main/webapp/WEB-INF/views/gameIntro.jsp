@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="${cpath }/css/gameStore.css">
+<link rel="stylesheet" type="text/css" href="${cpath }/css/gameStore.css">
 <!-- 게임 소개 페이지 -->
 <div>
 	
@@ -14,21 +13,30 @@
 				<img src="${cpath }/resources/image/image1.jpg"
 				style="width: 1280px; height: 550px; display: flex;">
 			</div>
-			<div>
-				<div class="cate">정보</div>
-				<div class="cate">이용사항</div>
-			</div>
-			<div>
-				<h4>가격 : ${game.price }</h4>
-				<h4>정보 : ${game.info }</h4>
-				<h4>개발사 : ${game.developer }</h4>
-				<h4>배포사 : ${game.publisher }</h4>
-				<h4>태그 : ${game.tags }</h4>
-				<h4>플랫폼 : ${game.platform }</h4>
-				<h4>장르 : ${game.kind }</h4>
-				<h4>조이스틱 사용여부 : ${game.controller }</h4>
-				<h4>나이제한 : ${game.rating }</h4>
-				<h4>지원언어 : ${game.languages }</h4>
+			<div class="gameIntro">
+				<div class="gameinfo">
+					<a href="javascript:void(0)" onclick="javascript:information(this)"><b>정보</b></a>
+				</div>
+
+				<div class="information">
+					<h4 id="price">가격 : ${game.price }</h4>
+					<h4 id="info">정보 : ${game.info }</h4>
+					<h4 id="developer">개발사 : ${game.developer }</h4>
+					<h4 id="publisher">배포사 : ${game.publisher }</h4>
+					<h4 id="tag">태그 : ${game.tags }</h4>
+				</div>
+
+				<div class="gameinfo">
+					<a href="javascript:void(0)" onclick="javascript:useProduct(this)">이용사항</a>
+				</div>			
+				
+				<div class="useProduct">
+					<h4 id="platform">플랫폼 : ${game.platform }</h4>
+					<h4 id="kind">장르 : ${game.kind }</h4>
+					<h4 id="controller">조이스틱 사용여부 : ${game.controller }</h4>
+					<h4 id="rating">나이제한 : ${game.rating }</h4>
+					<h4 id="languages">지원언어 : ${game.languages }</h4>
+				</div>
 			</div>
 		</div>
 	</c:forEach>
@@ -177,8 +185,8 @@
 			form.appendChild(input_user);
 			
 			form.submit();
+			alert("위시리스트에 추가되었습니다.");
 		}
-		alert("장바구니에 추가되었습니다.");
 		
 // 		var wishlist = confirm("장바구니 목록으로 이동 하시겠습니까?");
 		
@@ -186,6 +194,27 @@
 // 			location.href = '${cpath}/basket/';
 // 		}
 	}
+	
+	function information(target) {
+		var IDiv = target.parentElement.parentElement;
+	    var Information = IDiv.getElementsByClassName('information');
+	    var view = Information[0].style.display;
+	    if (view === '' || view === 'none')
+	   		Information[0].style.display = 'block';
+	    else
+	    	Information[0].style.display = 'none';
+	}
+
+	function useProduct(target) {
+		var UDiv = target.parentElement.parentElement;
+	    var product = UDiv.getElementsByClassName('useProduct');
+	    var view = product[0].style.display;
+	    if (view === '' || view === 'none')
+	    	product[0].style.display = 'block';
+	    else
+	    	product[0].style.display = 'none';
+	}
+	
 </script>
 
 <style>
@@ -213,6 +242,4 @@
 	width: 30%; /* Could be more or less, depending on screen size */
 }
 </style>
-
-
 <%@ include file="footer.jsp"%>

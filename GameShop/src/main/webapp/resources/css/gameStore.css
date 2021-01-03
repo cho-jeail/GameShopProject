@@ -43,12 +43,6 @@
 	color: #FFC19E;
 }
 
-.NoticeBoard {
-	width: 80%;
-	background-color: #F5D0A9;
-	margin: 20px auto;
-}
-
 .container {
 	display: flex;
 	
@@ -95,10 +89,28 @@
 	color: #C0C0C0;
 }
 
-.cate {
+.intro ul {
+	list-style: none;
+}
+
+.gameinfo {
 	border: 1px solid gold; 
-	float: none;
 	text-align: center;
 	padding: 5px;
 	margin-top: 5px;
+	width: 1268px;
+	margin-right: 0px;
+}
+
+.gameinfo a {
+	text-decoration: none;
+	color: #C0C0C0;
+}
+
+.information {
+	display: none;
+}
+
+.useProduct {
+	display: none;
 }
