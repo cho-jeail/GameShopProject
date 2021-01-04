@@ -1,17 +1,103 @@
 @charset "UTF-8";
 
 .fpwdSection{
-	padding-top: 20px;
+	display: flex;
+	justify-content: center;
+	padding: 20px 0 20px 0;
+	color: white;
 }
 
 .fpwdContainer{
 	display: flex;
 	flex-direction: column;
-	width: 580px;
-	height: 900px;
-	border: 1px solid blue;
-	margin: 0 auto 0 auto;
-	padding: 20px 30px 20px 30px;
+	box-sizing: border-box;
+	width: 520px;
+	height: auto;
+	border: 0.5px solid #1a64ae;
+	background-color: #0f3964;
+	padding: 40px 55px 40px 55px;
 }
 
-.fmailCmf{ color: red; }
+h2{
+	box-sizing: border-box;
+	border-bottom: 5px solid green;
+	margin-top: 0;
+	width: 250px;
+}
+
+.fmailCmf{ 
+	color: red; 
+	font-size: 0.95rem;
+	width: 240px;
+}
+
+.formMainDiv1{
+	position: static;
+	box-sizing: border-box;
+	width: 100%;
+	height: 55px;
+}
+
+.formDiv2{
+	display: flex;
+	justify-content: center;
+	position: relative;
+	background-color: inherit;
+	z-index: 1;
+	left: 10px;
+	top: -44px;
+	width: 150px;
+	color: gray;
+	transition: all 0.3s ease 0s;
+	font-size: 1.2rem;
+	padding: 0 2px 0 2px;
+}
+
+.formDiv1{
+	display: flex;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.fpwdEamil{
+	width: 100%;
+	height: 55px;
+	font-size: 1rem;
+	box-sizing: border-box;
+	padding: 10px 10px 10px 10px; 
+	background-color: inherit;
+	border: none;
+	color: white;
+}
+.fpwdEamil:focus{ outline: none; }
+
+.formDiv3{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+#sendEmail{
+	width: 80px;
+	height: 30px;
+	color: white;
+	background-color: #4d93d9;
+	border-radius: 5px;
+	border: none;
+	font-size: 0.95rem;
+}
+
+#sendEmail:hover{ background-color: #276fb6;cursor: pointer; }
+#sendEmail:focus{ outline: none; }
+
+
+
+
+
+
+
+
+
+
+
+

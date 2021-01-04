@@ -5,13 +5,21 @@
 
 <section class="fpwdSection">
 	<div class="fpwdContainer">
-		<h2>비밀번호 찾기</h2>
-		<span>임시비밀번호를 받기 위해 mail주소를 입력하세요</span>
-		<form class="fpwdForm" id="fpwdForm" method="post" action="${cpath }/findPwd/">
-			<h3>mail주소 입력</h3>
-			<input type="text" class="fpwdEamil" id="fpwdEmail" name="email" placeholder="입력" value="${NFEval }">
-			<div class="fmailCmf" id="fmailCmf">${NFE }</div>
-			<button type="button" id="sendEmail">메일로 발송</button>
+		<h2>임시 비밀번호 발급</h2>
+		
+		<span>임시비밀번호를 발급받기 위해 E-mail주소를 입력하세요.</span>
+		<br>
+		<form class="fpwdForm" id="fpwdForm" method="post" action="${cpath }/findPwd/" onsubmit="return false">	
+			<div class="formMainDiv1">
+				<div class="formDiv1" id="formDiv1">
+					<input type="text" class="fpwdEamil" id="fpwdEmail" name="email" value="${NFEval }">
+				</div>
+				<div class="formDiv2" id="formDiv2">E-mail주소 입력</div>
+			</div>
+			<div class="formDiv3">
+				<div class="fmailCmf" id="fmailCmf">${NFE }</div>
+				<button type="button" id="sendEmail">메일 발송</button>
+			</div>
 		</form>
 	</div>
 </section>
