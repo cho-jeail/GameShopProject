@@ -81,10 +81,6 @@
 	resize: none;
 }
 
-#searchCoup:hover {
-	cursor: pointer;
-}
-
 #couponList{
 /* 	display: none; */
 }

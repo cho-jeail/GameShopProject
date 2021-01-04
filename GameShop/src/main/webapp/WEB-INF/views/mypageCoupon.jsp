@@ -18,20 +18,17 @@
 		<div class="mypMenu"> 
 			<ul class="mypUl">
 				<li><a href="${cpath }/mypage">회원정보</a></li>
-				<li>구매내역</li>
-				<li>위시리스트</li>
+				<li><a href="${cpath }/mypage/compareProduct/">구매내역</a></li>
+				<li><a href="${cpath }/mypage/basket/">위시리스트</a></li>
 				<li><a href="${cpath }/mypage/mypageCoupon/">COUPON</a></li>
 				<li><a href="${cpath }/mypage/mypQna/">문의내역</a></li>
-				<li><a href="${cpath }/mypage/mypage_memberOut/">회원탈퇴</a></li>
+				<li><a href="${cpath }/mypage/mypageMemberOut/">회원탈퇴</a></li>
 			</ul>
 		</div>
 		<div class="mypContents">
 			<div class="mypCoupon" id="mypCoupon">
 				<div>
-					<h2 id="searchCoup">쿠폰내역 확인하기(클릭)</h2>
-					<form id="scForm" method="post" action="${cpath }/mypage/mypageCoupon/" onsubmit="return false">
-						<input type="hidden" name="userId" value="${signin.id }">
-					</form>
+					<h2 id="searchCoup">쿠폰내역</h2>
 					<div id="couponList">
 						<c:choose>
 							<c:when test="${not empty userCoupons }">

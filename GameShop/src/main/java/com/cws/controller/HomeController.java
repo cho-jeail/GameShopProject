@@ -2,7 +2,6 @@ package com.cws.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cws.service.ConsumerCenterService;
 import com.cws.service.StoreService;
 import com.cws.service.UserService;
-import com.cws.vo.CompareProductVO;
 import com.cws.vo.CouponVO;
 import com.cws.vo.OutReasonVO;
 import com.cws.vo.UserVO;
@@ -101,22 +99,18 @@ public class HomeController {
 	public String memberOutView() { return "mypageMemberOut"; }
 	
 	@RequestMapping(value = "/mypage/mypageCoupon/")
-	public String mypageCouponView() { return "mypageCoupon"; }
+	public ModelAndView mypageCouponView(HttpSession session) { 
+		UserVO vo = (UserVO)session.getAttribute("signin");
+		return UServ.selectCoupons(vo.getId());
+	}
 	
 	@RequestMapping(value = "/mypage/mypageMemberOut/", method = RequestMethod.POST)
 	public ModelAndView memberOut(OutReasonVO vo, HttpSession session, HttpServletRequest req, HttpServletResponse resp) {
 		return UServ.memberOut(vo, session, req, resp);
 	}
 	
-	@RequestMapping(value = "/mypage/mypageCoupon/", method = RequestMethod.POST)
-	public ModelAndView mypageCoupons(CouponVO vo) {
-//		System.out.println("확인 : " + vo.getUserId());
-		return UServ.selectCoupons(vo.getUserId());
-	}
-	
 	@RequestMapping(value = "/mypage/mypageCoupon/regCoupon/", method = RequestMethod.POST)
 	public ModelAndView insertCoupon(CouponVO vo) {
-//		System.out.println("id확인 : " + vo.getUserId());
 		return UServ.insertCoupon(vo);
 	}
 	
