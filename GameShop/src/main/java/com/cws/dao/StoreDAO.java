@@ -38,7 +38,5 @@ public interface StoreDAO {
 	int wishCount(String userID);
 
 	List<WishVO> wishList(String name);
-
-	CompareProductVO selHistory(String singin);
 	
 }
