@@ -31,11 +31,21 @@ public class StoreController {
 	// 게임 Store 메인 페이지
 	@RequestMapping(value = "/gameStore/", method = RequestMethod.GET)
 	public String home(Model model) {
-		System.out.println("넘어옴");
 		List<ProductVO> storeList = ss.selectAll();
 		model.addAttribute("storeList", storeList);
 		return "gameStore";
-
+	}
+	
+	// 게임 Store 메뉴 카테고리
+	@RequestMapping(value = "/gameStore/", method = RequestMethod.POST)
+	public String gameStore(@RequestParam("name") String name, Model model) {
+		
+		if("new".equals(name))			model.addAttribute("storeList", ss.cateList(name));
+		else if("free".equals(name))	model.addAttribute("storeList", ss.cateList(name));
+		else if("favo".equals(name))	model.addAttribute("storeList", ss.cateList(name));
+		else if("disc".equals(name))	model.addAttribute("storeList", ss.cateList(name));		
+		
+		return "gameStore";
 	}
 
 	// 게임 소개 페이지
@@ -61,22 +71,11 @@ public class StoreController {
 
 	// 게임 구매"완료" 결제창
 	@RequestMapping(value = "/gameStore/gameIntro/{game}/", method = RequestMethod.POST)
-	public String paymentFinish(@PathVariable("game")String game, 
-			@RequestParam("name")String name,
-			@RequestParam("userID")String userID, 
+	public String paymentFinish(@PathVariable("game")String game, @RequestParam("name")String name, @RequestParam("userID")String userID, 
 			Model model) throws NullPointerException {
-		System.out.println("결제창 들어옴!!! : " + game);
-		System.out.println("결제창 들어옴 : " + name);
 		ProductVO pvo = ss.selectInfo(name);	// 게임 정보
-//		System.out.println("pvo : " + name.equals(pvo.getName()));
-//		System.out.println("list" + list.size());
 		UserVO user = ss.selectGetUser(userID);
-//		System.out.println("userid : " + user.getId());
-
-//		System.out.println("cnt : " + cnt);
-//		System.out.println(pvo2.getName());
 		if(name.equals(game)) {		// 구매하기
-//			System.out.println("구매하기" + pvo.getName());
 			int cnt = 0;		// 보유중인 게임 개수
 			cnt = ss.count(userID);
 			List<CompareProductVO> compareList = ss.update(name, user, cnt);
@@ -84,9 +83,6 @@ public class StoreController {
 			return "redirect:/";
 		}
 		else if(name.equals(pvo.getId())) {	// 위시리스트
-//			System.out.println("위시리스트" + pvo.get(i).getInfo());
-			System.out.println("위시리스트 들어옴");
-			System.out.println("game : " + game);
 			int cnt = 0;		// 보유중인 게임 개수
 			cnt = ss.wishCount(userID);
 			List<WishVO> wishList = ss.addWish(game, user, cnt);
@@ -98,11 +94,9 @@ public class StoreController {
 	}
 
 	// 위시리스트 항목 삭제
-	@RequestMapping(value = "/mypage/basket/{product}", 
-			produces="application/text;charset=utf8")
+	@RequestMapping(value = "/mypage/basket/{product}", produces="application/text;charset=utf8")
 	@ResponseBody
 	public String delProduct(@PathVariable("product")String product) {
-		System.out.println("삭제product : " + product);
 		String jsonString = null;
 		ObjectMapper jsonMapper = new ObjectMapper();
 		try {

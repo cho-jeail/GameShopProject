@@ -38,5 +38,13 @@ public interface StoreDAO {
 	int wishCount(String userID);
 
 	List<WishVO> wishList(String name);
+
+	List<ProductVO> newList();
+
+	List<ProductVO> freeList();
+
+	List<ProductVO> favoList();
+
+	List<ProductVO> discList(String disc);
 	
 }

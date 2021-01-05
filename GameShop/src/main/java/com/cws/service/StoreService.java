@@ -174,5 +174,32 @@ public class StoreService {
 		}
 		return null;	
 	}
+
+	// 게임 스토어 카테고리 분류
+	public List<ProductVO> cateList(String name) {
+		if("new".equals(name)) {
+			List<ProductVO> newList = sd.newList();
+			return newList;
+		}
+		else if("free".equals(name)) {
+			List<ProductVO> freeList = sd.freeList();
+			return freeList;
+		}
+		else if("favo".equals(name)) {
+			List<ProductVO> favoList = sd.favoList();
+			return favoList;
+		}
+		else if("disc".equals(name)) {
+			String disc = "할인";
+			List<ProductVO> discList = sd.discList(disc);
+			for(int i = 0; i < discList.size(); i++) {
+				int discProduct = discList.get(i).getPrice();
+				discProduct = discProduct - (discProduct / 10);
+				discList.get(i).setPrice(discProduct);
+			}
+			return discList;
+			}
+		return null;
+	}
 	
 }

@@ -73,4 +73,20 @@
 		select * from wish where userid=#{name}
 	</select>
 	
+	<select id="newList" resultType="ProductVO">
+		select * from product order by releasedate desc
+	</select>
+	
+	<select id="freeList" resultType="ProductVO">
+		select * from product where price=0
+	</select>
+	
+	<select id="favoList" resultType="ProductVO">
+		select * from product order by rating desc
+	</select>
+	
+	<select id="discList" parameterType="String" resultType="ProductVO">
+		select * from product where disc=#{disc}
+	</select>
+	
 </mapper>
