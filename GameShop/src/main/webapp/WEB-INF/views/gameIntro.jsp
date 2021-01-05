@@ -19,11 +19,11 @@
 				</div>
 
 				<div class="information">
-					<h4 id="price">가격 : ${game.price }</h4>
-					<h4 id="info">정보 : ${game.info }</h4>
-					<h4 id="developer">개발사 : ${game.developer }</h4>
-					<h4 id="publisher">배포사 : ${game.publisher }</h4>
-					<h4 id="tag">태그 : ${game.tags }</h4>
+					<h4>가격 : ${game.price }</h4>
+					<h4>${game.info }</h4>
+					<h4>개발사 : ${game.developer }</h4>
+					<h4>배포사 : ${game.publisher }</h4>
+					<h4>태그 : ${game.tags }</h4>
 				</div>
 
 				<div class="gameinfo">
@@ -31,11 +31,18 @@
 				</div>			
 				
 				<div class="useProduct">
-					<h4 id="platform">플랫폼 : ${game.platform }</h4>
-					<h4 id="kind">장르 : ${game.kind }</h4>
-					<h4 id="controller">조이스틱 사용여부 : ${game.controller }</h4>
-					<h4 id="rating">나이제한 : ${game.rating }</h4>
-					<h4 id="languages">지원언어 : ${game.languages }</h4>
+					<h4>플랫폼 :
+						<c:if test="${game.platform == 2 }">Window, MAC</c:if>
+						<c:if test="${game.platform == 1 }">MAC</c:if>
+						<c:if test="${game.platform == 0 }">Window</c:if>
+					</h4>
+					<h4>장르 : ${game.kind }</h4>
+					<h4>조이스틱 사용여부 : 
+						<c:if test="${game.controller == 0 }">불가능</c:if>
+						<c:if test="${game.controller == 1 }">가능</c:if>
+					</h4>
+					<h4>나이제한 : ${game.rating }</h4>
+					<h4>지원언어 : ${game.languages }</h4>
 				</div>
 			</div>
 		</div>
@@ -69,6 +76,9 @@
 						<a href="javascript:purchasePopup();">구매사항</a>을 잘 읽어보고 필수조건에 동의
 						합니다. <input type="checkbox" id="pk" name="purchase"
 							value="purchase">
+					</div>
+					<div>
+						쿠폰 사용하기<select></select>
 					</div>
 				</div>
 			</div>
@@ -147,8 +157,8 @@
 				
 				form.submit();
 			}
+			alert("구매가 완료됬습니다");
 		}
-		alert("구매가 완료됬습니다");
 	}
 
 	function purchasePopup() {

@@ -7,15 +7,15 @@
 <!-- <div> -->
 <!-- 	<h1>요기는 게임 스토어</h1> -->
 <!-- </div> -->
-
+<script type="text/javascript" src="${cpath }/js/store.js"></script>
 <div align="center">
 	<!-- 상단 메뉴(게임 분류) -->
 	<div class="Store-menu">
 		<ul>
-			<li><a href="#">최신게임</a></li>
-			<li><a href="#">무료게임</a></li>
-			<li><a href="#">인기게임</a></li>
-			<li><a href="#">할인게임</a></li>
+			<li><a href="javascript:void(0)" onclick="newGame()">최신게임</a></li>
+			<li><a href="javascript:void(0)" onclick="freeGame()">무료게임</a></li>
+			<li><a href="javascript:void(0)" onclick="favoGame()">인기게임</a></li>
+			<li><a href="javascript:void(0)" onclick="discGame()">할인게임</a></li>
 		</ul>
 	</div>
 </div>
@@ -33,29 +33,9 @@
 				<li>
 					<a href="${cpath }/gameStore/gameIntro/${list.name}/">
 						<img src="${cpath }/resources/image/image1.jpg"
-						style="width: 160px; height: 150px; margin-bottom: 5px;" name="테스트성공">
+						style="width: 160px; height: 150px; margin-bottom: 5px;">
 					</a>
 				</li>
-<!-- 				<li> -->
-<%-- 					<a href="#"><img src="${cpath }/resources/image/image1.jpg" --%>
-<!-- 				style="width: 160px; height: 150px; margin-bottom: 5px;"></a> -->
-<!-- 				</li> -->
-<!-- 				<li> -->
-<%-- 					<a href="#"><img src="${cpath }/resources/image/image1.jpg" --%>
-<!-- 				style="width: 160px; height: 150px; margin-bottom: 5px;"></a> -->
-<!-- 				</li> -->
-<!-- 				<li> -->
-<%-- 					<a href="#"><img src="${cpath }/resources/image/image1.jpg" --%>
-<!-- 				style="width: 160px; height: 150px; margin-bottom: 5px;"></a> -->
-<!-- 				</li> -->
-<!-- 				<li> -->
-<%-- 					<a href="#"><img src="${cpath }/resources/image/image1.jpg" --%>
-<!-- 				style="width: 160px; height: 150px; margin-bottom: 5px;"></a> -->
-<!-- 				</li> -->
-<!-- 				<li> -->
-<%-- 					<a href="#"><img src="${cpath }/resources/image/image1.jpg" --%>
-<!-- 				style="width: 160px; height: 150px; margin-bottom: 5px;"></a> -->
-<!-- 				</li> -->
 			</ul>
 			</c:forEach>
 		</div>
@@ -162,5 +142,6 @@
 	</c:forEach>
 	</div>
 </div>
+
 <hr>
 <%@ include file="footer.jsp" %>

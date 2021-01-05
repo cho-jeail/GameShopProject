@@ -14,7 +14,7 @@ public class WishVO {
 	private String tags;
 	private int platform;
 	private int controller;
-	private int rating;
+	private double rating;
 	private String languages;
 	private String kind;
 	
@@ -78,10 +78,10 @@ public class WishVO {
 	public void setController(int controller) {
 		this.controller = controller;
 	}
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 	public String getLanguages() {
