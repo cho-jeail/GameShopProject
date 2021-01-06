@@ -28,7 +28,7 @@
 		<div class="mypContents">
 			<div class="mypCoupon" id="mypCoupon">
 				<div>
-					<h2 id="searchCoup">쿠폰내역</h2>
+					<h2 class="mypH2">쿠폰내역</h2>
 					<div id="couponList">
 						<c:choose>
 							<c:when test="${not empty userCoupons }">
@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<div>
-					<h2>쿠폰등록</h2>
+					<h2 class="mypH2">쿠폰등록</h2>
 					<form class="regCForm" id="regCForm" method="post" action="${cpath }/mypage/mypageCoupon/regCoupon/" onsubmit="return false">
 						<input type="text" name="id" class="regCoup" id="regCoup" onkeyup="enterkey()" placeholder="쿠폰번호를 입력하세요">
 						<input type="hidden" name="userId" value="${signin.id }">

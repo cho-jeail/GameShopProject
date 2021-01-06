@@ -13,7 +13,6 @@ function changeCss(){
 	fDiv2.style.transform = 'translateY(-25px)';
 	fDiv2.style.color = 'white';
 	fDiv2.style.backgroundColor = '#0f3964';
-	fDiv2.style.width = '130px';
 	fDiv2.style.fontSize = '1.0rem';
 	fDiv1.style.border = '1px solid white';
 	fmail.focus();
@@ -23,7 +22,6 @@ function changeCss2(){
 	fDiv2.style.transform = 'translateY(0px)';
 	fDiv2.style.color = 'gray';
 	fDiv2.style.backgroundColor = 'inherit';
-	fDiv2.style.width = '150px';
 	fDiv2.style.fontSize = '1.2rem';
 	fDiv1.style.border = '1px solid gray';
 	fmail.value = '';
@@ -70,6 +68,7 @@ function sendEmail(event){
 	
 	if(regCk === true){
 		fpForm.submit();
+		fmail.value = '';
 	}
 	else{
 		return;
