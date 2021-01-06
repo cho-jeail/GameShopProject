@@ -39,12 +39,7 @@ public class StoreController {
 	// 게임 Store 메뉴 카테고리
 	@RequestMapping(value = "/gameStore/", method = RequestMethod.POST)
 	public String gameStore(@RequestParam("name") String name, Model model) {
-		
-		if("new".equals(name))			model.addAttribute("storeList", ss.cateList(name));
-		else if("free".equals(name))	model.addAttribute("storeList", ss.cateList(name));
-		else if("favo".equals(name))	model.addAttribute("storeList", ss.cateList(name));
-		else if("disc".equals(name))	model.addAttribute("storeList", ss.cateList(name));		
-		
+		model.addAttribute("storeList", ss.cateList(name));	
 		return "gameStore";
 	}
 
@@ -71,11 +66,24 @@ public class StoreController {
 
 	// 게임 구매"완료" 결제창
 	@RequestMapping(value = "/gameStore/gameIntro/{game}/", method = RequestMethod.POST)
-	public String paymentFinish(@PathVariable("game")String game, @RequestParam("name")String name, @RequestParam("userID")String userID, 
-			Model model) throws NullPointerException {
+	public String paymentFinish(@PathVariable("game")String game, 
+			@RequestParam("name")String name, 
+			@RequestParam("userID")String userID, 
+			@RequestParam("coupon")String coupon, 
+			Model model) {
 		ProductVO pvo = ss.selectInfo(name);	// 게임 정보
 		UserVO user = ss.selectGetUser(userID);
-		if(name.equals(game)) {		// 구매하기
+		if(name.equals(game) && coupon != "") {		// 구매하기
+			int cnt = 0;		// 보유중인 게임 개수
+			cnt = ss.count(userID);
+			List<CompareProductVO> compareList = ss.updateCoupon(name, user, cnt, coupon);
+			System.out.println("쿠폰결제의 : " + coupon);
+			if (compareList.get(0).getPrice() < 0)
+				model.addAttribute("msg", "쿠폰금액이 결제금액 보다 많습니다. 결제를 진행하시겠습니까?");
+			model.addAttribute("compareList", compareList);
+			return "redirect:/";
+		}
+		else if(name.equals(game)) {
 			int cnt = 0;		// 보유중인 게임 개수
 			cnt = ss.count(userID);
 			List<CompareProductVO> compareList = ss.update(name, user, cnt);

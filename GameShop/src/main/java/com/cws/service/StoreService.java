@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.dao.StoreDAO;
 import com.cws.vo.CompareProductVO;
+import com.cws.vo.CouponVO;
 import com.cws.vo.ProductVO;
 import com.cws.vo.UserVO;
 import com.cws.vo.WishVO;
@@ -65,15 +66,59 @@ public class StoreService {
 			sd.compareInsert(compare);
 		}
 		else {
-//			for(int i = 0; i < cnt; i ++) {
-//				if(!name.equals(compareList.get(i).getName()) == true) {
-//					System.out.println("과연? " + (game.equals(compareList.get(i).getName()) == true));
-					sd.compareInsert(compare);
-//				}
-//			}
+			sd.compareInsert(compare);
 		}
 		
 		return compareList;
+	}
+	
+	// 쿠폰사용결제
+	public List<CompareProductVO> updateCoupon(String name, UserVO user, int cnt, String coupon) {
+		CompareProductVO compare = new CompareProductVO();
+		ProductVO pvo = sd.productSelect(name);
+		CouponVO cvo = new CouponVO();
+		
+		cvo.setUserId(user.getId());
+		cvo.setName(coupon);
+		
+		cvo = sd.findCoupon(cvo);
+		System.out.println("updateCoupon : " + cvo.getName());
+		
+		compare.setUserid(user.getId());
+		compare.setId(pvo.getId());
+		compare.setName(pvo.getName());
+		compare.setPrice(pvo.getPrice() - cvo.getSalePrice());
+		if(compare.getPrice() < 0)
+			compare.setPrice(0);
+		compare.setInfo(pvo.getInfo());
+		compare.setDeveloper(pvo.getDeveloper());
+		compare.setPublisher(pvo.getPublisher());
+		compare.setTags(pvo.getTags());
+		compare.setPlatform(pvo.getPlatform());
+		compare.setController(pvo.getController());
+		compare.setRating(pvo.getRating());
+		compare.setLanguages(pvo.getLanguages());
+		compare.setKind(pvo.getKind());
+		System.out.println("이건 대체 뭘까 : " + compare.getUserid());
+		
+		List<CompareProductVO> compareList = sd.compareSelect(compare.getUserid());
+		deleteCoupon(user, coupon);
+		
+		if(compareList.size() == 0) {
+			sd.compareInsert(compare);
+		}
+		else {
+			sd.compareInsert(compare);
+		}
+		return compareList;
+	}
+	
+	// 쿠폰사용 시 쿠폰삭제
+	public void deleteCoupon(UserVO user, String coupon) {
+		CouponVO cvo = new CouponVO();
+		cvo.setUserId(user.getId());
+		cvo.setName(coupon);
+		sd.deleteCoupon(cvo);
 	}
 
 	// 게임을 결제한 유저의 ID값을 받아옴

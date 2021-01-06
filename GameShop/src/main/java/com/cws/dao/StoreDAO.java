@@ -3,6 +3,7 @@ package com.cws.dao;
 import java.util.List;
 
 import com.cws.vo.CompareProductVO;
+import com.cws.vo.CouponVO;
 import com.cws.vo.ProductVO;
 import com.cws.vo.UserVO;
 import com.cws.vo.WishVO;
@@ -46,5 +47,9 @@ public interface StoreDAO {
 	List<ProductVO> favoList();
 
 	List<ProductVO> discList(String disc);
+
+	CouponVO findCoupon(CouponVO cvo);
+
+	void deleteCoupon(CouponVO cvo);
 	
 }
