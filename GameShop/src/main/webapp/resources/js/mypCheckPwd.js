@@ -1,20 +1,57 @@
 let mypCPdiv = document.getElementById('mypCheckPwd');
 let mypDiv = document.getElementById('mypDiv1');
 let mypCPBtn = document.getElementById('mypChkPwBtn');
+
+let mypChkPw = document.getElementById('mypChkPw');
+
+let divA = document.getElementById('mypChkPw_A');
+let divB = document.getElementById('mypChkPw_B');
+
 mypCPBtn.addEventListener('click', mypChkPwd);
 
 function enterkey() {
 	 if (window.event.keyCode == 13) { mypChkPwd(event); } 
 }
 
+function changeCss(){
+	divB.style.transform = 'translateY(-25px)';
+	divB.style.backgroundColor = '#0f3964';
+	divB.style.fontSize = '1.0rem';
+	divA.style.border = '1px solid white';
+	divB.style.color = 'white';
+	mypChkPw.focus();
+}
+
+function changeCss2(){
+	divB.style.transform = 'translateY(0px)';
+	divB.style.color = 'gray';
+	divB.style.backgroundColor = 'inherit';
+	divB.style.fontSize = '1.2rem';
+	divA.style.border = '1px solid gray';
+	mypChkPw.value = '';
+}
+
+window.onclick = function(event){
+	if(event.target === mypChkPw || event.target === mypCPBtn || event.target === divB){
+		changeCss();			
+	}
+	else{
+		if(mypChkPw.value !== ''){
+			divA.style.border = '1px solid gray';
+			divB.style.color = 'gray';
+		}
+		else{
+			changeCss2();
+		}
+	}
+}
+
 // 비밀번호 확인
 function mypChkPwd(event){
 	event.preventDefault();
 	let cmf = document.getElementById('mypChkPwCmf');
-	let pwd = document.getElementById('mypChkPw');
+	let pwd = mypChkPw;
 	let form = document.getElementById('mypChkPwForm'); // form = document.forms[0]; <- 같은거
-
-	console.log()
 	
 	if(pwd.value === ''){
 		cmf.innerText = '입력바랍니다.'
@@ -46,6 +83,8 @@ function mypChkPwd(event){
 				}
 				else{
 					cmf.innerText = '일치하지 않습니다.';
+					divA.style.border = '1px solid red';
+					divB.style.color = 'red';
 					pwd.value = '';
 				}
 			}

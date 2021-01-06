@@ -26,25 +26,31 @@
 		</div>
 		<div class="mypContents">
 			<div class="mypMemberOut" id="mypMemberOut">
+				<h2 class="mypH2">회원탈퇴</h2>					 
 				<div class="mypCheckPwd" id="mypCheckPwd">
-					<h2>탈퇴</h2>					 
-					<form class="mypChkPwForm" id="mypChkPwForm" onSubmit="return false">
-						<span>확인을 위해 비밀번호를 입력하여주세요</span>
-						<input type="password" class="mypChkPw" id="mypChkPw" name="password" onkeyup="enterkey()">
-						<div class="mypChkPwCmf" id="mypChkPwCmf"></div>
+					<div class="pwTextBox">- 사용자 확인을 위해 비밀번호를 입력하여주세요.</div>
+					<form class="mypChkPwForm" id="mypChkPwForm" onsubmit="return false">
+						<div class="mypChkPw_A" id="mypChkPw_A">
+							<input type="password" class="mypChkPw" id="mypChkPw" name="password" onkeyup="enterkey()">
+						</div>
+						<div class="mypChkPw_B" id="mypChkPw_B">비밀번호 확인</div>
 						<input type="hidden" name="id" value="${signin.id }">
-						<button type="button" id="mypChkPwBtn">확인</button>
 					</form>
+					<div class="mypChkPwd2">
+						<div class="mypChkPwCmf" id="mypChkPwCmf"></div>
+						<button type="button" id="mypChkPwBtn">확 인</button>					
+					</div>
 				</div>
 				<div class="mypDiv1" id="mypDiv1">
-					<h2>탈퇴</h2>
-					<p>정말로 탈퇴하시겠습니까? 탈퇴하시고 다시 가입하셔도 이전 쿠폰들을 이용할 수 없습니다.</p>
-					<p>탈퇴 사유를 자유롭게 작성하여 주세요(필수 아님)</p>
+					<div class="outTextDiv">- 정말로 탈퇴하시겠습니까? 탈퇴하시고 다시 가입하셔도 이전 쿠폰들을 이용할 수 없습니다.</div>
 					<form class="MOutForm" id="MOutForm" method="post" action="${cpath }/mypage/mypageMemberOut/" onsubmit="return false" >
-						<textarea rows="5" cols="40" name="outreason" id="outReason" class="outReason" maxlength="300"></textarea>
+						<div class="outTextArea">
+							<textarea rows="5" cols="40" name="outreason" id="outReason" class="outReason" maxlength="200" placeholder="200자 이내"></textarea>						
+						</div>
+						<div class="outReasonTitle">탈퇴 사유를 자유롭게 작성하여 주세요. <span>( 필수 <span style="color: red;">X</span> )</span></div>
 						<input type="hidden" name="id" value="${signin.id }">
-						<button type="button" id="MOBtn">회원탈퇴</button>
 					</form>
+					<button type="button" id="MOBtn">회원탈퇴</button>
 				</div>
 			</div>
 		</div>

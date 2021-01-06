@@ -46,11 +46,11 @@ h2{
 	z-index: 1;
 	left: 10px;
 	top: -44px;
-	width: 150px;
+	width: max-content;
 	color: gray;
 	transition: all 0.3s ease 0s;
 	font-size: 1.2rem;
-	padding: 0 2px 0 2px;
+	padding: 0 5px 0 5px;
 }
 
 .formDiv1{

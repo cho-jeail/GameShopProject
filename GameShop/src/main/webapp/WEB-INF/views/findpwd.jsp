@@ -12,12 +12,12 @@
 		<form class="fpwdForm" id="fpwdForm" method="post" action="${cpath }/findPwd/" onsubmit="return false">	
 			<div class="formMainDiv1">
 				<div class="formDiv1" id="formDiv1">
-					<input type="text" class="fpwdEamil" id="fpwdEmail" name="email" value="${NFEval }">
+					<input type="text" class="fpwdEamil" id="fpwdEmail" name="email">
 				</div>
 				<div class="formDiv2" id="formDiv2">E-mail주소 입력</div>
 			</div>
 			<div class="formDiv3">
-				<div class="fmailCmf" id="fmailCmf">${NFE }</div>
+				<div class="fmailCmf" id="fmailCmf"></div>
 				<button type="button" id="sendEmail">메일 발송</button>
 			</div>
 		</form>

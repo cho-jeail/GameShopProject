@@ -135,14 +135,16 @@ public class UserService {
 			}		
 			
 			udao.updatePw(svo);
+			mav.addObject("mail", svo.getEmail());
 			mav.addObject("msg", "메일발송");
 			mav.addObject("url", "signin");
 			
 		}
 		else {
-			mav.setViewName("findpwd");
-			mav.addObject("NFE", "등록된 계정이 없습니다.");
-			mav.addObject("NFEval", vo.getEmail());
+			System.out.println("등록된 계정이 없습니다.");
+			mav.addObject("mail", vo.getEmail());
+			mav.addObject("msg", "메일발송");
+			mav.addObject("url", "signin");
 		}
 		return mav;
 	}

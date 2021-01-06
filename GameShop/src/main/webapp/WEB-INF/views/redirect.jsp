@@ -25,7 +25,7 @@
 		location.href="${cpath}/${url}";
 	}
 	else if(msg === "메일발송"){
-		alert("이메일이 발송되었습니다.");
+		alert("${mail}로 메일이 발송되었습니다.");
 		location.href="${cpath}/${url}";
 	}
 	else if(msg === "정보수정실패"){

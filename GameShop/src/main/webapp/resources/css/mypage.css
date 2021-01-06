@@ -1,89 +1,358 @@
 @charset "UTF-8";
 
+/* 공통 */
 .mypSection{
 	padding-top: 20px;
-	display: inline-flex;
+	display: flex;
 	justify-content: center;
 	width: 100%;
-	height: 100%;
-	border: 1px solid black;
-	
+	min-height: 800px;
+	height: auto;
 }
 
 .mypContainer{
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 	width: 880px;
-	height: 900px;
-	border: 1px solid blue;
-	margin: 0 auto 0 auto;
+	margin: 0 auto auto auto;
+	color: white;
 }
 
 .mypMenu{
 	display: flex;
-	width: 180px;
-	height: 400px;
-	margin-top: 30px;
 	border: 1px solid pink;
 }
 
-.mypContents{
-	width: 670px;
-	height: 700px;
-	border: 1px solid black;
-	padding: 10px;
-	background-color: #eeeced;
-}
-
-.mypInfoContent{
-	display: flex;
-	width: 100%;
-	height: 100%;
-	background-color: white;
-}
-
-.mypDiv1{
-	display: none;
-	width: 100%;
-	height: 100%;
-	background-color: white;
-	flex-direction: column;
-}
-
-.cxBtn, .sBtn{
-	display: none;
-}
-
-.mypChkPwCmf{ color: red; }
-
 .mypUl{
+	display: flex;
+	justify-content: space-between;
 	list-style: none;
 	padding-left: 0px;
+	margin: 0;
 	width: 100%;
 
 }
 
 .mypUl li{
+	width: 130px;
 	height: 50px;
 	background-color: #7f7f7f;
-	color: white;
 	text-align: center;
 	line-height: 50px;
-	margin-bottom: 10px;
 }
-
 .mypUl li:hover {
 	background-color: #dcd6dc;
 	cursor: pointer;
 }
 
-.outReason{
-	resize: none;
+.mypContents{
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+	padding: 30px;
+	background-color: #0f3964;
+	border-radius: 0 0 5px 5px;
 }
 
-#couponList{
-/* 	display: none; */
+/* 비밀번호 확인 */
+.mypInfoContent, .mypMemberOut{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: auto;
 }
+
+.mypH2{
+	box-sizing: border-box;
+	border-bottom: 5px solid green;
+	width: 180px;
+	margin: 0 0 20px 10px;
+}
+
+.pwTextBox{
+	padding: 10px;
+	background-color: #ffd5dc;
+	border-radius: 5px;
+	color: #b50000;
+	font-size: 0.9rem;
+}
+
+.mypCheckPwd{
+	display: flex;
+/* 	display: none; */
+	flex-direction: column;
+	width: 400px;
+	margin: 30px auto 60px auto;
+	padding: 5px;
+}
+
+.mypChkPwForm{
+	margin-top: 20px;
+	position: static;
+	height: 55px;
+}
+
+.mypChkPw_A{
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.mypChkPw_B{
+	display: flex;
+	justify-content: center;
+	position: relative;
+	background-color: inherit;
+	z-index: 1;
+	left: 10px;
+	top: -42px;
+	width: max-content;
+	color: gray;
+	transition: all 0.3s ease 0s;
+	font-size: 1.2rem;
+	padding: 0 5px 0 5px;
+}
+
+.mypChkPw{
+	box-sizing: border-box;
+	width: 100%;
+	height: 55px;
+	font-size: 1rem;
+	color: white;
+	box-sizing: border-box;
+	padding: 10px 10px 10px 10px;
+	border: none;
+	background-color: inherit;
+}
+.mypChkPw:focus{ outline: none; }
+
+.mypChkPwd2{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+.mypChkPwCmf{ color: red; font-size: 0.95rem; }
+
+#mypChkPwBtn{
+	width: 80px;
+	height: 30px;
+	color: white;
+	background-color: #4d93d9;
+	border-radius: 5px;
+	border: none;
+	font-size: 0.95rem;
+}
+#mypChkPwBtn:hover{ background-color: #276fb6; cursor: pointer; }
+#mypChkPwBtn:focus{ outline: none; }
+
+
+.mypDiv1{
+	box-sizing: border-box;
+	display: none;
+/* 	display: flex; */
+	width: 100%;
+	height: auto;
+	flex-direction: column;
+	margin-top: 20px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* 회원정보 수정 */
+.mypFormInDiv{
+	display: flex;
+	margin-bottom: 20px;
+	width: 100%;
+	height: auto;
+}
+
+.mypFIDTitle{
+	width: 170px;
+	height: 45px;
+	line-height: 45px;
+}
+
+.mypInput{
+	box-sizing: border-box;
+	width: 200px;
+	height: 45px;
+	border: none;
+	border-radius: 5px;
+	background-color: inherit;
+	font-size: 0.9rem;
+	color: gray;
+	padding: 10px;
+}
+
+.mypCmf{
+	margin-left: 10px;
+	font-size: 0.8rem;
+	line-height: 45px;
+}
+
+#roadFullAddr{width: 400px;}
+.mypInput:focus{ outline: none;}
+
+
+#mypFIDDivs{
+	justify-content: space-between;
+}
+
+.mypPwdDivs{
+	display: flex;
+	padding: 6.5px 0 6.5px 0;
+}
+
+.mypPwRuleMsg{ 
+	box-sizing: border-box;
+	width: 210px;
+	font-size: 0.75rem; 
+	padding: 10px;
+	background-color: #ffd5dc;
+	border-radius: 5px;
+	color: #b50000;
+}
+
+.addrBtnDiv{
+	display: flex;
+	padding-top: 10px;
+	margin-left: 15px;
+}
+
+.addrBtn{ 
+	display: none;
+	width: 80px;
+	height: 20px;
+	border-radius: 20px;
+	margin-left: 10px;
+}
+
+#addrClsBtn{
+	display: none;
+	height: 20px;
+	border-radius: 20px;	
+}
+
+.addrBtn, #addrClsBtn{
+	border: none;	
+	background-color: #4d93d9;
+	color: white;
+}
+.addrBtn:hover{background-color: #276fb6;cursor: pointer;}
+#addrClsBtn:hover{background-color: #276fb6;cursor: pointer;}
+.addrBtn, #addrClsBtn:focus {outline: none;}
+
+.mypInfoBtns{
+	display: flex;
+	justify-content: space-around;
+	margin-top: 40px;
+	margin-bottom: 20px;
+}
+
+.updBtn, .cxBtn, .sBtn{
+	width: 100px;
+	height: 40px;
+	background-color: #4d93d9;
+	color: white;
+	font-size: 1.0rem;
+	border-radius: 5px;
+	border: none;
+}
+.updBtn:hover{background-color: #276fb6;cursor: pointer;}
+.cxBtn:hover{background-color: #276fb6;cursor: pointer;} 
+.sBtn:hover{background-color: #276fb6;cursor: pointer;}
+
+
+.cxBtn, .sBtn{
+	display: none;
+}
+
+/* 회원탈퇴 */
+
+.outTextDiv{
+	box-sizing: border-box;
+	font-size: 0.9rem; 
+	padding: 10px;
+	background-color: #ffd5dc;
+	border-radius: 5px;
+	color: #b50000;
+}
+
+.MOutForm{
+	position: static;
+}
+
+.outTextArea{
+	width: 400px;
+	height: 110px;
+	margin: 30px auto auto auto;
+	border: 1px solid white;
+	border-radius: 5px;
+}
+
+.outReason{
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	resize: none;
+	padding: 20px;
+	background-color: inherit;
+	border: none;
+	color: white;
+}
+.outReason:focus{ outline: none; }
+
+.outReasonTitle{
+	position: relative;
+	width: max-content;	
+	top: -120px;
+	margin: auto;
+	padding: 0 5px 0 5px;
+	color: white;
+	background-color: #0f3964;
+	font-size: 1.0rem;
+}
+.outReasonTitle span{ font-size: 0.95rem; }
+
+#MOBtn{
+	margin: 20px auto auto auto;
+	width: 100px;
+	height: 40px;
+	background-color: #4d93d9;
+	color: white;
+	font-size: 1.0rem;
+	border-radius: 5px;
+	border: none;
+}
+#MOBtn:hover{
+	background-color: #276fb6;
+	cursor: pointer;
+}
+#MOBtn:focus{ outline: none; }
+
+/* 회원 쿠폰 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
