@@ -16,12 +16,12 @@
 	<div class="mypContainer">
 		<div class="mypMenu"> 
 			<ul class="mypUl">
-				<li><a href="${cpath }/mypage">회원정보</a></li>
-				<li><a href="${cpath }/mypage/compareProduct/">구매내역</a></li>
-				<li><a href="${cpath }/mypage/basket/">위시리스트</a></li>
-				<li><a href="${cpath }/mypage/mypageCoupon/">COUPON</a></li>
-				<li><a href="${cpath }/mypage/mypQna/">문의내역</a></li>
-				<li><a href="${cpath }/mypage/mypageMemberOut/">회원탈퇴</a></li>
+				<li class="mypLi"><a href="${cpath }/mypage">회원정보</a></li>
+				<li class="mypLi"><a href="${cpath }/mypage/compareProduct/">구매내역</a></li>
+				<li class="mypLi"><a href="${cpath }/mypage/basket/">위시리스트</a></li>
+				<li class="mypLi"><a href="${cpath }/mypage/mypageCoupon/">COUPON</a></li>
+				<li class="mypLi"><a href="${cpath }/mypage/mypQna/">문의내역</a></li>
+				<li class="mypLi" id="mypLiOn"><a href="${cpath }/mypage/mypageMemberOut/">회원탈퇴</a></li>
 			</ul>
 		</div>
 		<div class="mypContents">

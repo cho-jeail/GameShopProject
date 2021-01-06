@@ -44,7 +44,7 @@
 	overflow: scroll;
 	overflow-x: hidden;
 	white-space: pre-line;
-	border-radius: 2px;
+	border-radius: 10px;
 	margin-bottom: 5px;
 /* 	-ms-overflow-style: none; IE and Edge */
 /*     scrollbar-width: none; Firefox */
@@ -54,6 +54,21 @@
 /* .policyTOS::-webkit-scrollbar { */
 /*     display: none; Chrome, Safari, Opera */
 /* } */
+
+.policyTOS::-webkit-scrollbar{ /* webkit 스크롤바 전체 (웹 표준은 적용안됨)*/
+    width: 10px;
+  }
+.policyTOS::-webkit-scrollbar-thumb { /* webkit 스크롤바 막대 */
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent; /* 투명하게 */
+}
+.policyTOS::-webkit-scrollbar-track { /* webkit 스크롤바 여백 */
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
 
 .policyTOSSet input{ margin-left: 0; }
 

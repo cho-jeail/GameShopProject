@@ -3,6 +3,7 @@
 /* 공통 */
 .mypSection{
 	padding-top: 20px;
+	padding-bottom: 20px;
 	display: flex;
 	justify-content: center;
 	width: 100%;
@@ -20,7 +21,6 @@
 
 .mypMenu{
 	display: flex;
-	border: 1px solid pink;
 }
 
 .mypUl{
@@ -33,16 +33,34 @@
 
 }
 
-.mypUl li{
-	width: 130px;
+.mypLi{
+	box-sizing: border-box;
+	width: 147px;
 	height: 50px;
-	background-color: #7f7f7f;
+	background-color: #0f3964;
 	text-align: center;
 	line-height: 50px;
+	border: 0.5px solid #1e70c1;
+	transition: border-top 0.5s ease 0s;
 }
-.mypUl li:hover {
-	background-color: #dcd6dc;
+
+.mypLi:hover {
+	border-top: 1px solid white;
 	cursor: pointer;
+	transition: border-top 0.5s ease 0s;
+}
+
+#mypLiOn{ 
+	border-top: 1px solid #80ffff;
+	border-bottom: none;
+}
+
+.mypLi a{
+	text-decoration: none;
+	color: white;
+	font-size: 1.0rem;
+	letter-spacing: 0.2rem; 
+	display: block;
 }
 
 .mypContents{
@@ -51,6 +69,8 @@
 	height: auto;
 	padding: 30px;
 	background-color: #0f3964;
+	border: 0.5px solid #1e70c1;
+	border-top: none;
 	border-radius: 0 0 5px 5px;
 }
 
@@ -66,7 +86,7 @@
 	box-sizing: border-box;
 	border-bottom: 5px solid green;
 	width: 180px;
-	margin: 0 0 20px 10px;
+	margin-bottom: 20px;
 }
 
 .pwTextBox{
@@ -79,7 +99,6 @@
 
 .mypCheckPwd{
 	display: flex;
-/* 	display: none; */
 	flex-direction: column;
 	width: 400px;
 	margin: 30px auto 60px auto;
@@ -149,7 +168,6 @@
 .mypDiv1{
 	box-sizing: border-box;
 	display: none;
-/* 	display: flex; */
 	width: 100%;
 	height: auto;
 	flex-direction: column;
@@ -268,7 +286,6 @@
 }
 
 /* 회원탈퇴 */
-
 .outTextDiv{
 	box-sizing: border-box;
 	font-size: 0.9rem; 
@@ -331,18 +348,96 @@
 #MOBtn:focus{ outline: none; }
 
 /* 회원 쿠폰 */
+.couponList{
+	box-sizing: border-box;
+	width: 100%;
+	height: 350px;
+	overflow-y: scroll;
+	background-color: #0c2b49;
+	border-radius: 10px;
+	padding-left: 10px;
+}
+.couponList::-webkit-scrollbar{ /* webkit 스크롤바 전체 (웹 표준은 적용안됨)*/
+    width: 10px;
+  }
+.couponList::-webkit-scrollbar-thumb { /* webkit 스크롤바 막대 */
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent; /* 투명하게 */
+}
+.couponList::-webkit-scrollbar-track { /* webkit 스크롤바 여백 */
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
 
+.coupon{
+	box-sizing: border-box;
+	display: inline-flex;
+	flex-direction: column;
+	width: 250px;
+	height: 150px;
+	font-size: 0.8rem;
+	font-weight: bolder;
+	color: black;
+	padding: 5px;
+	background: linear-gradient(to right bottom, red, white 50%, red);
+	margin: 10px 10px 0 0;
+	border-radius: 5px;
+}
 
+.couponHeader{
+	display: flex;
+	height: 45px;
+	justify-content: space-between;
+}
 
+.cpSiteName{ font-size: 1.2rem; font-family: fantasy; letter-spacing: 0.2rem;}
+.cpVali{ font-size: 0.7rem; }
 
+.couponBody{height: 86px;}
+.couponBody div{
+	width: max-content;
+	margin: auto auto 7px auto;
+}
 
+.cpName{ font-size: 1.3rem; letter-spacing: 0.2rem; }
+.cpPrice{ font-size: 1.0rem; font-family: cursive;}
+.cpTos{ font-size: 0.60rem; }
 
+.regCForm{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
 
+.regCoup{
+	box-sizing: border-box;
+	width: 250px;
+	height: 45px;
+	padding: 7px;
+	margin-right: 20px;
+	font-size: 1.0rem;
+	background-color: #0c2b49;
+	color: white;
+	border-radius: 5px;
+}
 
-
-
-
-
+.regBtn{
+	width: 80px;
+	height: 45px;
+	background-color: #4d93d9;
+	color: white;
+	font-size: 1.0rem;
+	border-radius: 5px;
+	border: none;
+}
+.regBtn:hover{
+	background-color: #276fb6;
+	cursor: pointer;
+}
+.regBtn:focus{ outline: none; }
 
 
 
