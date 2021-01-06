@@ -89,4 +89,12 @@
 		select * from product where disc=#{disc}
 	</select>
 	
+	<select id="findCoupon" parameterType="com.cws.vo.CouponVO" resultType="com.cws.vo.CouponVO">
+		select * from coupon where userid=#{userId} and name=#{name}
+	</select>
+	
+	<delete id="deleteCoupon">
+		delete from coupon where userid=#{userId} and name=#{name}
+	</delete>
+	
 </mapper>

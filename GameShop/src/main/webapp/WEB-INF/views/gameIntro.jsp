@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="${cpath }/css/gameStore.css">
 <!-- 게임 소개 페이지 -->
 <div>
-	
+	<c:set var="msg" value="${msg }" />
 	<c:forEach var="game" items="${product }">
 		<div class="intro">
 			<h2>${game.name }</h2>
@@ -78,7 +78,14 @@
 							value="purchase">
 					</div>
 					<div>
-						쿠폰 사용하기<select></select>
+						쿠폰 사용하기
+						<select name="coupon" id="coupon">
+							<option value="">쿠폰을 선택하세요</option>
+							<option value="이벤트쿠폰1">이벤트쿠폰1</option>
+							<option value="이벤트쿠폰2">이벤트쿠폰2</option>
+							<option value="오픈기념쿠폰">오픈기념쿠폰</option>
+							<option value="쿠우우폰">쿠우우폰</option>
+						</select>
 					</div>
 				</div>
 			</div>
@@ -92,7 +99,8 @@
 				style="cursor: pointer; background-color: #0054FF; text-align: center; padding-bottom: 10px; padding-top: 10px;"
 				onclick="purchaseConfirm()">
 				<span class="pop_bt modalCloseBtn" style="font-size: 13pt;">
-					구매 </span>
+					구매
+				</span>
 			</div>
 		</div>
 	</div>
@@ -131,15 +139,25 @@
 			var conPk = confirm("정말로 구매 하시겠습니까?");
 			var name = $("#name");
 			var userID = "${sessionScope.signin.id}";
+			var cou = document.getElementById('coupon');
+			var coupon;
+			
+			for(i = 0; i < cou.options.length; i++) {
+				if(cou.options[i].selected == true) {
+					coupon = cou.options[i].value;
+					break;
+				}
+			}
 
 			if (conPk === true) {
 				console.log("게임이름 : " + name);
 				console.log("유저이름 : " + userID);
+				console.log("쿠폰이름 : " + coupon);
 				
 				var form = document.createElement("form");
 				var input_pd = document.createElement("input");
 				var input_user = document.createElement("input");
-				
+				var input_coupon = document.createElement("input");
 
 				form.setAttribute("method", "post");
 // 				form.setAttribute("action",
@@ -150,14 +168,27 @@
 				input_user.setAttribute("type", "hidden");
 				input_user.setAttribute("name", "userID");
 				input_user.setAttribute("value", userID);
+				input_coupon.setAttribute("type", "hidden");
+				input_coupon.setAttribute("name", "coupon");
+				input_coupon.setAttribute("value", coupon);
 				document.body.appendChild(form);
-				console.log("userID : " + userID);
 				form.appendChild(input_pd);
 				form.appendChild(input_user);
+				form.appendChild(input_coupon);
 				
 				form.submit();
 			}
-			alert("구매가 완료됬습니다");
+			
+			var msg = "<c:out value="${msg }" />";
+			if (msg != null) {
+				var msgPk = confirm("쿠폰금액이 결제금액 보다 많습니다. 결제를 진행하시겠습니까?");
+				if(msgPk === true)
+					alert("구매가 완료됬습니다");
+				else{
+					alert("구매를 취소합니다")					
+					history.go(0);
+				}
+			}
 		}
 	}
 
