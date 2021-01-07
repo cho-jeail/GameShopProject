@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="${cpath }/css/gameStore.css">
 <!-- 게임 소개 페이지 -->
 <div>
-	<c:set var="msg" value="${msg }" />
+	<input type="hidden" id="msg" value='<c:out value="${msg }"></c:out>'>
 	<c:forEach var="game" items="${product }">
 		<div class="intro">
 			<h2>${game.name }</h2>
@@ -172,6 +172,7 @@
 				input_coupon.setAttribute("name", "coupon");
 				input_coupon.setAttribute("value", coupon);
 				document.body.appendChild(form);
+				
 				form.appendChild(input_pd);
 				form.appendChild(input_user);
 				form.appendChild(input_coupon);
@@ -179,9 +180,10 @@
 				form.submit();
 			}
 			
-			var msg = "<c:out value="${msg }" />";
-			if (msg != null) {
-				var msgPk = confirm("쿠폰금액이 결제금액 보다 많습니다. 결제를 진행하시겠습니까?");
+			var msg = $("#msg").text();
+			console.log("경고메시지" + msg);
+			if (msg !== "") {
+				var msgPk = confirm(msg);
 				if(msgPk === true)
 					alert("구매가 완료됬습니다");
 				else{
@@ -201,6 +203,7 @@
 		var wishPK = confirm("위시리스트에 추가 하시겠습니까?");
 		var game = $("#info");
 		var userID = "${sessionScope.signin.id}";
+		var coupon = document.getElementById('coupon');
 		
 		if(userID === '') {
 			alert('로그인을 한 후 이용해 주세요');
@@ -210,20 +213,23 @@
 			var form = document.createElement("form");
 			var input_pd = document.createElement("input");
 			var input_user = document.createElement("input");
+			var input_coupon = document.createElement("input");
 			
 			form.setAttribute("method", "post");
-// 			form.setAttribute("action",
-// 					"${cpath}/gameStore/gameIntro/");
 			input_pd.setAttribute("type", "hidden");
 			input_pd.setAttribute("name", "name");
 			input_pd.setAttribute("value", game.text());
 			input_user.setAttribute("type", "hidden");
 			input_user.setAttribute("name", "userID");
 			input_user.setAttribute("value", userID);
+			input_coupon.setAttribute("type", "hidden");
+			input_coupon.setAttribute("name", "coupon");
+			input_coupon.setAttribute("value", coupon);
 			document.body.appendChild(form);
-			console.log("userID : " + userID);
+			
 			form.appendChild(input_pd);
 			form.appendChild(input_user);
+			form.appendChild(input_coupon);
 			
 			form.submit();
 			alert("위시리스트에 추가되었습니다.");

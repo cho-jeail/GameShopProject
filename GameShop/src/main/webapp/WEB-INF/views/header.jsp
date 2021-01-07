@@ -22,8 +22,8 @@
 		<div>
 			<div class="TopMenu">
 				<div class="SearchBar">
-					<input type="text" id="SearchWord" placeholder="검색"> <input
-						type="button" onclick="" value="돋보기 그림">
+					<input type="text" id="SearchWord" placeholder="검색"> 
+					<input type="button" onclick="search()" value="돋보기 그림">
 				</div>
 				<div class="LoginArea">
 					<c:choose>
@@ -55,3 +55,24 @@
 			</div>
 		</div>
 	</header>
+	
+	<script type="text/javascript">
+	function search() {
+		var word = document.getElementById("SearchWord").value;
+		
+		var form = document.createElement("form");
+		var input_word = document.createElement("input");
+		
+		form.setAttribute("method", "post");
+		form.setAttribute("action", "${cpath}/info/");
+		
+		input_word.setAttribute("type", "hidden");
+		input_word.setAttribute("name", "word");
+		input_word.setAttribute("value", word);
+		document.body.appendChild(form);
+		
+		form.appendChild(input_word);
+		
+		form.submit();
+	}
+	</script>

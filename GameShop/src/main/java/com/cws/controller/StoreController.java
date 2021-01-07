@@ -79,6 +79,7 @@ public class StoreController {
 			List<CompareProductVO> compareList = ss.updateCoupon(name, user, cnt, coupon);
 			System.out.println("쿠폰결제의 : " + coupon);
 			if (compareList.get(0).getPrice() < 0)
+				System.out.println("쿠폰결제 : " + (compareList.get(0).getPrice() < 0));
 				model.addAttribute("msg", "쿠폰금액이 결제금액 보다 많습니다. 결제를 진행하시겠습니까?");
 			model.addAttribute("compareList", compareList);
 			return "redirect:/";
