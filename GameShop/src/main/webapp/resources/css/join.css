@@ -79,6 +79,7 @@
 	background-color: inherit;
 	border-bottom: 2px solid #bdedff;
 	font-size: 1.0rem;
+	color: white;
 }
 
 .pwComfirm:focus{outline: none;}

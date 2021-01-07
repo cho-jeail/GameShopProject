@@ -70,4 +70,13 @@
 			values (#{userId}, #{id}, #{salePrice}, #{validity}, #{name}, #{fileUrl})
 	</insert>
 	
+	<!-- 쿠폰 유효기간 확인 -->
+	<select id="selectCouponValidity" parameterType="String" resultType="com.cws.vo.CouponBoxVO">
+		select * from coupon where userid='${value}' and sysdate > validity
+	</select>
+	
+	<delete id="deleteExpiredCoupon" parameterType="String">
+		delete from coupon where userid='${value}' and sysdate > validity
+	</delete>
+	
 </mapper>

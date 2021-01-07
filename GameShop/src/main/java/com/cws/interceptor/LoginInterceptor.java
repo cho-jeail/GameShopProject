@@ -25,7 +25,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			return true;
 		}
 		
-		request.setAttribute("msg", "로그인필요");
+		request.setAttribute("msg", "로그인이 필요합니다.");
 		request.setAttribute("url", "signin");
 		System.out.println(request.getContextPath()+"/redirect/");
 		RequestDispatcher dip =  request.getRequestDispatcher("/WEB-INF/views/redirect.jsp");

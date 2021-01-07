@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -51,7 +52,7 @@ public class UserService {
 		
 		int rltInt = udao.joinUser(vo);
 		System.out.println(rltInt == 0 ? "회원가입 실패" : "회원가입 성공");
-		String result = rltInt == 0 ? "회원가입 실패" : "회원가입 성공";
+		String result = rltInt == 0 ? "회원가입에 실패하셨습니다. 잠시 후 다시 시도해주세요." : "회원가입에 성공하셨습니다.";
 		
 		mav.addObject("msg", result);
 		mav.addObject("url", "");
@@ -91,7 +92,7 @@ public class UserService {
 				System.out.println("로그인 성공!");
 				session.setAttribute("signin", pvo);
 				session.setMaxInactiveInterval(60*60); // 세션유지시간 1시간(초 * 분)
-				mav.addObject("msg", "로그인성공");
+//				mav.addObject("msg", "로그인성공");
 				mav.addObject("url", "");
 				return mav;	
 			}
@@ -135,15 +136,13 @@ public class UserService {
 			}		
 			
 			udao.updatePw(svo);
-			mav.addObject("mail", svo.getEmail());
-			mav.addObject("msg", "메일발송");
+			mav.addObject("msg", svo.getEmail() + "로 메일이 발송되었습니다.");
 			mav.addObject("url", "signin");
 			
 		}
 		else {
 			System.out.println("등록된 계정이 없습니다.");
-			mav.addObject("mail", vo.getEmail());
-			mav.addObject("msg", "메일발송");
+			mav.addObject("msg", vo.getEmail() + "로 메일이 발송되었습니다.");
 			mav.addObject("url", "signin");
 		}
 		return mav;
@@ -166,6 +165,7 @@ public class UserService {
 	}
 
 	//회원정보 수정
+	@Transactional(timeout = 5)
 	public ModelAndView updateUser(UserVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView("redirect");
 		UserVO uvo = udao.selectUser(vo);
@@ -186,7 +186,7 @@ public class UserService {
 		
 		int rltInt = udao.updateUser(vo);
 		System.out.println(rltInt == 0 ? "정보수정실패" : "정보수정성공");
-		String result = rltInt == 0 ? "정보수정실패" : "정보수정성공";
+		String result = rltInt == 0 ? "회원정보 수정이 실패했습니다." : "회원정보가 수정되었습니다.";
 		UserVO rvo = udao.selectUser(vo);
 		System.out.println("세션 시간 : " + session.getMaxInactiveInterval());
 		session.setAttribute("signin", rvo);
@@ -223,6 +223,7 @@ public class UserService {
 	}
 
 	// 회원 탈퇴
+	@Transactional(timeout = 5)
 	public ModelAndView memberOut(OutReasonVO vo, HttpSession session, HttpServletRequest req, HttpServletResponse resp) {
 		ModelAndView mav = new ModelAndView("redirect");
 		Cookie[] cookies = req.getCookies();
@@ -243,18 +244,19 @@ public class UserService {
 		
 		if(result != 0) {
 			System.out.println("유저 삭제 완료");
+			System.out.println("쿠키확인 : " + cookieflag);
 			if(cookieflag) {
-				Cookie ck = new Cookie("cookie_email", null);
+				Cookie ck = new Cookie("cookie_email", "");
 				ck.setMaxAge(0);
 				resp.addCookie(ck);	
 			}
 			session.removeAttribute("signin");
-			mav.addObject("msg", "탈퇴완료");
+			mav.addObject("msg", "회원탈퇴가 완료되었습니다. 이용해주셔서 감사합니다.");
 			mav.addObject("url", "");
 		}
 		else {
 			System.out.println("삭제 실패");
-			mav.addObject("msg", "탈퇴실패");
+			mav.addObject("msg", "오류로 인하여 탈퇴가 실패되었습니다.");
 			mav.addObject("url", "mypage");
 		}
 		return mav;
@@ -263,8 +265,14 @@ public class UserService {
 	// 사용자 쿠폰들
 	public ModelAndView selectCoupons(String userId) {
 		ModelAndView mav = new ModelAndView("mypageCoupon");
-		List<CouponVO> cList = udao.selectCoupons(userId);
+		List<CouponVO> couponValidityList = udao.selectCouponValidity(userId);
+		if(!(couponValidityList.isEmpty())) {
+			int rel = udao.deleteExpiredCoupon(userId);
+			System.out.println("지움 유무 : " + (rel == 0 ? "안지워짐" : "지워짐"));
+			mav.addObject("couponMsg", "유효기간이 끝난 쿠폰이 삭제되었습니다.");
+		}
 		
+		List<CouponVO> cList = udao.selectCoupons(userId);
 		for(CouponVO c : cList) {
 			c.setStrDate(new SimpleDateFormat("yyyy년 MM월 dd일").format(c.getValidity()));
 		}
@@ -277,18 +285,23 @@ public class UserService {
 	@Transactional(timeout = 5)
 	public ModelAndView insertCoupon(CouponVO vo) {
 		ModelAndView mav = new ModelAndView("redirect");
-		CouponBoxVO cBox = udao.selectCouponBox(vo.getId());
-		System.out.println("cBox:" + cBox);
-		CouponVO uvo = udao.havingCoupon(vo);
-		System.out.println("uvo:" + uvo);
+		CouponBoxVO cBox = udao.selectCouponBox(vo.getId()); // 관리자 쿠폰박스
+		CouponVO uvo = udao.havingCoupon(vo);	// 사용자 쿠폰함
+		Date today = new Date();
+		
 		if(cBox == null) {	// 쿠폰박스에 쿠폰이 있는가?
 			System.out.println("쿠폰없음");
-			mav.addObject("msg", "쿠폰없음");
+			mav.addObject("msg", "쿠폰번호가 존재하지 않습니다.");
 			mav.addObject("url", "mypage/mypageCoupon/");	
+		}
+		else if(cBox.getValidity().before(today)) {	// 쿠폰 유효기간이 지났는가?
+			System.out.println("쿠폰기간 만료");
+			mav.addObject("msg", "유효기간이 만료된 쿠폰입니다.");
+			mav.addObject("url", "mypage/mypageCoupon/");
 		}
 		else if(uvo != null) {	// 사용자에게 쿠폰이 등록되어 있는가?
 			System.out.println("쿠폰중복");
-			mav.addObject("msg", "쿠폰중복");
+			mav.addObject("msg", "이미 등록된 쿠폰입니다. 쿠폰함을 확인하세요.");
 			mav.addObject("url", "mypage/mypageCoupon/");	
 		}
 		else {
@@ -300,11 +313,11 @@ public class UserService {
 			int result = udao.insertCoupon(vo);
 			System.out.println("등록 완료");
 			if(result != 0) {
-				mav.addObject("msg", "쿠폰등록");
+				mav.addObject("msg", "쿠폰이 등록되었습니다. 쿠폰함을 확인해주세요.");
 				mav.addObject("url", "mypage/mypageCoupon/");
 			}
 			else {
-				mav.addObject("msg", "쿠폰등록실패");
+				mav.addObject("msg", "오류로 인하여 쿠폰등록이 실패하였습니다. 잠시후 다시 시도해주세요.");
 				mav.addObject("url", "mypage/mypageCoupon/");
 			}
 		}

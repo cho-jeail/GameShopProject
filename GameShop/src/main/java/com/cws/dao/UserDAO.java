@@ -34,5 +34,9 @@ public interface UserDAO {
 	int insertCoupon(CouponVO vo);
 
 	CouponVO havingCoupon(CouponVO vo);
+
+	List<CouponVO> selectCouponValidity(String userId);
+
+	int deleteExpiredCoupon(String userId);
 	
 }

@@ -158,19 +158,16 @@ function pwComfirm(){
 	if(joinPw.value !== pwC.value){
 		pwCmf2.innerText = '일치하지 않습니다.';
 		pwCmf2.style.color = 'red';
-		pwC.style.color = 'black';
 		flagList[4] = false;
 	}
 	else if(pwC.value === ''){
 		pwCmf2.innerText = '필수 입력바랍니다.'
 		pwCmf2.style.color = 'red';
-		pwC.style.color = 'black';
 		flagList[4] = false;
 	}
 	else{
 		pwCmf2.innerText = '일치합니다.'
 		pwCmf2.style.color = '#00ff40';
-		pwC.style.color = 'black';
 		flagList[4] = true;
 	}
 }

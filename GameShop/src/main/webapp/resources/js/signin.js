@@ -19,7 +19,6 @@ function emailRegexp(){
 	if(signinEmail.value !== '' && emailRegExp.test(signinEmail.value) === false){
 		signEmailCmf.innerText = '잘못된 형식입니다.';
 		signEmailCmf.style.color = 'red';
-		signinEmail.focus();
 	}
 	else{
 		signEmailCmf.innerText = '';
