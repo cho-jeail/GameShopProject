@@ -2,15 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <link rel="stylesheet" type="text/css" href="${cpath }/css/mypage.css">
-<c:set var="signInfo" value="${signin }" />
-<script type="text/javascript">
-	signin = "${signInfo}";
-	seId = "${signInfo.id}";
-	seNick = "${signInfo.nickname}";
-	seEmail = "${signInfo.email}";
-	sePwd = "${signInfo.password}";
-	seAddr = "${signInfo.address}";
-</script>
 
 <section class="mypSection">
 	<div class="mypContainer">

@@ -3,14 +3,13 @@
 <%@ include file="header.jsp" %>
 <link rel="stylesheet" type="text/css" href="${cpath }/css/mypage.css">
 <script type="text/javascript" src="${cpath }/js/jusopop.js"></script>
-<c:set var="signInfo" value="${signin }" />
 <script type="text/javascript">
-	signin = "${signInfo}";
-	seId = "${signInfo.id}";
-	seNick = "${signInfo.nickname}";
-	seEmail = "${signInfo.email}";
-	sePwd = "${signInfo.password}";
-	seAddr = "${signInfo.address}";
+	signin = "${signin }";
+	seId = "${signin.id}";
+	seNick = "${signin.nickname}";
+	seEmail = "${ssignin.email}";
+	sePwd = "${signin.password}";
+	seAddr = "${signin.address}";
 </script>
 
 <section class="mypSection">

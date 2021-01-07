@@ -3,14 +3,11 @@
 <%@ include file="header.jsp" %>
 <link rel="stylesheet" type="text/css" href="${cpath }/css/mypage.css">
 <script type="text/javascript" src="${cpath }/js/jusopop.js"></script>
-<c:set var="signInfo" value="${signin }" />
 <script type="text/javascript">
-	signin = "${signInfo}";
-	seId = "${signInfo.id}";
-	seNick = "${signInfo.nickname}";
-	seEmail = "${signInfo.email}";
-	sePwd = "${signInfo.password}";
-	seAddr = "${signInfo.address}";
+	couponMsg = "${couponMsg}";
+	if(couponMsg !== ''){
+		alert(couponMsg);
+	}
 </script>
 
 <section class="mypSection">
@@ -36,20 +33,20 @@
 									<div class="coupon">
 										<div class="couponHeader">
 											<div class="cpSiteName">GAMEZ</div>
-											<div class="cpVali">유효기간 : ${vo.strDate }</div>
+											<div class="cpVali">유효기간: ${vo.strDate }</div>
 										</div>
 										<div class="couponBody">
 											<div class="cpName">${vo.name}</div>
 											<div class="cpPrice">${vo.salePrice }원 할인</div>
 										</div>
 										<div class="couponFooter">
-											<div class="cpTos">이용약관 : ${vo.fileUrl }</div>
+											<div class="cpTos">이용약관: ${vo.fileUrl }</div>
 										</div>
 									</div>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<div>쿠폰이 없습니다.</div>
+								<div class="emptyCoupon">쿠폰이 없습니다.</div>
 							</c:otherwise>
 						</c:choose>
 					</div>
