@@ -19,11 +19,11 @@
 		</ul>
 	</div>
 </div>
-<!-- 사이드 이미지와 공지사항 포함 -->
+<!-- 사이드 이미지 포함 -->
 <div class="container">
 	<!-- 
 		사이드 메뉴
-		공지사항, 게임 이미지
+		게임 이미지
 	 -->
 	<div class="StoreSide">
 		<!-- 상품 -->
@@ -45,7 +45,7 @@
 	
 	<!-- 게임 리스트 첫번째 열 -->
 	<div>
-	<c:forEach var="list" items="${storeList }" begin="0" end="14" step="3">
+	<c:forEach var="list" items="${storeList }" begin="0" step="3">
 		<div class="product">
 			<div>
 				<div class="imgsize">
@@ -78,7 +78,7 @@
 	
 	<!-- 게임 리스트 두번째 열 -->
 	<div>
-	<c:forEach var="list" items="${storeList }" begin="1" end="15" step="3">
+	<c:forEach var="list" items="${storeList }" begin="1" step="3">
 		<div class="product">
 			<div>
 				<div class="imgsize">
@@ -111,7 +111,7 @@
 	
 	<!-- 게임 리스트 세번째 열 -->
 	<div>
-	<c:forEach var="list" items="${storeList }" begin="2" end="16" step="3">
+	<c:forEach var="list" items="${storeList }" begin="2" step="3">
 		<div class="product">
 			<div>
 				<div class="imgsize">
@@ -136,10 +136,27 @@
 						</span>
 					</span>
 				</div>
-				
 			</div>
 		</div>
 	</c:forEach>
+	</div>
+	<div>
+		<c:if test="${prev }">
+			<a href="${cpath}/gameStore/${begin - 1}/">◀</a>
+		</c:if>
+		<c:forEach var="i" begin="${begin}" end="${end}">
+			<c:if test="${i == page }">
+				<strong>[${i }]</strong>
+			</c:if>
+			<c:if test="${i != page }">
+				<a href="${cpath}/gameStore/${i }/">
+			 		[${i }]
+				</a>
+			</c:if>
+		</c:forEach>
+		<c:if test="${next }">
+			<a href="${cpath}/gameStore/${end + 1}/">▶</a>
+		</c:if>
 	</div>
 </div>
 

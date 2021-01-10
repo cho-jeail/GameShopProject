@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="${cpath }/css/gameStore.css">
 <!-- 게임 소개 페이지 -->
 <div>
-	<input type="hidden" id="msg" value='<c:out value="${msg }"></c:out>'>
+	<c:set var="msg" value="${msg }" />
 	<c:forEach var="game" items="${product }">
 		<div class="intro">
 			<h2>${game.name }</h2>
@@ -81,10 +81,11 @@
 						쿠폰 사용하기
 						<select name="coupon" id="coupon">
 							<option value="">쿠폰을 선택하세요</option>
+							<option value="오픈기념쿠폰">오픈기념쿠폰</option>
 							<option value="이벤트쿠폰1">이벤트쿠폰1</option>
 							<option value="이벤트쿠폰2">이벤트쿠폰2</option>
-							<option value="오픈기념쿠폰">오픈기념쿠폰</option>
-							<option value="쿠우우폰">쿠우우폰</option>
+							<option value="이벤트쿠폰3">이벤트쿠폰3</option>
+							<option value="확인쿠폰">확인쿠폰</option>
 						</select>
 					</div>
 				</div>
@@ -180,10 +181,10 @@
 				form.submit();
 			}
 			
-			var msg = $("#msg").text();
+			var msg = "<c:out value="${msg }" />";
 			console.log("경고메시지" + msg);
 			if (msg !== "") {
-				var msgPk = confirm(msg);
+				var msgPk = confirm('쿠폰금액이 결제금액 보다 많습니다. 결제를 진행하시겠습니까?');
 				if(msgPk === true)
 					alert("구매가 완료됬습니다");
 				else{
