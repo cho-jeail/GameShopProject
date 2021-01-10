@@ -97,4 +97,21 @@
 		delete from coupon where userid=#{userId} and name=#{name}
 	</delete>
 	
+	<select id="selectCount" resultType="int">
+		select count(*) from product
+	</select>
+	
+	<select id="pageAll" parameterType="com.cws.vo.StorePagingVO" resultType="ProductVO">
+		select * from 
+			(select rownum as st, A.* from 
+				(select * from  product
+				order by id pid desc) 
+			A where rownum <![CDATA[ <= ]]> #{end}) 
+		where st <![CDATA[ >= ]]> #{start}
+	</select>
+	
+	<select id="selectBoard" resultType="NoticeBoardVO">
+		select * from noticeboard order by id desc
+	</select>
+	
 </mapper>

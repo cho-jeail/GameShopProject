@@ -42,6 +42,12 @@ public class StoreController {
 		model.addAttribute("storeList", ss.cateList(name));	
 		return "gameStore";
 	}
+	
+	// 게임 Store 페이징
+	@RequestMapping(value = "/gameStore/{page}/")
+	public ModelAndView storePage(@PathVariable("page") int page, HttpServletRequest request) {
+		return ss.storePage(page, request);
+	}
 
 	// 게임 소개 페이지
 	@RequestMapping(value = "/gameStore/gameIntro/{product}/", method = RequestMethod.GET)
@@ -79,7 +85,7 @@ public class StoreController {
 			List<CompareProductVO> compareList = ss.updateCoupon(name, user, cnt, coupon);
 			System.out.println("쿠폰결제의 : " + coupon);
 			if (compareList.get(0).getPrice() < 0)
-				System.out.println("쿠폰결제 : " + (compareList.get(0).getPrice() < 0));
+				System.out.println("비싼 쿠폰이 사용됨");
 				model.addAttribute("msg", "쿠폰금액이 결제금액 보다 많습니다. 결제를 진행하시겠습니까?");
 			model.addAttribute("compareList", compareList);
 			return "redirect:/";
