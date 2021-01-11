@@ -29,6 +29,7 @@
 	
 	<!-- 인터셉터 -->
 	<interceptors>
+		<!-- 로그인 인터셉터 -->
 		<interceptor>
 			<!-- 최상위 -->
 <!-- 		<mapping path="/**/"/> -->
@@ -37,6 +38,15 @@
 			<!-- 제외 항목 -->	
 			<exclude-mapping path="/"/>	
 			<beans:bean id="LoginInterceptor" class="com.cws.interceptor.LoginInterceptor" />
+		</interceptor>
+		
+		<!-- 자동로그인 인터셉터 -->
+		<interceptor>
+			<!-- 최상위 -->
+		<mapping path="/**/"/>
+			<!-- 제외 항목 -->	
+<!-- 			<exclude-mapping path="/"/>	 -->
+			<beans:bean id="RememberInterceptor" class="com.cws.interceptor.RememberInterceptor" />
 		</interceptor>
 	</interceptors>
 	

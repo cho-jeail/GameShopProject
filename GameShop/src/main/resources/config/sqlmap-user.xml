@@ -36,8 +36,8 @@
 	</update>
 	
 	<!-- 사용자확인 -->
-	<select id="selectUser" parameterType="UserVO" resultType="UserVO">
-		select * from userlogin where id=#{id}
+	<select id="selectUser" parameterType="String" resultType="UserVO">
+		select * from userlogin where id='${value}'
 	</select>
 	
 	<!-- 탈퇴사유 등록-->

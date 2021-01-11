@@ -18,7 +18,7 @@
 			</div>
 			<label class="signLabel">
 				<input type="checkbox" class="signinCk" id="signinCk" name="regCk" >
-				<span>계정 기억하기</span>
+				<span>자동 로그인</span>
 			</label>
 			<button type="button" id="signinBtn" class="signinBtn">로그인</button>
 		</form>

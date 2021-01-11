@@ -50,66 +50,13 @@ function signSubmit(event){
 	}
 	
 	if(bList.length === bcnt){
-		if(signinCk.checked === true && getCookie('cookie_email') !== signinEmail.value){
-			setCookie('cookie_email', signinEmail.value);
-		}
-		else{
-			deleteCookie('cookie_email');
-		}
 		signForm.submit();
 	}
 	else{
 		return false;
 	}
-	
-	
 }
 
-function setCookie(name, value, cday){
-	let expire = new Date();
-	expire.setDate(expire.getDate() + cday);
-	cookies = name + '=' + escape(value) + '; path=/ ';
-	if(typeof cday !== 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
-	document.cookie = cookies;
-
-}
-
-console.log(document.cookie);
-if(getCookie('cookie_email') !== ''){
-	signinCk.checked = true;
-	signinEmail.value = getCookie('cookie_email');
-}
-else{
-	signinCk.checked = false;
-}
-
-
-function getCookie(name) {
-	name = name + '=';
-	let cookieData = document.cookie;
-	console.log('cookieData : ' + cookieData);
-	let start = cookieData.indexOf(name);
-	console.log('start : ' + start);
-	let value = '';
-	if(start !== -1){
-		start += name.length;
-		console.log('if start : ' + start);
-		let end = cookieData.indexOf(';', start);
-		console.log('end : ' + end);
-		if(end === -1) end = cookieData.length;
-		console.log('end : ' + end);
-		value = cookieData.substring(start, end);
-	}
-	
-	console.log('value : ' + value);
-	console.log('unescape(value) : ' + unescape(value));
-	
-	return unescape(value);
-}
-
-function deleteCookie(name){
-	setCookie(name, '', -1);
-}
 
 
 
