@@ -1,5 +1,7 @@
 package com.cws.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +19,13 @@ public class LoginController {
 	@Autowired private UserService us;
 	
 	@RequestMapping(value = "signin/", method = RequestMethod.POST)
-	public ModelAndView signinForm(UserVO vo, HttpSession session) {
-		return us.signinUser(vo, session);
+	public ModelAndView signinForm(UserVO vo, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		return us.signinUser(vo, session, request, response);
 	}
 	
 	@RequestMapping(value = "/signout")
-	public ModelAndView signOut(HttpSession session){
-		ModelAndView mav = new ModelAndView("redirect:/");
-		System.out.println("로그아웃 완료");
-		session.invalidate();
-		return mav;
+	public ModelAndView signOut(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+		return us.signOutUser(session, request, response);
 	}
 	
 	@RequestMapping(value = "findPwd/", method = RequestMethod.POST)

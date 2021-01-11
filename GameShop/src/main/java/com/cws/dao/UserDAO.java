@@ -21,7 +21,7 @@ public interface UserDAO {
 
 	int updateUser(UserVO vo);
 
-	UserVO selectUser(UserVO vo);
+	UserVO selectUser(String id);
 
 	int insertOutReason(OutReasonVO vo);
 

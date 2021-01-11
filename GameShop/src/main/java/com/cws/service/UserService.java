@@ -61,7 +61,7 @@ public class UserService {
 	}
 
 	// 로그인
-	public ModelAndView signinUser(UserVO vo, HttpSession session) {		
+	public ModelAndView signinUser(UserVO vo, HttpSession session, HttpServletRequest request, HttpServletResponse response) {		
 		ModelAndView mav = new ModelAndView("redirect");
 //		System.out.println("받은 email확인 : " + vo.getEmail());
 		try {
@@ -89,10 +89,19 @@ public class UserService {
 				return mav;
 			}
 			else {
+				String checking = request.getParameter("regCk");
+				System.out.println("체크 확인 : " + "on".equals(checking));
+				
+				if("on".equals(checking)) {
+					Cookie signinCookie = new Cookie("signin_Cookie", pvo.getId().toUpperCase());
+					signinCookie.setMaxAge(60*60*24*7);
+					signinCookie.setPath("/"); // 쿠키 저장위치 
+					response.addCookie(signinCookie);
+				}
+				
 				System.out.println("로그인 성공!");
 				session.setAttribute("signin", pvo);
 				session.setMaxInactiveInterval(60*60); // 세션유지시간 1시간(초 * 분)
-//				mav.addObject("msg", "로그인성공");
 				mav.addObject("url", "");
 				return mav;	
 			}
@@ -104,6 +113,26 @@ public class UserService {
 			mav.addObject("signResult", "계정이 없거나 비밀번호가 틀렸습니다.");
 			return mav;
 		}
+	}
+	
+	// 로그아웃
+	public ModelAndView signOutUser(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView("redirect:/");
+		
+		Cookie[] cookieBox = request.getCookies();
+
+		for (Cookie cookie : cookieBox) {
+			if(cookie.getName().equals("signin_Cookie")) {
+				cookie.setMaxAge(0);
+				cookie.setPath("/");
+				response.addCookie(cookie);
+				break;
+			}
+		}
+		
+		System.out.println("로그아웃 완료");
+		session.invalidate();
+		return mav;
 	}
 
 	// 임시 비밀번호 발급
@@ -168,7 +197,7 @@ public class UserService {
 	@Transactional(timeout = 5)
 	public ModelAndView updateUser(UserVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView("redirect");
-		UserVO uvo = udao.selectUser(vo);
+		UserVO uvo = udao.selectUser(vo.getId());
 		if(!(vo.getPassword().equals(""))) {
 			try {
 				MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -187,7 +216,7 @@ public class UserService {
 		int rltInt = udao.updateUser(vo);
 		System.out.println(rltInt == 0 ? "정보수정실패" : "정보수정성공");
 		String result = rltInt == 0 ? "회원정보 수정이 실패했습니다." : "회원정보가 수정되었습니다.";
-		UserVO rvo = udao.selectUser(vo);
+		UserVO rvo = udao.selectUser(vo.getId());
 		System.out.println("세션 시간 : " + session.getMaxInactiveInterval());
 		session.setAttribute("signin", rvo);
 		mav.addObject("msg", result);
@@ -200,7 +229,7 @@ public class UserService {
 	public String checkPwd(HashMap<String, String> param) {
 		UserVO vo = new UserVO();
 		vo.setId(param.get("id"));
-		UserVO uvo = udao.selectUser(vo);
+		UserVO uvo = udao.selectUser(vo.getId());
 		String pwd;
 		if(uvo != null) {
 			try {
@@ -227,12 +256,7 @@ public class UserService {
 	public ModelAndView memberOut(OutReasonVO vo, HttpSession session, HttpServletRequest req, HttpServletResponse resp) {
 		ModelAndView mav = new ModelAndView("redirect");
 		Cookie[] cookies = req.getCookies();
-		boolean cookieflag = false;
-		for(Cookie c : cookies) {
-			if(c.getName().equals("cookie_email")) {
-				cookieflag = true;
-			}
-		}
+		
 		if(!(vo.getOutreason().equals(""))) {
 			int reg = udao.insertOutReason(vo);
 			if(reg != 0) {
@@ -244,11 +268,12 @@ public class UserService {
 		
 		if(result != 0) {
 			System.out.println("유저 삭제 완료");
-			System.out.println("쿠키확인 : " + cookieflag);
-			if(cookieflag) {
-				Cookie ck = new Cookie("cookie_email", "");
-				ck.setMaxAge(0);
-				resp.addCookie(ck);	
+			for(Cookie c : cookies) {
+				if(c.getName().equals("signin_Cookie")) {
+					c.setMaxAge(0);
+					c.setPath("/"); // 쿠키 저장위치 
+					resp.addCookie(c);
+				}
 			}
 			session.removeAttribute("signin");
 			mav.addObject("msg", "회원탈퇴가 완료되었습니다. 이용해주셔서 감사합니다.");
@@ -323,14 +348,5 @@ public class UserService {
 		}
 		return mav;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

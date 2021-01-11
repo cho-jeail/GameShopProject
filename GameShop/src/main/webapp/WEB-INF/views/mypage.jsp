@@ -7,7 +7,7 @@
 	signin = "${signin }";
 	seId = "${signin.id}";
 	seNick = "${signin.nickname}";
-	seEmail = "${ssignin.email}";
+	seEmail = "${signin.email}";
 	sePwd = "${signin.password}";
 	seAddr = "${signin.address}";
 </script>

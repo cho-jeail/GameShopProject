@@ -76,7 +76,6 @@ function mypChkPwd(event){
 		request.onreadystatechange = function(){
 			if(request.readState == 4 || request.status == 200){
 				let response = request.response;
-				console.log(pwd.id);
 				if(response === '인증완료'){
 					mypCPdiv.style.display = 'none';
 					mypDiv.style.display = 'flex';						

@@ -66,7 +66,6 @@ function nickChecked(){
 	request.onreadystatechange = function(){
 		if(request.readyState == 4 || request.status == 200){
 			let response = request.response;
-			console.log('닉네임 resp : ' + response);
 			if(response === '사용중'){
 				if(mypNick.value === seNick){
 					mypNickCmf.innerText = '';
@@ -99,7 +98,6 @@ function emailChecked(){
 	request.onreadystatechange = function(){
 		if(request.readyState == 4 || request.status == 200){
 			let response = request.response;
-			console.log("이메일 resp : " + response);
 			if(response === "사용중"){
 				if(mypEmail.value === seEmail){
 					mypEmailCmf.innerText = '';
@@ -204,7 +202,6 @@ function submit(event){
 			infoList[i].readOnly = 'readonly';
 		}
 		mypPwd2.readOnly = 'readonly';
-		setCookie("cookie_email", mypEmail.value);
 		mypForm.submit();
 	}
 	else{
@@ -213,14 +210,6 @@ function submit(event){
 	}
 }
 
-// 쿠키변경
-function setCookie(name, value, cday){
-	let expire = new Date();
-	expire.setDate(expire.getDate() + cday);
-	cookies = name + '=' + escape(value) + '; path=/ ';
-	if(typeof cday !== 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
-	document.cookie = cookies;
-}
 
 
 
