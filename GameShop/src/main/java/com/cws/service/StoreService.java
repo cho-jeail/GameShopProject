@@ -220,7 +220,7 @@ public class StoreService {
 			if(prod.equals(compare.get(i).getName()))
 				return "이미 구매한 상품입니다.";
 		}
-		return null;	
+		return null;
 	}
 
 	// 게임 스토어 카테고리 분류
@@ -264,8 +264,40 @@ public class StoreService {
 		return boardList;
 	}
 
+	// gameStore 전체상품 목록 불러오기
 	public int selectProductCount() {
 		int AllCount = sd.selectProductCount();
 		return AllCount;
+	}
+
+	// 필터 검색
+	public List<ProductVO> filterSelect(String developer, String kind) {
+		if(developer == "") {
+			System.out.println("developer");
+			List<ProductVO> kindList = sd.kindList(kind);
+			return kindList;
+		}
+		else if(kind == "") {
+			System.out.println("kind");
+			List<ProductVO> developerList = sd.developerList(developer);
+			return developerList;
+		}
+		else if(developer != "" && kind != "") {
+			System.out.println("filterList");
+			ProductVO pvo = new ProductVO();
+			
+			pvo.setKind(kind);
+			pvo.setDeveloper(developer);
+			
+			List<ProductVO> filterList = sd.filterSelect(pvo);
+			return filterList;
+		}
+		return null;
+	}
+
+	// 보유한 쿠폰 가져오기
+	public List<CouponVO> selectCoupon(String id) {
+		List<CouponVO> coupon = sd.selectCoupon(id);
+		return coupon;
 	}
 }
