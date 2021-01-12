@@ -80,12 +80,15 @@
 					<div>
 						쿠폰 사용하기
 						<select name="coupon" id="coupon">
-							<option value="">쿠폰을 선택하세요</option>
-							<option value="오픈기념쿠폰">오픈기념쿠폰</option>
-							<option value="이벤트쿠폰1">이벤트쿠폰1</option>
-							<option value="이벤트쿠폰2">이벤트쿠폰2</option>
-							<option value="이벤트쿠폰3">이벤트쿠폰3</option>
-							<option value="확인쿠폰">확인쿠폰</option>
+							<c:if test="${empty coupon }">
+								<option value="">보유한 쿠폰이 없습니다</option>
+							</c:if>
+							<c:if test="${not empty coupon }">
+								<option value="">쿠폰을 선택하세요</option>
+								<c:forEach var="coupon" items="${coupon }">
+									<option value="${coupon.name }">${coupon.name }</option>
+							</c:forEach>
+							</c:if>
 						</select>
 					</div>
 				</div>

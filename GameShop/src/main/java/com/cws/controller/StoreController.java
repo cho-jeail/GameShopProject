@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.StoreService;
 import com.cws.vo.CompareProductVO;
+import com.cws.vo.CouponVO;
 import com.cws.vo.PagingParamsVO;
 import com.cws.vo.ProductVO;
 import com.cws.vo.UserVO;
@@ -47,19 +48,36 @@ public class StoreController {
 	
 	// 게임 Store 메뉴 카테고리
 	@RequestMapping(value = "/gameStore/", method = RequestMethod.POST)
-	public String gameStore(HttpServletRequest request,
-			Model model) {
+	public String gameStore(HttpServletRequest request, Model model) {
 		System.out.println("gameStore : POST");
 		String name = request.getParameter("name");
 		String kind = request.getParameter("kind");
 		String developer = request.getParameter("developer");
+		String pag = request.getParameter("page");
+		int page = Integer.parseInt(pag);
+		int AllCount = ss.selectProductCount();
 		
-		if(developer == "" && kind == "") {
-			model.addAttribute("storeList", ss.cateList(name));	
+		System.out.println("gameStore : " + name); 
+		System.out.println("gameStore : " + kind); 
+		System.out.println("gameStore : " + developer); 
+		
+		if(name == null && (developer == null && kind == null)) {
+			PagingParamsVO ppv = new PagingParamsVO(page, AllCount);
+			List<ProductVO> storeList = ss.selectAll(ppv);
+			
+			model.addAttribute("storeList", storeList);
+			model.addAttribute("PageParam", ppv);
+			
 			return "gameStore";
 		}
-		else if(developer != "") {
+		else if(developer == null && kind == null) {
+			model.addAttribute("storeList", ss.cateList(name));
+			return "gameStore";
+		}
+		else if(developer != null || kind != null) {
 			System.out.println("필터에 들어옴");
+			List<ProductVO> list = ss.filterSelect(developer, kind);
+			model.addAttribute("list", list);
 			return "info";
 		}
 		return "exhaust";
@@ -70,14 +88,23 @@ public class StoreController {
 	public ModelAndView introImage(@PathVariable("product") String prod, 
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		UserVO user = (UserVO) session.getAttribute("signin");
+			UserVO user = (UserVO) session.getAttribute("signin");
+		
 		System.out.println("product : " + prod);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("gameIntro");
 		mav.addObject("product", ss.select(prod));
+		
 		if(user != null) {
-			String singin = user.getId();
-			mav.addObject("compare", ss.selHistory(singin, prod));
+			List<CouponVO> coupon = ss.selectCoupon(user.getId());
+			if(coupon != null) {
+				System.out.println("coupon : " + coupon.get(0).getName());
+				mav.addObject("coupon", coupon);
+			}
+		}
+		
+		if(user != null) {
+			mav.addObject("compare", ss.selHistory(user.getId(), prod));
 		}
 		return mav;
 	}
