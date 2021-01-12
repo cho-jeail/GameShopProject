@@ -5,6 +5,7 @@ import java.util.List;
 import com.cws.vo.CompareProductVO;
 import com.cws.vo.CouponVO;
 import com.cws.vo.NoticeBoardVO;
+import com.cws.vo.PagingParamsVO;
 import com.cws.vo.ProductVO;
 import com.cws.vo.StorePagingVO;
 import com.cws.vo.UserVO;
@@ -12,7 +13,7 @@ import com.cws.vo.WishVO;
 
 public interface StoreDAO {
 
-	List<ProductVO> storeSelectAll();
+	List<ProductVO> storeSelectAll(PagingParamsVO ppv);
 
 	List<ProductVO> storeSelect(String product);
 
@@ -59,5 +60,7 @@ public interface StoreDAO {
 	List<ProductVO> pageAll(StorePagingVO spv);
 
 	List<NoticeBoardVO> selectBoard();
+
+	int selectProductCount();
 	
 }

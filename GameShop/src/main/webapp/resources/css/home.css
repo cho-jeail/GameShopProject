@@ -27,7 +27,7 @@ body, hmtl{font-family: 'Anton', sans-serif;}
   
   position:absolute;
   top:0;
-  left:0;   
+  left:0;
 }
 
 #slider-wrap ul#slider li{
@@ -71,7 +71,6 @@ body, hmtl{font-family: 'Anton', sans-serif;}
   text-align:center;
   cursor:pointer; 
   background:rgba(0,0,0,0.1);
-  z-index:100;
   
   
   -webkit-user-select: none;  
@@ -139,17 +138,6 @@ body, hmtl{font-family: 'Anton', sans-serif;}
   opacity:1;
   box-shadow:rgba(0,0,0,0.1) 1px 1px 0px; 
 }
-
-
-
-
-/*Header*/
-h1, h2{text-shadow:none; text-align:center;}
-h1{ color: #666; text-transform:uppercase;  font-size:36px;}
-h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
-
-
-
 
 /*ANIMATION*/
 #slider-wrap ul, #pagination-wrap ul li{

@@ -59,3 +59,4 @@ function discGame() {
 	
 	form.submit();
 }
+

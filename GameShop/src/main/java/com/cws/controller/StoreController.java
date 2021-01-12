@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cws.service.StoreService;
 import com.cws.vo.CompareProductVO;
+import com.cws.vo.PagingParamsVO;
 import com.cws.vo.ProductVO;
 import com.cws.vo.UserVO;
 import com.cws.vo.WishVO;
@@ -30,23 +31,38 @@ public class StoreController {
 
 	// 게임 Store 메인 페이지
 	@RequestMapping(value = "/gameStore/", method = RequestMethod.GET)
-	public String home(Model model) {
-		List<ProductVO> storeList = ss.selectAll();
+	public String home(Model model, HttpServletRequest request) {
+		String pag = request.getParameter("page");
+		int page = Integer.parseInt(pag);
+		int AllCount = ss.selectProductCount();
+		
+		PagingParamsVO ppv = new PagingParamsVO(page, AllCount);
+		List<ProductVO> storeList = ss.selectAll(ppv);
+		
 		model.addAttribute("storeList", storeList);
+		model.addAttribute("PageParam", ppv);
+		
 		return "gameStore";
 	}
 	
 	// 게임 Store 메뉴 카테고리
 	@RequestMapping(value = "/gameStore/", method = RequestMethod.POST)
-	public String gameStore(@RequestParam("name") String name, Model model) {
-		model.addAttribute("storeList", ss.cateList(name));	
-		return "gameStore";
-	}
-	
-	// 게임 Store 페이징
-	@RequestMapping(value = "/gameStore/{page}/")
-	public ModelAndView storePage(@PathVariable("page") int page, HttpServletRequest request) {
-		return ss.storePage(page, request);
+	public String gameStore(HttpServletRequest request,
+			Model model) {
+		System.out.println("gameStore : POST");
+		String name = request.getParameter("name");
+		String kind = request.getParameter("kind");
+		String developer = request.getParameter("developer");
+		
+		if(developer == "" && kind == "") {
+			model.addAttribute("storeList", ss.cateList(name));	
+			return "gameStore";
+		}
+		else if(developer != "") {
+			System.out.println("필터에 들어옴");
+			return "info";
+		}
+		return "exhaust";
 	}
 
 	// 게임 소개 페이지

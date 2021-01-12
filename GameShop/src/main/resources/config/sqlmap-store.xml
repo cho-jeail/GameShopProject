@@ -6,7 +6,12 @@
 <mapper namespace="com.cws.dao.StoreDAO">
 
 	<select id="storeSelectAll" resultType="ProductVO">
-		select * from product
+		select * from 
+			(select rownum as st, a.* from 
+				(select * from product
+				order by pid desc)
+			a where rownum <![CDATA[<=]]> ${last })
+		where st <![CDATA[>=]]> ${first }
 	</select>
 	
 	<select id="storeSelect" resultType="ProductVO" parameterType="String">
@@ -112,6 +117,10 @@
 	
 	<select id="selectBoard" resultType="NoticeBoardVO">
 		select * from noticeboard order by id desc
+	</select>
+	
+	<select id="selectProductCount" resultType="int">
+		select count(*) from product
 	</select>
 	
 </mapper>
