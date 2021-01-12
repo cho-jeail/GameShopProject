@@ -62,5 +62,13 @@ public interface StoreDAO {
 	List<NoticeBoardVO> selectBoard();
 
 	int selectProductCount();
+
+	List<ProductVO> kindList(String kind);
+
+	List<ProductVO> developerList(String developer);
+
+	List<ProductVO> filterSelect(ProductVO pvo);
+
+	List<CouponVO> selectCoupon(String id);
 	
 }
