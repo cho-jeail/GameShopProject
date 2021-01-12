@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <link rel="stylesheet" type="text/css" href="${cpath }/css/mypage.css">
-<script type="text/javascript" src="${cpath }/js/jusopop.js"></script>
 <script type="text/javascript">
 	couponMsg = "${couponMsg}";
 	if(couponMsg !== ''){
@@ -40,7 +39,9 @@
 											<div class="cpPrice">${vo.salePrice }원 할인</div>
 										</div>
 										<div class="couponFooter">
-											<div class="cpTos">이용약관: ${vo.fileUrl }</div>
+											<div class="cpTos"><span>이용약관</span><br>
+												${vo.fileUrl }
+											</div>
 										</div>
 									</div>
 								</c:forEach>

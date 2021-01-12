@@ -56,7 +56,6 @@ public class UserService {
 		
 		mav.addObject("msg", result);
 		mav.addObject("url", "");
-	
 		return mav;
 	}
 
@@ -90,15 +89,14 @@ public class UserService {
 			}
 			else {
 				String checking = request.getParameter("regCk");
-				System.out.println("체크 확인 : " + "on".equals(checking));
-				
+				System.out.println("체크 확인 : " + "on".equals(checking));	
 				if("on".equals(checking)) {
 					Cookie signinCookie = new Cookie("signin_Cookie", pvo.getId().toUpperCase());
 					signinCookie.setMaxAge(60*60*24*7);
 					signinCookie.setPath("/"); // 쿠키 저장위치 
 					response.addCookie(signinCookie);
 				}
-				
+
 				System.out.println("로그인 성공!");
 				session.setAttribute("signin", pvo);
 				session.setMaxInactiveInterval(60*60); // 세션유지시간 1시간(초 * 분)
@@ -118,9 +116,7 @@ public class UserService {
 	// 로그아웃
 	public ModelAndView signOutUser(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView("redirect:/");
-		
 		Cookie[] cookieBox = request.getCookies();
-
 		for (Cookie cookie : cookieBox) {
 			if(cookie.getName().equals("signin_Cookie")) {
 				cookie.setMaxAge(0);
@@ -129,7 +125,6 @@ public class UserService {
 				break;
 			}
 		}
-		
 		System.out.println("로그아웃 완료");
 		session.invalidate();
 		return mav;
