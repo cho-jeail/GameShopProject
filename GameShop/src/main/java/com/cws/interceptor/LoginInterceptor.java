@@ -1,14 +1,21 @@
 package com.cws.interceptor;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.cws.dao.UserDAO;
+import com.cws.vo.UserVO;
+
 public class LoginInterceptor extends HandlerInterceptorAdapter {
+	
+	@Autowired private UserDAO udao;
 
 	// 1. request가 발생한 이후 컨트롤러의 메서드를 수행하기 전에 개입 
 	@Override
@@ -21,8 +28,35 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 //		System.out.println("RequestURI : " + request.getRequestURI());
 		// 기존 세션이 있다면 그 세션을 리턴하고, 세션이 존재하지 않으면 null을 리턴한다
 		HttpSession session = request.getSession(false);
+		Cookie[] cookieBox = request.getCookies();
+		boolean cookieFlag = false;
+		String signinCookie = null;
+		
+		for (Cookie cookie : cookieBox) {
+			if(cookie.getName().equals("signin_Cookie")) {
+				signinCookie = cookie.getValue();
+				cookieFlag = true;
+			}
+		}
+		
 		if(session != null && session.getAttribute("signin") != null) {
 			return true;
+		}
+		else if(cookieBox != null) {
+			for (Cookie cookie : cookieBox) {
+				if(cookie.getName().equals("signin_Cookie")) {
+					signinCookie = cookie.getValue();
+					cookieFlag = true;
+				}
+			}
+				
+			if(cookieFlag) {
+				signinCookie = signinCookie.toLowerCase();
+				UserVO vo = udao.selectUser(signinCookie);
+				session.setAttribute("signin", vo);
+				session.setMaxInactiveInterval(60*60); // 세션유지시간 1시간(초 * 분)
+				return true;
+			}
 		}
 		
 		request.setAttribute("msg", "로그인이 필요합니다.");

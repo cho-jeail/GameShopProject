@@ -397,7 +397,7 @@
 
 .couponHeader{
 	display: flex;
-	height: 35px;
+	height: 38px;
 	justify-content: space-between;
 }
 
@@ -412,6 +412,7 @@
 
 .cpName{ font-size: 1.3rem; letter-spacing: 0.2rem; }
 .cpPrice{ font-size: 1.0rem; font-family: cursive;}
+.cpTos span{ font-size: 0.7rem; color: #00ff00; }
 .cpTos{ font-size: 0.60rem; }
 
 .regCForm{

@@ -51,7 +51,7 @@ public class CouponVO {
 		return fileUrl;
 	}
 	public void setFileUrl(String fileUrl) {
-		this.fileUrl = fileUrl;
+		this.fileUrl = fileUrl.replace("\n", "<br>");
 	}
 	
 }
