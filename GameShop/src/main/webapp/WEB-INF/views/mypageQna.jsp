@@ -27,17 +27,17 @@
 		</div>
 		<div class="mypContents">
 			<h2 class="mypH2">문의 내역</h2>
-			<table border="1" style="width: 600px;">
+			<table>
 				<tr>
-					<th>번호</th>
-					<th>구분</th>
-					<th>제목</th>
-					<th>작성일자</th>
+					<th class="mypContentsNum">번호</th>
+					<th class="mypContentsCat">구분</th>
+					<th class="mypContentsTit">제목</th>
+					<th class="mypContentsDat">작성일자</th>
 				</tr>
 				<c:forEach items="${QnaList }" var="QnaVO" varStatus="iNum">
 					<tr>
-						<td>${iNum.count }</td>
-						<td>
+						<td class="mypContentsNum">${iNum.count }</td>
+						<td class="mypContentsCat">
 						<c:choose>
 							<c:when test="${QnaVO.category eq 'product' }">
 								상품문의
@@ -53,8 +53,8 @@
 							</c:when>
 						</c:choose>
 						</td>
-						<td><a href="${cpath }/mypage/mypQna/${QnaVO.id }/">${QnaVO.title }</a></td>
-						<td><fmt:formatDate value="${QnaVO.writeDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+						<td class="mypContentsTit"><a href="${cpath }/mypage/mypQna/${QnaVO.id }/">${QnaVO.title }</a></td>
+						<td class="mypContentsDat"><fmt:formatDate value="${QnaVO.writeDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 					</tr>
 				</c:forEach>
 			</table>

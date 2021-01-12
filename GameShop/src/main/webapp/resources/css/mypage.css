@@ -397,7 +397,7 @@
 
 .couponHeader{
 	display: flex;
-	height: 45px;
+	height: 35px;
 	justify-content: space-between;
 }
 
@@ -448,12 +448,41 @@
 .regBtn:focus{ outline: none; }
 
 
+/* 문의 내역 확인 부분 - JIC */
+.mypContents a {
+	text-decoration: none;
+	color: #d4d4d4;
+}
+.mypContents a:hover {
+	color: #949494;
+}
+.mypContents a:active {
+	color: #696969;
+}
 
-
-
-
-
-
+.mypContents table {
+	width: 820px;
+	border-collapse: collapse;
+}
+.mypContents th, .mypContents td {
+	border: 1px solid gray;
+	height: 40px;
+}
+.mypContentsNum, .mypContentsCat, .mypContentsDat {
+	text-align: center;
+}
+.mypContentsNum {
+	width: 50px;
+}
+.mypContentsCat {
+	width: 150px;
+}
+.mypContentsDat {
+	width: 180px;
+}
+.mypContentsTit a {
+	margin-left: 5px;
+}
 
 
 
