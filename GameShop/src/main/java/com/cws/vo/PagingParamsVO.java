@@ -21,7 +21,7 @@ public class PagingParamsVO {
 	private boolean next;
 	
 	public PagingParamsVO(int page, int AllCount) {
-		perPage = 10;
+		perPage = 12;
 		perSection = 10;
 		this.page = page;
 		this.AllCount = AllCount;

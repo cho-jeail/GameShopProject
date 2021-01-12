@@ -2,8 +2,6 @@ package com.cws.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,8 +10,8 @@ import com.cws.dao.StoreDAO;
 import com.cws.vo.CompareProductVO;
 import com.cws.vo.CouponVO;
 import com.cws.vo.NoticeBoardVO;
+import com.cws.vo.PagingParamsVO;
 import com.cws.vo.ProductVO;
-import com.cws.vo.StorePagingVO;
 import com.cws.vo.UserVO;
 import com.cws.vo.WishVO;
 
@@ -21,46 +19,15 @@ import com.cws.vo.WishVO;
 public class StoreService {
 	
 	@Autowired private StoreDAO sd;
-	private final int perPage = 12;
 
 	// 전체 상품목록을 불러옴
-	public List<ProductVO> selectAll() {
+	public List<ProductVO> selectAll(PagingParamsVO ppv) {
 		System.out.println("넘어옴");
-		List<ProductVO> storeList = sd.storeSelectAll();
+		System.out.println("selectAll : " + ppv.getFirst());
+		System.out.println("selectAll : " + ppv.getLast());
+		List<ProductVO> storeList = sd.storeSelectAll(ppv);
+		
 		return storeList;
-	}
-	
-	// 전체 상품 페이징
-	public ModelAndView storePage(int page, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("gameStore");
-		
-		StorePagingVO spv = new StorePagingVO();
-		
-		int storeCount = sd.selectCount();
-		int pageCount = storeCount / perPage;
-		pageCount += storeCount % perPage == 0 ? 0 : 1;
-		
-		// 작은 페이징
-		int first = (page - 1) * perPage + 1;
-		int last = first + perPage - 1;
-		spv.setStart(first);
-		spv.setEnd(last);
-		
-		// 큰 페이징
-		int section = (page - 1) / 5;
-		int begin = 5 * section + 1;
-		int end = begin + 4 > pageCount ? pageCount : begin + 4;
-		
-		// 뷰에 전달
-		mav.addObject("vo", sd.pageAll(spv));
-		mav.addObject("begin", begin);
-		mav.addObject("end", end);
-		mav.addObject("page", page);
-		mav.addObject("spv", spv);
-		mav.addObject("prev", section != 0);
-		mav.addObject("next", storeCount > perPage * end);
-		
-		return mav;
 	}
 	
 	// 단일 상품의 정보를 불러옴
@@ -295,5 +262,10 @@ public class StoreService {
 	public List<NoticeBoardVO> selectBoard() {
 		List<NoticeBoardVO> boardList = sd.selectBoard();
 		return boardList;
+	}
+
+	public int selectProductCount() {
+		int AllCount = sd.selectProductCount();
+		return AllCount;
 	}
 }
