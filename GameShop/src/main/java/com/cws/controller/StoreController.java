@@ -1,8 +1,11 @@
 package com.cws.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,15 +99,12 @@ public class StoreController {
 		mav.addObject("product", ss.select(prod));
 		
 		if(user != null) {
+			mav.addObject("compare", ss.selHistory(user.getId(), prod));
 			List<CouponVO> coupon = ss.selectCoupon(user.getId());
 			if(coupon != null) {
 				System.out.println("coupon : " + coupon.get(0).getName());
 				mav.addObject("coupon", coupon);
 			}
-		}
-		
-		if(user != null) {
-			mav.addObject("compare", ss.selHistory(user.getId(), prod));
 		}
 		return mav;
 	}
@@ -118,7 +118,8 @@ public class StoreController {
 	public String paymentFinish(@PathVariable("game")String game, 
 			@RequestParam("name")String name, 
 			@RequestParam("userID")String userID, 
-			@RequestParam("coupon")String coupon, 
+			@RequestParam("coupon")String coupon,
+			HttpServletResponse response,
 			Model model) {
 		ProductVO pvo = ss.selectInfo(name);	// 게임 정보
 		UserVO user = ss.selectGetUser(userID);
@@ -127,9 +128,22 @@ public class StoreController {
 			cnt = ss.count(userID);
 			List<CompareProductVO> compareList = ss.updateCoupon(name, user, cnt, coupon);
 			System.out.println("쿠폰결제의 : " + coupon);
-			if (compareList.get(0).getPrice() < 0)
-				System.out.println("비싼 쿠폰이 사용됨");
-				model.addAttribute("msg", "쿠폰금액이 결제금액 보다 많습니다. 결제를 진행하시겠습니까?");
+			if (compareList == null) {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out;
+				try {
+					System.out.println("비싼 쿠폰이 사용됨");
+					List<CouponVO> c = ss.selectCoupon(userID);
+					out = response.getWriter();
+					out.println("<script>alert('쿠폰 정보를 확인해주세요');</script>");
+		            out.flush();
+					model.addAttribute("userCoupons", c);
+		            return "mypageCoupon";
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			model.addAttribute("compareList", compareList);
 			return "redirect:/";
 		}

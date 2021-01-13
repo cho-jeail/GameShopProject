@@ -89,10 +89,16 @@ public class StoreService {
 		cvo = sd.findCoupon(cvo);
 		System.out.println("updateCoupon : " + cvo.getName());
 		
+		if(!cvo.getName().equals("정말좋은쿠폰")) {
+			if(pvo.getPrice() < (cvo.getSalePrice() * 2)) {
+				return null;
+			}
+		}
+		
 		compare.setUserid(user.getId());
 		compare.setId(pvo.getId());
 		compare.setName(pvo.getName());
-		compare.setPrice(pvo.getPrice() - cvo.getSalePrice());
+//		compare.setPrice(pvo.getPrice() - cvo.getSalePrice());
 		compare.setInfo(pvo.getInfo());
 		compare.setDeveloper(pvo.getDeveloper());
 		compare.setPublisher(pvo.getPublisher());
