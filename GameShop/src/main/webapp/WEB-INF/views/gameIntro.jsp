@@ -19,7 +19,7 @@
 				</div>
 
 				<div class="information">
-					<h4>가격 : ${game.price }</h4>
+					<h4 id="price">가격 : ${game.price }</h4>
 					<h4>${game.info }</h4>
 					<h4>개발사 : ${game.developer }</h4>
 					<h4>배포사 : ${game.publisher }</h4>
@@ -80,15 +80,15 @@
 					<div>
 						쿠폰 사용하기
 						<select name="coupon" id="coupon">
-							<c:if test="${empty coupon }">
+						<c:if test="${empty coupon }">
 								<option value="">보유한 쿠폰이 없습니다</option>
-							</c:if>
-							<c:if test="${not empty coupon }">
+						</c:if>
+						<c:if test="${not empty coupon }">
 								<option value="">쿠폰을 선택하세요</option>
 								<c:forEach var="coupon" items="${coupon }">
-									<option value="${coupon.name }">${coupon.name }</option>
+									<option value="${coupon.name }">${coupon.name }(${coupon.salePrice })</option>
 							</c:forEach>
-							</c:if>
+						</c:if>
 						</select>
 					</div>
 				</div>
@@ -144,11 +144,13 @@
 			var name = $("#name");
 			var userID = "${sessionScope.signin.id}";
 			var cou = document.getElementById('coupon');
+			var price = parseInt(document.getElementById('price'));
 			var coupon;
 			
 			for(i = 0; i < cou.options.length; i++) {
 				if(cou.options[i].selected == true) {
 					coupon = cou.options[i].value;
+					console.log("쿠폰 : " + coupon);
 					break;
 				}
 			}
@@ -182,18 +184,6 @@
 				form.appendChild(input_coupon);
 				
 				form.submit();
-			}
-			
-			var msg = "<c:out value="${msg }" />";
-			console.log("경고메시지" + msg);
-			if (msg !== "") {
-				var msgPk = confirm('쿠폰금액이 결제금액 보다 많습니다. 결제를 진행하시겠습니까?');
-				if(msgPk === true)
-					alert("구매가 완료됬습니다");
-				else{
-					alert("구매를 취소합니다")					
-					history.go(0);
-				}
 			}
 		}
 	}

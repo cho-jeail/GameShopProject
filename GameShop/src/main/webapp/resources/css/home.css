@@ -1,7 +1,4 @@
 /*GLOBALS*/
-*{margin:0; padding:0; list-style:none;}
-/* a{text-decoration:none;} */
-a:hover{color:#1bc1a3;}
 body, hmtl{font-family: 'Anton', sans-serif;}
 
 
@@ -12,6 +9,7 @@ body, hmtl{font-family: 'Anton', sans-serif;}
   position:relative;
   color:#fff;
   text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;  
+  margin:0; padding:0;
 }
 
 #slider-wrap{
@@ -19,6 +17,7 @@ body, hmtl{font-family: 'Anton', sans-serif;}
   height:450px;
   position:relative;
   overflow:hidden;
+  margin:0; padding:0;
 }
 
 #slider-wrap ul#slider{
@@ -28,6 +27,7 @@ body, hmtl{font-family: 'Anton', sans-serif;}
   position:absolute;
   top:0;
   left:0;
+  margin:0; padding:0;
 }
 
 #slider-wrap ul#slider li{
@@ -35,6 +35,7 @@ body, hmtl{font-family: 'Anton', sans-serif;}
   position:relative;
   width:1280px;
   height:450px; 
+  list-style:none;
 }
 
 #slider-wrap ul#slider li > div{
