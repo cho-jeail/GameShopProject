@@ -30,6 +30,11 @@ public class StoreService {
 		return storeList;
 	}
 	
+	public List<ProductVO> selectRecommend() {
+		List<ProductVO> recommend = sd.selectRecommend();
+		return recommend;
+	}
+	
 	// 단일 상품의 정보를 불러옴
 	public List<ProductVO> select(String product) {
 		System.out.println("product : " + product);
@@ -312,4 +317,5 @@ public class StoreService {
 		List<CouponVO> coupon = sd.selectCoupon(id);
 		return coupon;
 	}
+
 }

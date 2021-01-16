@@ -1,7 +1,107 @@
 /*GLOBALS*/
 body, hmtl{font-family: 'Anton', sans-serif;}
 
+/*=================== 사이드 바 ===================*/
+.container {
+	display: flex;
+	margin-top: 20px;
+}
 
+.homeSide {
+	display: flex;
+	flex-direction: row;
+	width: 1280px;
+	height: 250px;
+	margin-top: 20px;
+}
+
+.sideBoard {
+	width: 630px;
+	height: 250px;
+	background: #003399;
+	margin: 0px;
+}
+
+.sideBoard ul {
+	line-height: 500%;
+}
+
+.sideBoard ul li {
+	color: #D8D8D8;
+	line-height: 20px;
+}
+
+.sideBoard ul li a {
+	color: #D8D8D8;
+	line-height: 20px;
+}
+
+.sideBoard ul li a:hover {
+	color:#1bc1a3;
+}
+
+.sideBoard a {
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+/*=================== 광고 ===================*/
+.advertise {
+	width: 630px;
+	height: 250px;
+	border: 1px solid green;
+	margin-left: 20px;
+}
+
+/*=================== 메인화면 ===================*/
+.product {
+	width: 270px;
+	height: 300px;
+	margin-left: 40px;
+	margin-bottom: 15px;
+	border: 1px solid #078196;
+	background-color: #3B36CF;
+}
+
+.product a {
+	text-decoration: none;
+}
+
+.sideProduct {
+	padding-left: 0px;
+	margin-left: 20px;
+}
+
+.imgsize {
+	padding: 5px;
+}
+
+.gamename {
+	margin-left: 5px;
+}
+
+.gamename h5 {
+	color: #C0C0C0;
+}
+
+.gameprice {
+	margin-left: 5px;
+}
+
+.underList {
+	margin-left: 15px;
+	display: flex;
+}
+
+.recommend {
+	color: #d4d4d4;
+}
+
+.gameprice span {
+	color: #C0C0C0;
+}
+
+/*=================== 슬라이더 쇼 ===================*/
 #wrapper{
   width:1280px;
   margin:50px auto;
