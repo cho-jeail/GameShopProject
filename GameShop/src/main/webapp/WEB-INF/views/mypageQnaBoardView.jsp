@@ -51,13 +51,13 @@
 				</p>
 				<p class="MypQnaContent">${fn:replace(QnaBoard.content, EnterChar, '<br>') }</p>
 				<c:if test="${QnaBoard.image1 ne 'null' }">
-					<img alt="" src="${cpath }/img/${QnaBoard.image1 }" style="width: 500px;"><br>
+					<img alt="" src="${cpath }/img/${QnaBoard.image1 }" class="MypQnaImg"><br>
 				</c:if>
 				<c:if test="${QnaBoard.image2 ne 'null' }">
-					<img alt="" src="${cpath }/img/${QnaBoard.image2 }" style="width: 500px;"><br>
+					<img alt="" src="${cpath }/img/${QnaBoard.image2 }" class="MypQnaImg"><br>
 				</c:if>
 				<c:if test="${QnaBoard.image3 ne 'null' }">
-					<img alt="" src="${cpath }/img/${QnaBoard.image3 }" style="width: 500px;"><br>		
+					<img alt="" src="${cpath }/img/${QnaBoard.image3 }" class="MypQnaImg"><br>		
 				</c:if>
 				<input class="MypQnaIndexbutton" type="button" onclick="location.href='${cpath}/mypage/mypQna/'" value="목록">
 			</div>

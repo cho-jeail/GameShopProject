@@ -514,7 +514,10 @@
 	border-style: inset;
 	border-width: 2px;
 }
-
+.MypQnaImg {
+	max-width: 500px;
+	max-height: 500px;
+}
 
 
 
