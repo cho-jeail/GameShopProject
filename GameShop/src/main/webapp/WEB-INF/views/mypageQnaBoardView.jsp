@@ -2,9 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet" type="text/css" href="${cpath }/css/mypage.css">
 <script type="text/javascript" src="${cpath }/js/jusopop.js"></script>
 <c:set var="signInfo" value="${signin }" />
+<% pageContext.setAttribute("EnterChar", "\n"); %>
 <script type="text/javascript">
 	seId = "${signInfo.id}";
 	seNick = "${signInfo.nickname}";
@@ -27,9 +29,9 @@
 		</div>
 		<div class="mypContents">
 			<h2 class="mypH2">문의 내역</h2>
-			<div>
-				<h4>${QnaBoard.title }</h4>
-				<p>
+			<div class="MypContentBox">
+				<h3 class="mypQnatitle">${QnaBoard.title }</h3>
+				<p class="mypQnaInfo">
 					구분 :&nbsp;
 					<c:choose>
 						<c:when test="${QnaBoard.category eq 'product' }">
@@ -47,7 +49,7 @@
 					</c:choose>
 					&nbsp;| 작성일 : <fmt:formatDate value="${QnaBoard.writeDate }" pattern="yyyy-MM-dd HH:mm:ss" />
 				</p>
-				<textarea readonly="readonly">${QnaBoard.content }</textarea><br>
+				<p class="MypQnaContent">${fn:replace(QnaBoard.content, EnterChar, '<br>') }</p>
 				<c:if test="${QnaBoard.image1 ne 'null' }">
 					<img alt="" src="${cpath }/img/${QnaBoard.image1 }" style="width: 500px;"><br>
 				</c:if>
@@ -57,7 +59,7 @@
 				<c:if test="${QnaBoard.image3 ne 'null' }">
 					<img alt="" src="${cpath }/img/${QnaBoard.image3 }" style="width: 500px;"><br>		
 				</c:if>
-				<input type="button" onclick="location.href='${cpath}/mypage/mypQna/'" value="목록">
+				<input class="MypQnaIndexbutton" type="button" onclick="location.href='${cpath}/mypage/mypQna/'" value="목록">
 			</div>
 		</div>
 	</div>

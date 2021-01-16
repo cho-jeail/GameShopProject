@@ -449,7 +449,7 @@
 .regBtn:focus{ outline: none; }
 
 
-/* 문의 내역 확인 부분 - JIC */
+/* 문의 내역 확인 부분 - 작성자 : JIC */
 .mypContents a {
 	text-decoration: none;
 	color: #d4d4d4;
@@ -485,9 +485,35 @@
 	margin-left: 5px;
 }
 
-
-
-
+.MypContentBox {
+	background-color: #09223c;
+	padding: 20px;
+	border-radius: 10px;
+}
+.mypQnaInfo {
+	font-size: 10pt;
+}
+.MypQnaIndexbutton {
+	width: 60px;
+	height: 30px;
+	float: right;
+	clear: both;
+	background-color: #0facc8;
+	color: white;
+	border-radius: 5px;
+	border: 0px;
+	font-weight: bold;
+	font-size: 12pt;
+	outline: none;
+	margin-top: 40px;
+}
+.MypQnaIndexbutton:hover {
+	background-color: #0d8ea6;
+}
+.MypQnaIndexbutton:active {
+	border-style: inset;
+	border-width: 2px;
+}
 
 
 
