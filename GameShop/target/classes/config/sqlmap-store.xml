@@ -139,4 +139,8 @@
 		select * from coupon where userid=#{id}
 	</select>
 	
+	<select id="selectRecommend" resultType="ProductVO">
+		select * from product
+	</select>
+	
 </mapper>

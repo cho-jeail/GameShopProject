@@ -148,7 +148,7 @@
 	</c:forEach>
 	</div>
 </div>
-<div class="PagingDiv">
+<div class="storePaging">
 		<c:if test="${not empty storeList }">
 			<a id="PagePrev">&lt;</a>
 		</c:if>

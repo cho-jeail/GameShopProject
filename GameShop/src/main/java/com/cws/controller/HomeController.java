@@ -52,6 +52,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("BoardList", ss.selectBoard());
+		model.addAttribute("storeList", ss.selectRecommend());
 		return "home";
 	}
 	
