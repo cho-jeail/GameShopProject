@@ -235,7 +235,7 @@ public class StoreService {
 		
 		for(int i = 0; i < compare.size(); i++) {
 			if(prod.equals(compare.get(i).getName()))
-				return "이미 구매한 상품입니다.";
+				return "보유중";
 		}
 		return null;
 	}

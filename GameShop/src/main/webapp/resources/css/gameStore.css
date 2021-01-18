@@ -7,34 +7,78 @@
 
 .StoreSide {
 	display: flex;
+	color: #d4d4d4;
 	flex-direction: column;
-	width: 180px;
-	height: 250px;
-	background: #003399;
+	width: 200px;
+	height: 280px;
+	background: #000F75;
 	margin: 0px;
+	box-sizing: border-box;
 }
 
-.StoreSide ul {
-	line-height: 500%;
+.StoreSide h4 {
+	width: 130px;
+	border-bottom: 5px solid green;
+	margin-left: 8px;
+	margin-bottom: 2px;
 }
 
-.StoreSide ul li {
-	color: #D8D8D8;
-	line-height: 20px;
+.StoreSide select {
+	margin-left: 10px;
 }
 
-.StoreSide ul li a {
-	color: #D8D8D8;
-	line-height: 20px;
+.kind {
+  width: 178px;
+  color: #d4d4d4;
+  padding: .8em .5em;
+  font-family: inherit;
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #999;
+  border-radius: 0px;
+  text-align: center;
 }
 
-.StoreSide ul li a:hover {
-	color:#1bc1a3;
+.kind option {
+	color : black;
 }
 
-.StoreSide a {
-	text-decoration: none;
+.kind::-ms-expand {
+  /* for IE 11 */
+  display: none;
 }
+
+.search {
+	margin-top: 50px;
+	border: 1px solid #d4d4d4;
+	text-align: center;
+	width: 80%;
+	margin-left: 18px;
+}
+
+/* .StoreSide ul { */
+/* 	line-height: 500%; */
+/* } */
+
+/* .StoreSide ul li { */
+/* 	color: #D8D8D8; */
+/* 	line-height: 20px; */
+/* } */
+
+/* .StoreSide ul li a { */
+/* 	color: #D8D8D8; */
+/* 	line-height: 20px; */
+/* } */
+
+/* .StoreSide ul li a:hover { */
+/* 	color:#1bc1a3; */
+/* } */
+
+/* .StoreSide a { */
+/* 	text-decoration: none; */
+/* } */
 
 .Store-menu {
 	display: flex;
@@ -46,14 +90,25 @@
 	display: flex;
 	margin-bottom: 20px;
 	padding: 0px;
+	width: 100%;
+	text-align: center;
 }
 
 .Store-menu ul li {
 	list-style: none;
-	height: 65px;
-	margin-left: 10px;
-	border: 1px solid black;
+	height: 50px;
 	line-height: 65px;
+	display: flex inline-block;
+	justify-content: space-between;
+	list-style: none;
+	padding-left: 0px;
+	margin: 0;
+	box-sizing: border-box;
+	width: 350px;
+	background-color: #0f3964;
+	line-height: 50px;
+	border: 0.5px solid #1e70c1;
+	transition: border-top 0.5s ease 0s;
 }
 
 .Store-menu ul li a {
@@ -105,7 +160,14 @@
 }
 
 .intro {
+	display: flex;
 	color: #C0C0C0;
+}
+
+.introName {
+	font-size: 5em;
+	font-weight: 700;
+	margin-top: 10px;
 }
 
 .intro ul {
@@ -116,7 +178,8 @@
 	border: 1px solid gold; 
 	text-align: center;
 	padding: 5px;
-	margin-top: 5px;
+	margin-top: 10px;
+	margin-bottom: 20px;
 	width: 1268px;
 	margin-right: 0px;
 }
@@ -128,12 +191,95 @@
 
 .information {
 	display: none;
+	color: #C0C0C0;
 }
 
 .useProduct {
 	display: none;
+	color: #C0C0C0;
 }
 
+.payment {
+	display: flex;
+	margin-left: 600px;
+}
+
+.payment span {
+	color: #FAEBFF;
+	font-size: 3em;
+	margin-top: 30px;
+	margin-left: 200px;
+	font-weight: bold;
+}
+
+.payButton {
+  	--button-bg-color: #FF3636;
+  	--button-hover-bg-color: #025ce2;
+	
+	-webkit-appearance: none;
+  	-moz-appearance: none;
+  	appearance: none;
+  
+  	background: var(--button-bg-color);
+  	color: #3D3D3D;
+  
+  	margin-top: 50px;
+  	margin-bottom: 25px;
+  	margin-left: 10px;
+  	padding: 0.5rem 1rem;
+  	
+  	font-size: 30px;
+  	font-weight: 700;
+  	text-align: center;
+  	text-decoration: none;
+  
+  	border: none;
+  	border-radius: 4px;
+  
+  	display: inline-block;
+  	width: auto;
+  
+  	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  
+  	cursor: pointer;
+  
+  	transition: 0.5s;
+}
+
+.wishButton {
+	--button-bg-color: #E8DB5F;
+  	--button-hover-bg-color: #025ce2;
+	
+	-webkit-appearance: none;
+  	-moz-appearance: none;
+  	appearance: none;
+  
+  	background: var(--button-bg-color);
+  	color: #4641D9;
+  
+  	margin-top: 50px;
+  	margin-bottom: 25px;
+  	margin-left: 10px;
+  	padding: 0.5rem 1rem;
+  	
+  	font-size: 30px;
+  	font-weight: 700;
+  	text-align: center;
+  	text-decoration: none;
+  
+  	border: none;
+  	border-radius: 4px;
+  
+  	display: inline-block;
+  	width: auto;
+  
+  	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  
+  	cursor: pointer;
+  
+  	transition: 0.5s;
+}
+/* =========== 페이징 ============= */
 .storePaging {
 	text-align: center;
 	width: 900px;

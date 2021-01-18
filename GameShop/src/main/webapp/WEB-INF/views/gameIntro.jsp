@@ -7,8 +7,21 @@
 	<c:set var="msg" value="${msg }" />
 	<c:forEach var="game" items="${product }">
 		<div class="intro">
-			<h2>${game.name }</h2>
+			<div class="introName">${game.name }</div>
+			<div class="payment">
+				<c:if test="${empty compare }">
+					<button onclick="javascript:openModal()" class="payButton">
+						구매하기
+					</button>
+					<button onclick="javascript:wish()" class="wishButton">위시리스트 추가</button>
+				</c:if>
+				<c:if test="${not empty compare }">
+					<span>${compare }</span>
+				</c:if>
+			</div>
+			</div>
 			<hr>
+		<div>
 			<div>
 				<img src="${cpath }/resources/image/image1.jpg"
 				style="width: 1280px; height: 550px; display: flex;">
@@ -31,7 +44,7 @@
 				</div>			
 				
 				<div class="useProduct">
-					<h4>플랫폼 :
+					<h4>운영체제 :
 						<c:if test="${game.platform == 2 }">Window, MAC</c:if>
 						<c:if test="${game.platform == 1 }">MAC</c:if>
 						<c:if test="${game.platform == 0 }">Window</c:if>
@@ -41,24 +54,12 @@
 						<c:if test="${game.controller == 0 }">불가능</c:if>
 						<c:if test="${game.controller == 1 }">가능</c:if>
 					</h4>
-					<h4>나이제한 : ${game.rating }</h4>
+					<h4>평점 : ${game.rating }</h4>
 					<h4>지원언어 : ${game.languages }</h4>
 				</div>
 			</div>
 		</div>
 	</c:forEach>
-
-	<div>
-		<c:if test="${empty compare }">
-			<button onclick="javascript:openModal()">
-				구매하기
-			</button>
-			<button onclick="javascript:wish()">위시리스트 추가</button>
-		</c:if>
-		<c:if test="${not empty compare }">
-			<h5>${compare }</h5>
-		</c:if>
-	</div>
 
 	<!-- Modal창 -->
 	<div id="modal" class="searchModal">
