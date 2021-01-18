@@ -81,7 +81,7 @@ function filter() {
 		}
 		
 		if(kind === "" && developer === "") {
-			location.href = "${cpath}/gameStore/?page=1";
+			location.href = history.go(0);
 			alert('한가지의 종류라도 선택하세요');
 		}
 		

@@ -29,7 +29,7 @@
 		<!-- 상품 -->
 		<div>
 			<h4>장르</h4>
-			<select id="kind" name="kind">
+			<select id="kind" name="kind" class="kind">
 				<option value="">:::: 선택 ::::</option>
 				<option value="AOS">AOS</option>
 				<option value="FPS">FPS</option>
@@ -37,13 +37,13 @@
 		</div>
 		<div>
 			<h4>플랫폼</h4>
-			<select id="developer" name="developer">
+			<select id="developer" name="developer" class="kind">
 				<option value="">:::: 선택 ::::</option>
 				<option value="스팀">스팀</option>
 				<option value="에픽게임즈">에픽게임즈</option>
 			</select>
 		</div>
-		<div onclick="javascript:filter()">
+		<div class="search" onclick="javascript:filter()">
 			검색
 		</div>
 	</div>
