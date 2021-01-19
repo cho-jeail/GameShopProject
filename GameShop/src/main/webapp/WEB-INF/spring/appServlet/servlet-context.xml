@@ -26,6 +26,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.cws.controller" />
+	<beans:bean id="naverLoginBO" class="com.cws.naver.NaverLoginBO" />
 	
 	<!-- 인터셉터 -->
 	<interceptors>
@@ -43,9 +44,7 @@
 		<!-- 자동로그인 인터셉터 -->
 		<interceptor>
 			<!-- 최상위 -->
-		<mapping path="/**/"/>
-			<!-- 제외 항목 -->	
-<!-- 			<exclude-mapping path="/"/>	 -->
+			<mapping path="/**/"/>
 			<beans:bean id="RememberInterceptor" class="com.cws.interceptor.RememberInterceptor" />
 		</interceptor>
 	</interceptors>

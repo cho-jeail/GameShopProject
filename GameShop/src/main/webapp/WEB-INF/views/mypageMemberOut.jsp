@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <link rel="stylesheet" type="text/css" href="${cpath }/css/mypage.css">
+<script type="text/javascript">
+	naverState = "${naverState}";
+</script>
 
 <section class="mypSection">
 	<div class="mypContainer">

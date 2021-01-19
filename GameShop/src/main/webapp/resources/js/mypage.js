@@ -30,6 +30,11 @@ cxBtn.addEventListener('click', cxBtnClk);
 sBtn.addEventListener('click', submit);
 
 function updBtnClk(){
+	if(naverState !== ''){
+		alert('네이버 아이디로 로그인하신 경우 해당기능을 이용하실 수 없습니다.');
+		return;
+	}
+	
 	for(i = 0; i < infoList.length; i++){
 		infoList[i].readOnly = '';
 		infoList[i].style.border = '1px solid #dcd6dc';

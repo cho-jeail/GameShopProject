@@ -89,7 +89,12 @@ public class HomeController {
 		
 	@RequestMapping(value = "/mypage/mypQna/", method = RequestMethod.GET)
 	public ModelAndView MypageQna(HttpServletRequest req) {
-		return CCS.MypageQna(req);
+		HttpSession session = req.getSession();
+		String naverState = (String)session.getAttribute("naverState");
+		if(naverState == null) {
+			return CCS.MypageQna(req);
+		}
+		return naverLoginSF();
 	}
 	
 	@RequestMapping(value = "/mypage/mypQna/{id}/", method = RequestMethod.GET)
@@ -98,12 +103,23 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/mypage/mypageMemberOut/")
-	public String memberOutView() { return "mypageMemberOut"; }
+	public ModelAndView memberOutView(HttpSession session) {
+		String naverState = (String)session.getAttribute("naverState");
+		if(naverState == null) {
+			ModelAndView mav = new ModelAndView("mypageMemberOut");
+			return mav;
+		}
+		return naverLoginSF();
+	}
 	
 	@RequestMapping(value = "/mypage/mypageCoupon/")
 	public ModelAndView mypageCouponView(HttpSession session) { 
 		UserVO vo = (UserVO)session.getAttribute("signin");
-		return UServ.selectCoupons(vo.getId());
+		String naverState = (String)session.getAttribute("naverState");
+		if(naverState == null) {
+			return UServ.selectCoupons(vo.getId());
+		}
+		return naverLoginSF();
 	}
 	
 	@RequestMapping(value = "/mypage/mypageMemberOut/", method = RequestMethod.POST)
@@ -120,7 +136,11 @@ public class HomeController {
 	public ModelAndView compareProduct (HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String name = ((UserVO)session.getAttribute("signin")).getId();
-		return ss.compareSelectAll(name);
+		String naverState = (String)session.getAttribute("naverState");
+		if(naverState == null) {
+			return ss.compareSelectAll(name);
+		}
+		return naverLoginSF();
 	}
 	
 	@RequestMapping(value = "/mypage/basket/", method = RequestMethod.GET)
@@ -128,12 +148,23 @@ public class HomeController {
 		System.out.println("위시리스트mpg");
 		HttpSession session = request.getSession();
 		String name = ((UserVO)session.getAttribute("signin")).getId();
-		return ss.wishList(name);
+		String naverState = (String)session.getAttribute("naverState");
+		if(naverState == null) {
+			return ss.wishList(name);
+		}
+		return naverLoginSF();
 	}
 	
 	@RequestMapping(value = "/info/", method = RequestMethod.POST)
 	public ModelAndView searchWord(@RequestParam("word") String word) {
 		System.out.println("검색이 들어온다!!!! : " + word);
 		return ss.searchWord(word);
+	}
+	
+	public ModelAndView naverLoginSF() {
+		ModelAndView mav = new ModelAndView("redirect");
+		mav.addObject("msg", "네이버 아이디로 로그인하신 경우 해당기능을 이용하실 수 없습니다.");
+		mav.addObject("url", "mypage");
+		return mav;
 	}
 }

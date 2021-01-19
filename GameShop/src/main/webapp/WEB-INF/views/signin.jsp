@@ -3,6 +3,14 @@
 <%@ include file="header.jsp" %>
 <link rel="stylesheet" type="text/css" href="${cpath }/css/signin.css" />
 
+<script type="text/javascript">
+	function naverPop(event){
+		event.preventDefault();
+		var url="${url}";
+		window.open(url,"","width =400,height=500,left=600,top=200");
+	}
+</script>
+
 <section class="signinSection">
 	<div class="signinContainer">
 		<div class="signinLogo"></div>
@@ -25,6 +33,11 @@
 		<div class="atagDiv">
 			<a href="${cpath }/findpwd/">비밀번호를 잊으셨나요?</a> <a href="${cpath }/policy/">처음이신가요?</a>
 		</div>
+		
+	</div>
+	<div class="signinContainer2">
+		<h3 class="signinH3">간편로그인</h3>
+		<img onclick="naverPop(event)" class="naverLogin" src="${cpath }/resources/image/naverLogin.PNG" />
 	</div>
 </section>
 
