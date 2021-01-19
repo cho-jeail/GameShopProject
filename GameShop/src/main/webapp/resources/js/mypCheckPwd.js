@@ -7,10 +7,27 @@ let mypChkPw = document.getElementById('mypChkPw');
 let divA = document.getElementById('mypChkPw_A');
 let divB = document.getElementById('mypChkPw_B');
 
-mypCPBtn.addEventListener('click', mypChkPwd);
-
-function enterkey() {
-	 if (window.event.keyCode == 13) { mypChkPwd(event); } 
+if(naverState === ''){
+	mypCPBtn.addEventListener('click', mypChkPwd);
+	
+	function enterkey() {
+		if (window.event.keyCode == 13) { mypChkPwd(event); }
+	}
+	
+	window.onclick = function(event){
+		if(event.target === mypChkPw || event.target === mypCPBtn || event.target === divB){
+			changeCss();			
+		}
+		else{
+			if(mypChkPw.value !== ''){
+				divA.style.border = '1px solid gray';
+				divB.style.color = 'gray';
+			}
+			else{
+				changeCss2();
+			}
+		}
+	}
 }
 
 function changeCss(){
@@ -31,20 +48,7 @@ function changeCss2(){
 	mypChkPw.value = '';
 }
 
-window.onclick = function(event){
-	if(event.target === mypChkPw || event.target === mypCPBtn || event.target === divB){
-		changeCss();			
-	}
-	else{
-		if(mypChkPw.value !== ''){
-			divA.style.border = '1px solid gray';
-			divB.style.color = 'gray';
-		}
-		else{
-			changeCss2();
-		}
-	}
-}
+
 
 // 비밀번호 확인
 function mypChkPwd(event){

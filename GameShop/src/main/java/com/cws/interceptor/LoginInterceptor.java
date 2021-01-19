@@ -60,7 +60,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		}
 		
 		request.setAttribute("msg", "로그인이 필요합니다.");
-		request.setAttribute("url", "signin");
+		request.setAttribute("url", "signin/");
 		System.out.println(request.getContextPath()+"/redirect/");
 		RequestDispatcher dip =  request.getRequestDispatcher("/WEB-INF/views/redirect.jsp");
 		dip.forward(request, response);
