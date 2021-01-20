@@ -43,8 +43,8 @@
 				<option value="에픽게임즈">에픽게임즈</option>
 			</select>
 		</div>
-		<div class="search" onclick="javascript:filter()">
-			검색
+		<div onclick="javascript:filter()">
+			<button class="search">검색</button>
 		</div>
 	</div>
 	
@@ -57,7 +57,7 @@
 			<div>
 				<div class="imgsize">
 					<a href="${cpath }/gameStore/gameIntro/${list.name }/">
-						<img src="${cpath }/resources/image/image1.jpg"
+						<img src="${cpath }/resources/image/${list.gameimg}"
 						style="width: 290px; height: 150px">
 					</a>
 				</div>
@@ -90,7 +90,7 @@
 			<div>
 				<div class="imgsize">
 					<a href="${cpath }/gameStore/gameIntro/${list.name }/">
-						<img src="${cpath }/resources/image/image1.jpg"
+						<img src="${cpath }/resources/image/${list.gameimg}"
 						style="width: 290px; height: 150px">
 					</a>
 				</div>
@@ -123,7 +123,7 @@
 			<div>
 				<div class="imgsize">
 					<a href="${cpath }/gameStore/gameIntro/${list.name }/">
-						<img src="${cpath }/resources/image/image1.jpg"
+						<img src="${cpath }/resources/image/${list.gameimg}"
 						style="width: 290px; height: 150px">
 					</a>
 				</div>
@@ -149,6 +149,7 @@
 	</div>
 </div>
 <div class="storePaging">
+	<c:if test="${not empty PageParam }">
 		<c:if test="${not empty storeList }">
 			<a id="PagePrev">&lt;</a>
 		</c:if>
@@ -165,7 +166,8 @@
 		<c:if test="${not empty storeList }">
 			<a id="PageNext">&gt;</a>			
 		</c:if>
-	</div>
+	</c:if>
+</div>
 <hr>
 <script type="text/javascript" src="${cpath }/js/store.js"></script>
 <%@ include file="footer.jsp" %>

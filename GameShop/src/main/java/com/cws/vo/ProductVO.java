@@ -16,6 +16,7 @@ public class ProductVO {
 	private double rating;
 	private String languages;
 	private String kind;
+	private String gameimg;
 	
 	public String getId() {
 		return id;
@@ -94,6 +95,12 @@ public class ProductVO {
 	}
 	public void setKind(String kind) {
 		this.kind = kind;
+	}
+	public String getGameimg() {
+		return gameimg;
+	}
+	public void setGameimg(String gameimg) {
+		this.gameimg = gameimg;
 	}
 	
 }

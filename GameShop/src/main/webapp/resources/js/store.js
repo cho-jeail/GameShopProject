@@ -61,48 +61,49 @@ function discGame() {
 }
 
 function filter() {
-		var kind;
-		var developer;
-		var kd = document.getElementById('kind');
-		var devl = document.getElementById('developer');
+	var kind;
+	var developer;
+	var kd = document.getElementById('kind');
+	var devl = document.getElementById('developer');
+	// window.location.pathname -> 현재 주소의 경로를 가져온다.
 		
-		for(i = 0; i < kd.options.length; i++) {
-			if(kd.options[i].selected == true) {
-				kind = kd.options[i].value;
-				break;
-			}
+	for(i = 0; i < kd.options.length; i++) {
+		if(kd.options[i].selected == true) {
+			kind = kd.options[i].value;
+			break;
 		}
-		
-		for(i = 0; i < devl.options.length; i++) {
-			if(devl.options[i].selected == true) {
-				developer = devl.options[i].value;
-				break;
-			}
-		}
-		
-		if(kind === "" && developer === "") {
-			location.href = history.go(0);
-			alert('한가지의 종류라도 선택하세요');
-		}
-		
-		var form = document.createElement("form");
-		var input_kind = document.createElement("input");
-		var input_devl = document.createElement("input");
-		
-		form.setAttribute("method", "post");
-		
-		input_kind.setAttribute("type", "hidden");
-		input_kind.setAttribute("name", "kind");
-		input_kind.setAttribute("value", kind);
-		input_devl.setAttribute("type", "hidden");
-		input_devl.setAttribute("name", "developer");
-		input_devl.setAttribute("value", developer);
-		
-		document.body.appendChild(form);
-		
-		form.appendChild(input_kind);
-		form.appendChild(input_devl);
-		
-		form.submit();
 	}
+		
+	for(i = 0; i < devl.options.length; i++) {
+		if(devl.options[i].selected == true) {
+			developer = devl.options[i].value;
+			break;
+		}
+	}
+		
+	if(kind === "" && developer === "") {
+		location.href = history.go(-1);
+		alert('한가지의 종류라도 선택하세요');
+	}
+		
+	var form = document.createElement("form");
+	var input_kind = document.createElement("input");
+	var input_devl = document.createElement("input");
+		
+	form.setAttribute("method", "post");
+		
+	input_kind.setAttribute("type", "hidden");
+	input_kind.setAttribute("name", "kind");
+	input_kind.setAttribute("value", kind);
+	input_devl.setAttribute("type", "hidden");
+	input_devl.setAttribute("name", "developer");
+	input_devl.setAttribute("value", developer);
+		
+	document.body.appendChild(form);
+		
+	form.appendChild(input_kind);
+	form.appendChild(input_devl);
+		
+	form.submit();
+}
 

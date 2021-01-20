@@ -81,7 +81,7 @@
 /* } */
 
 .Store-menu {
-	display: flex;
+	display: flex block;
 	margin: 0px;
 	padding: 0px;
 }

@@ -23,7 +23,7 @@
 			<hr>
 		<div>
 			<div>
-				<img src="${cpath }/resources/image/image1.jpg"
+				<img src="${cpath }/resources/image/${game.gameimg}"
 				style="width: 1280px; height: 550px; display: flex;">
 			</div>
 			<div class="gameIntro">

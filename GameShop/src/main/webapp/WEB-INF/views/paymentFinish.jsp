@@ -30,7 +30,12 @@
 				<c:forEach var="compare" items="${compareList }" varStatus="str">
 					<tr>
 						<td class="mypBkTdA">${str.index + 1}</td>
-						<td class="mypBkTdB">${compare.name}</td>
+						<c:if test="${price > compare.price }">
+							<td class="mypBkTdB">${compare.name}(쿠폰사용)</td>
+						</c:if>
+						<c:if test="${price eq compare.price }">
+							<td class="mypBkTdB">${compare.name}</td>
+						</c:if>
 						<td class="mypBkTdA">${compare.price }원</td>
 						<td class="mypBkTdA">${compare.kind }</td>
 						<td class="mypBkTdB"><fmt:formatDate value="${compare.releaseDate }" pattern="yyyy-MM-dd HH:mm"/></td>

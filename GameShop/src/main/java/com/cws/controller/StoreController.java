@@ -74,14 +74,15 @@ public class StoreController {
 			return "gameStore";
 		}
 		else if(developer == null && kind == null) {
+			PagingParamsVO ppv = new PagingParamsVO(page, AllCount);
 			model.addAttribute("storeList", ss.cateList(name));
 			return "gameStore";
 		}
 		else if(developer != null || kind != null) {
 			System.out.println("필터에 들어옴");
 			List<ProductVO> list = ss.filterSelect(developer, kind);
-			model.addAttribute("list", list);
-			return "info";
+			model.addAttribute("storeList", list);
+			return "gameStore";
 		}
 		return "exhaust";
 	}
@@ -91,7 +92,7 @@ public class StoreController {
 	public ModelAndView introImage(@PathVariable("product") String prod, 
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
-			UserVO user = (UserVO) session.getAttribute("signin");
+		UserVO user = (UserVO) session.getAttribute("signin");
 		
 		System.out.println("product : " + prod);
 		ModelAndView mav = new ModelAndView();
