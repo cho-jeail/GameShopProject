@@ -28,6 +28,11 @@ mypPwd2.addEventListener('blur', pwComfirm);
 updBtn.addEventListener('click', updBtnClk);
 cxBtn.addEventListener('click', cxBtnClk);
 sBtn.addEventListener('click', submit);
+addrClsBtn.addEventListener('click', clearAddr);
+
+function clearAddr(){
+	document.getElementById('roadFullAddr').value = null;
+}
 
 function updBtnClk(){
 	if(naverState !== ''){

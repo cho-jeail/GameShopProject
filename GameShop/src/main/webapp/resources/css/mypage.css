@@ -244,21 +244,22 @@
 
 .addrBtnDiv{
 	display: flex;
-	padding-top: 10px;
+	padding-top: 5px;
 	margin-left: 15px;
 }
 
 .addrBtn{ 
 	display: none;
 	width: 80px;
-	height: 20px;
+	height: 30px;
 	border-radius: 20px;
 	margin-left: 10px;
 }
 
 #addrClsBtn{
 	display: none;
-	height: 20px;
+	width: 45px;
+	height: 30px;
 	border-radius: 20px;	
 }
 
@@ -529,6 +530,41 @@
 	max-width: 500px;
 	max-height: 500px;
 }
+
+/* 구매내역  */
+.mypBkTdA{ text-align: center; }
+.mypBkTdB{ padding-left: 10px; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
