@@ -7,15 +7,15 @@
 <div id="wrapper">
 	<div id="slider-wrap">
 		<ul id="slider">
-			<li><img src="${cpath }/resources/image/image1.jpg"></li>
+			<li><img src="${cpath }/resources/image/banner1.jpg"></li>
 
-			<li><img src="${cpath }/resources/image/image1.jpg"></li>
+			<li><img src="${cpath }/resources/image/banner2.jpg"></li>
 
-			<li><img src="${cpath }/resources/image/image1.jpg"></li>
+			<li><img src="${cpath }/resources/image/banner3.jpg"></li>
 
-			<li><img src="${cpath }/resources/image/image1.jpg"></li>
+			<li><img src="${cpath }/resources/image/banner4.jpg"></li>
 
-			<li><img src="${cpath }/resources/image/image1.jpg"></li>
+			<li><img src="${cpath }/resources/image/banner5.jpg"></li>
 		</ul>
 
 		<!--controls-->
@@ -32,8 +32,8 @@
 </div>
 <div class="container">
 	<!-- 
-		사이드 메뉴
-		게임 이미지
+		최신 공지사항,
+		광고배너
 	 -->
 
 	<div class="homeSide">
@@ -55,7 +55,7 @@
 		</div>
 		
 		<div class="advertise">
-			
+			<img src="${cpath }/resources/image/advertise.jpg" style="width: 630px; height: 250px">
 		</div>
 	</div>
 </div>
@@ -66,12 +66,12 @@
 	<div class="underList">
 		<!-- 게임 리스트 첫번째 열 -->
 		<div>
-			<c:forEach var="list" items="${storeList }" begin="0" step="3" end="5">
+			<c:forEach var="list" items="${storeList }" begin="0" step="3" end="4">
 				<div class="product">
 					<div>
 						<div class="imgsize">
 							<a href="${cpath }/gameStore/gameIntro/${list.name }/"> <img
-								src="${cpath }/resources/image/image1.jpg"
+								src="${cpath }/resources/image/${list.gameimg}"
 								style="width: 260px; height: 150px">
 							</a>
 						</div>
@@ -95,12 +95,12 @@
 
 		<!-- 게임 리스트 두번째 열 -->
 		<div>
-			<c:forEach var="list" items="${storeList }" begin="1" step="3" end="6">
+			<c:forEach var="list" items="${storeList }" begin="1" step="3" end="5">
 				<div class="product">
 					<div>
 						<div class="imgsize">
 							<a href="${cpath }/gameStore/gameIntro/${list.name }/"> <img
-								src="${cpath }/resources/image/image1.jpg"
+								src="${cpath }/resources/image/${list.gameimg}"
 								style="width: 260px; height: 150px">
 							</a>
 						</div>
@@ -124,12 +124,12 @@
 
 		<!-- 게임 리스트 세번째 열 -->
 		<div>
-			<c:forEach var="list" items="${storeList }" begin="2" step="3" end="7">
+			<c:forEach var="list" items="${storeList }" begin="2" step="3" end="6">
 				<div class="product">
 					<div>
 						<div class="imgsize">
 							<a href="${cpath }/gameStore/gameIntro/${list.name }/"> <img
-								src="${cpath }/resources/image/image1.jpg"
+								src="${cpath }/resources/image/${list.gameimg}"
 								style="width: 260px; height: 150px">
 							</a>
 						</div>
@@ -152,12 +152,12 @@
 		
 		<!-- 게임 리스트 네번째 열 -->
 		<div>
-			<c:forEach var="list" items="${storeList }" begin="2" step="4" end="8">
+			<c:forEach var="list" items="${storeList }" begin="3" step="3" end="7">
 				<div class="product">
 					<div>
 						<div class="imgsize">
 							<a href="${cpath }/gameStore/gameIntro/${list.name }/"> <img
-								src="${cpath }/resources/image/image1.jpg"
+								src="${cpath }/resources/image/${list.gameimg}"
 								style="width: 260px; height: 150px">
 							</a>
 						</div>

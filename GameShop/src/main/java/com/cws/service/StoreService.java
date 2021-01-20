@@ -109,7 +109,7 @@ public class StoreService {
 		compare.setUserid(user.getId());
 		compare.setId(pvo.getId());
 		compare.setName(pvo.getName());
-//		compare.setPrice(pvo.getPrice() - cvo.getSalePrice());
+		compare.setPrice(pvo.getPrice() - cvo.getSalePrice());
 		compare.setInfo(pvo.getInfo());
 		compare.setDeveloper(pvo.getDeveloper());
 		compare.setPublisher(pvo.getPublisher());
@@ -224,7 +224,18 @@ public class StoreService {
 	// 구매내역 확인
 	public ModelAndView compareSelectAll(String name) {
 		ModelAndView mav = new ModelAndView("paymentFinish");
-		mav.addObject("compareList", sd.compareSelect(name));
+		List<CompareProductVO> compareList = sd.compareSelect(name); 
+		List<ProductVO> pvo = sd.selectRecommend();
+		
+		for(int i = 0; i < pvo.size(); i++) {
+			for(int j = 0; j < compareList.size(); j++) {
+				if(pvo.get(i).getId().equals(compareList.get(j).getId())) {
+					mav.addObject("price", pvo.get(i).getPrice());
+				}
+			}
+		}
+		
+		mav.addObject("compareList", compareList);
 		return mav;
 	}
 

@@ -49,15 +49,61 @@ body, hmtl{font-family: 'Anton', sans-serif;}
 .advertise {
 	width: 630px;
 	height: 250px;
-	border: 1px solid green;
+/* 	border: 1px solid green; */
 	margin-left: 20px;
+}
+
+/*bar*/
+.pagination-wrap{
+  min-width:20px;
+  margin-top:350px;
+  margin-left: auto; 
+  margin-right: auto;
+  height:15px;
+  position:relative;
+  text-align:center;
+}
+
+.pagination-wrap ul {
+  width:100%;
+}
+
+.pagination-wrap ul li{
+  margin: 0 4px;
+  display: inline-block;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0.5;
+  position:relative;
+  top:0;
+  
+  
+}
+
+.pagination-wrap ul li.active{
+  width:12px;
+  height:12px;
+  top:3px;
+  opacity:1;
+  box-shadow:rgba(0,0,0,0.1) 1px 1px 0px; 
+}
+
+/*ANIMATION*/
+.slider-wrap ul, .pagination-wrap ul li{
+  -webkit-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  -moz-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  -o-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  -ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  transition: all 0.3s cubic-bezier(1,.01,.32,1); 
 }
 
 /*=================== 메인화면 ===================*/
 .product {
 	width: 270px;
 	height: 300px;
-	margin-left: 40px;
+	margin-left: 37px;
 	margin-bottom: 15px;
 	border: 1px solid #078196;
 	background-color: #3B36CF;
@@ -89,7 +135,6 @@ body, hmtl{font-family: 'Anton', sans-serif;}
 }
 
 .underList {
-	margin-left: 15px;
 	display: flex;
 }
 

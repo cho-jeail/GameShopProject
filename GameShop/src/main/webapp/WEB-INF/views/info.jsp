@@ -11,6 +11,18 @@
 </c:if>
 
 <c:if test="${not empty list }">
+<div align="center">
+	<!-- 상단 메뉴(게임 분류) -->
+	<div class="Store-menu">
+		<ul>
+			<li><a href="javascript:void(0)" onclick="newGame()">최신게임</a></li>
+			<li><a href="javascript:void(0)" onclick="freeGame()">무료게임</a></li>
+			<li><a href="javascript:void(0)" onclick="favoGame()">인기게임</a></li>
+			<li><a href="javascript:void(0)" onclick="discGame()">할인게임</a></li>
+		</ul>
+	</div>
+</div>
+
 <!-- 사이드 이미지 포함 -->
 <div class="container">
 	<!-- 
@@ -36,7 +48,7 @@
 			</select>
 		</div>
 		<div onclick="javascript:filter()">
-			검색
+			<button class="search">검색</button>
 		</div>
 	</div>
 	
@@ -49,7 +61,7 @@
 			<div>
 				<div class="imgsize">
 					<a href="${cpath }/gameStore/gameIntro/${list.name }/">
-						<img src="${cpath }/resources/image/image1.jpg"
+						<img src="${cpath }/resources/image/${list.gameimg}"
 						style="width: 290px; height: 150px">
 					</a>
 				</div>
@@ -82,7 +94,7 @@
 			<div>
 				<div class="imgsize">
 					<a href="${cpath }/gameStore/gameIntro/${list.name }/">
-						<img src="${cpath }/resources/image/image1.jpg"
+						<img src="${cpath }/resources/image/${list.gameimg}"
 						style="width: 290px; height: 150px">
 					</a>
 				</div>
@@ -115,7 +127,7 @@
 			<div>
 				<div class="imgsize">
 					<a href="${cpath }/gameStore/gameIntro/${list.name }/">
-						<img src="${cpath }/resources/image/image1.jpg"
+						<img src="${cpath }/resources/image/${list.gameimg}"
 						style="width: 290px; height: 150px">
 					</a>
 				</div>
@@ -141,4 +153,6 @@
 	</div>
 </div>
 </c:if>
+
+<script type="text/javascript" src="${cpath }/js/store.js"></script>
 <%@ include file="footer.jsp" %>
