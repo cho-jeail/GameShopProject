@@ -19,25 +19,23 @@
 		</div>
 		<div class="mypContents">
 			<h2 class="mypH2">위시리스트</h2>
-			<div>
-				${sessionScope.signin.name}
-			</div>
-			<table border="1">
-				<tr>
+			<table class="mypBkTable">
+				<tr class="mypBkTr1">
 					<th>번호</th>
 					<th>상품이름</th>
 					<th>가격</th>
 					<th>장르</th>
 					<th>구매날자</th>
+					<th>선택</th>
 				</tr>
 				<c:forEach var="wish" items="${wishList }" varStatus="str">
 					<tr>
-						<td>${str.index + 1}</td>
-						<td id="product">${wish.name}</td>
-						<td>${wish.price }</td>
-						<td>${wish.kind }</td>
-						<td><fmt:formatDate value="${wish.wishDate }" pattern="yyyy-MM-dd HH:mm"/></td>
-						<td><button onclick="javascript:delProduct()">삭제</button></td>
+						<td class="mypBkTdA">${str.index + 1}</td>
+						<td class="mypBkTdB" id="product">${wish.name}</td>
+						<td class="mypBkTdA">${wish.price }원</td>
+						<td class="mypBkTdA">${wish.kind }</td>
+						<td class="mypBkTdB"><fmt:formatDate value="${wish.wishDate }" pattern="yyyy-MM-dd HH:mm"/></td>
+						<td class="mypBkTdA"><button onclick="javascript:delProduct()">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</table>

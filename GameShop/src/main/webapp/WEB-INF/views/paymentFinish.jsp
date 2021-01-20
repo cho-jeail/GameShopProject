@@ -19,10 +19,7 @@
 		</div>
 		<div class="mypContents">
 			<h2 class="mypH2">결제 완료</h2>
-			<div>
-				${sessionScope.signin.name}
-			</div>
-			<table border="1">
+			<table>
 				<tr>
 					<th>번호</th>
 					<th>상품이름</th>
@@ -32,11 +29,11 @@
 				</tr>
 				<c:forEach var="compare" items="${compareList }" varStatus="str">
 					<tr>
-						<td>${str.index + 1}</td>
-						<td>${compare.name}</td>
-						<td>${compare.price }</td>
-						<td>${compare.kind }</td>
-						<td><fmt:formatDate value="${compare.releaseDate }" pattern="yyyy-MM-dd HH:mm"/></td>
+						<td class="mypBkTdA">${str.index + 1}</td>
+						<td class="mypBkTdB">${compare.name}</td>
+						<td class="mypBkTdA">${compare.price }원</td>
+						<td class="mypBkTdA">${compare.kind }</td>
+						<td class="mypBkTdB"><fmt:formatDate value="${compare.releaseDate }" pattern="yyyy-MM-dd HH:mm"/></td>
 					</tr>
 				</c:forEach>
 			</table>
