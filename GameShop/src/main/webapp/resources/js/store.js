@@ -81,11 +81,6 @@ function filter() {
 		}
 	}
 		
-	if(kind === "" && developer === "") {
-		location.href = history.go(-1);
-		alert('한가지의 종류라도 선택하세요');
-	}
-		
 	var form = document.createElement("form");
 	var input_kind = document.createElement("input");
 	var input_devl = document.createElement("input");

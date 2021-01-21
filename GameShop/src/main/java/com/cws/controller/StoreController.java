@@ -74,8 +74,16 @@ public class StoreController {
 			return "gameStore";
 		}
 		else if(developer == null && kind == null) {
-			PagingParamsVO ppv = new PagingParamsVO(page, AllCount);
 			model.addAttribute("storeList", ss.cateList(name));
+			return "gameStore";
+		}
+		else if(developer == "" && kind == "") {
+			PagingParamsVO ppv = new PagingParamsVO(page, AllCount);
+			List<ProductVO> storeList = ss.selectAll(ppv);
+			
+			model.addAttribute("storeList", storeList);
+			model.addAttribute("PageParam", ppv);
+			
 			return "gameStore";
 		}
 		else if(developer != null || kind != null) {
