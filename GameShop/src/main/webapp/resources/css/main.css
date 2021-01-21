@@ -69,7 +69,8 @@ footer font {
 .TopMenu {
 	display: flex;
 	width: 1080px;
-	height: 75px;	
+	height: 75px;
+	justify-content: space between;
 }
 
 .Menu {
@@ -131,6 +132,54 @@ footer font {
 .HeaderCCli ul li a:active {
 	background-color: #4c4c4c;
 }
+
+/* ============== 검색창 부분 ============== */
+.SearchBar {
+	height: 40px;
+	width: 600px;
+	border: 1px solid #1b5ac2;
+	background: #FFFFFF;
+	margin-top: 17px;
+	margin-left: 50px;
+}
+
+#SearchWord {
+	font-size: 16px;
+	width: 500px;
+	padding: 10px;
+	border: 0px;
+	outline: none;
+	float: left;
+}
+
+#SearchImg {
+	width: 50px;
+	height: 100%;
+	border: 0px;
+	outline: none;
+	float: right;
+}
+
+/* ============== 로그인 부분 ============== */
+.LoginArea {
+	margin-left: 250px;
+	margin-top: 17px;
+}
+
+.LoginArea input {
+	border: 1px solid skyblue;
+	background-color: rgba(0,0,0,0);
+	color: skyblue;
+	padding: 5px;
+}
+
+.LoginArea input:hover {
+	color: white;
+	background-color: skyblue;
+}
+
+
+
 
 
 
