@@ -27,17 +27,26 @@
 					<th>장르</th>
 					<th>구매날자</th>
 					<th>선택</th>
-				</tr>
-				<c:forEach var="wish" items="${wishList }" varStatus="str">
-					<tr>
-						<td class="mypBkTdA">${str.index + 1}</td>
-						<td class="mypBkTdB" id="product">${wish.name}</td>
-						<td class="mypBkTdA">${wish.price }원</td>
-						<td class="mypBkTdA">${wish.kind }</td>
-						<td class="mypBkTdB"><fmt:formatDate value="${wish.wishDate }" pattern="yyyy-MM-dd HH:mm"/></td>
-						<td class="mypBkTdA"><button onclick="javascript:delProduct()">삭제</button></td>
-					</tr>
-				</c:forEach>
+				</tr>				
+				<c:choose>
+					<c:when test="${not empty wishList }">
+						<c:forEach var="wish" items="${wishList }" varStatus="str">
+							<tr>
+								<td class="mypBkTdA">${str.index + 1}</td>
+								<td class="mypBkTdB" id="product">${wish.name}</td>
+								<td class="mypBkTdA">${wish.price }원</td>
+								<td class="mypBkTdA">${wish.kind }</td>
+								<td class="mypBkTdB"><fmt:formatDate value="${wish.wishDate }" pattern="yyyy-MM-dd HH:mm"/></td>
+								<td class="mypBkTdA"><button onclick="javascript:delProduct()">삭제</button></td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td class="mypBkTdC" colspan="6">위시리스트가 비어있습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			</table>
 		</div>
 	</div>

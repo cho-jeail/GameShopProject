@@ -34,29 +34,40 @@
 					<th class="mypContentsTit">제목</th>
 					<th class="mypContentsDat">작성일자</th>
 				</tr>
-				<c:forEach items="${QnaList }" var="QnaVO" varStatus="iNum">
-					<tr>
-						<td class="mypContentsNum">${iNum.count }</td>
-						<td class="mypContentsCat">
-						<c:choose>
-							<c:when test="${QnaVO.category eq 'product' }">
-								상품문의
-							</c:when>
-							<c:when test="${QnaVO.category eq 'order' }">
-								주문 및 결제문의
-							</c:when>
-							<c:when test="${QnaVO.category eq 'cancel' }">
-								주문취소 및 환불
-							</c:when>
-							<c:when test="${QnaVO.category eq 'other' }">
-								기타문의
-							</c:when>
-						</c:choose>
-						</td>
-						<td class="mypContentsTit"><a href="${cpath }/mypage/mypQna/${QnaVO.id }/">${QnaVO.title }</a></td>
-						<td class="mypContentsDat"><fmt:formatDate value="${QnaVO.writeDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					</tr>
-				</c:forEach>
+				
+				<c:choose>
+					<c:when test="${not empty QnaList }">
+						<c:forEach items="${QnaList }" var="QnaVO" varStatus="iNum">
+							<tr>
+								<td class="mypContentsNum">${iNum.count }</td>
+								<td class="mypContentsCat">
+								<c:choose>
+									<c:when test="${QnaVO.category eq 'product' }">
+										상품문의
+									</c:when>
+									<c:when test="${QnaVO.category eq 'order' }">
+										주문 및 결제문의
+									</c:when>
+									<c:when test="${QnaVO.category eq 'cancel' }">
+										주문취소 및 환불
+									</c:when>
+									<c:when test="${QnaVO.category eq 'other' }">
+										기타문의
+									</c:when>
+								</c:choose>
+								</td>
+								<td class="mypContentsTit"><a href="${cpath }/mypage/mypQna/${QnaVO.id }/">${QnaVO.title }</a></td>
+								<td class="mypContentsDat"><fmt:formatDate value="${QnaVO.writeDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td class="mypBkTdC" colspan="4">문의내역이 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+				
 			</table>
 		</div>
 	</div>
