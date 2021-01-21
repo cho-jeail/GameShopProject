@@ -23,7 +23,7 @@
 			<div class="TopMenu">
 				<div class="SearchBar">
 					<input type="text" id="SearchWord" placeholder="검색"> 
-					<input type="button" onclick="search()" value="돋보기 그림">
+					<input type="image" src="${cpath }/resources/image/searchimg.jpg" onclick="search()" id="SearchImg">
 				</div>
 				<div class="LoginArea">
 					<c:choose>
@@ -33,7 +33,7 @@
 						</c:when>
 						<c:otherwise>
 							<input type="button" onclick="location.href='${cpath}/signin/'" id="Login" value="로그인">
-							<input type="button" onclick="location.href='${cpath}/policy/'" id="AddAccount" value="회원가입">
+							<input type="button" class="join" onclick="location.href='${cpath}/policy/'" id="AddAccount" value="회원가입">
 						</c:otherwise>
 					</c:choose>
 				</div>
