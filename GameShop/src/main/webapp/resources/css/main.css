@@ -7,9 +7,9 @@ header {
 	height: 150px;
 	background-color: #202155;
 	position: absolute;
+	z-index: 10;
 	display: flex;
 	justify-content: center;
-	z-index: 10;
 }
 
 body {
@@ -66,15 +66,24 @@ footer font {
 	height: 150px;
 }
 
-.TopMenu {
+.headerMainDiv{
+	box-sizing: border-box;
+	width: 1280px;
 	display: flex;
-	width: 1080px;
-	height: 75px;
 	justify-content: space-between;
 }
 
+.TopMenu {
+	box-sizing: border-box;
+	display: flex;
+	width: 1050px;
+	height: 75px;
+	justify-content: space-between;
+	padding: 17px 0 0 10px;
+}
+
 .Menu {
-	width: 1080px;
+	width: 1050px;
 	height: 75px;
 }
 
@@ -160,8 +169,6 @@ footer font {
 	width: 600px;
 	border: 1px solid #1b5ac2;
 	background: #FFFFFF;
-	margin-top: 17px;
-	margin-left: 50px;
 }
 
 #SearchWord {
@@ -182,10 +189,7 @@ footer font {
 }
 
 /* ============== 로그인 부분 ============== */
-.LoginArea {
-	margin-top: 17px;
-	box-sizing: border-box;
-}
+.LoginArea { box-sizing: border-box; }
 
 .LoginArea input {
 	border: 1px solid skyblue;
