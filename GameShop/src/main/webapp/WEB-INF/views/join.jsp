@@ -6,7 +6,7 @@
 
 <section class="joinSection">
 	<div class="joinContainer">
-		<div class="joinLogo"></div>
+		<div class="joinLogo"><a href="${cpath }">GAMEZ</a></div>
 		<form name="joinForm" id="joinForm" class="joinForm" method="post" action="${cpath }/join/">
 			<div class="joinDivs">
 				<label class="joinLabel">

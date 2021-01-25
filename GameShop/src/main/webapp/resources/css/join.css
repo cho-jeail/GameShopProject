@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+a{ text-decoration: none; color: white; }
+a:active{ color: white; }
+
 .joinSection{
 	display: flex;
 	justify-content: center;
@@ -19,10 +22,19 @@
 }
 
 .joinLogo{
-	width: 60px;
-	height: 70px;
-	border: 1px solid black;
+	width: max-content;
+	background-color: #b50000;
+	border: 1px solid white;
 	margin: 0 auto 20px auto;
+}
+
+.joinLogo a{
+	display: block;
+	font-size: 2.5rem;
+	font-family: fantasy;
+	letter-spacing: 5px;
+	color: white;
+	padding: 0 5px 0 5px;
 }
 
 .joinForm{
