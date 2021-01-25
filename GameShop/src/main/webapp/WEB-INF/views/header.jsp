@@ -49,7 +49,7 @@
 								<li><a href="${cpath }/CCNotice/?page=1">공지사항</a></li>
 								<li><a href="${cpath }/CCFAQ/">자주 묻는 질문</a></li>
 								<li><a href="${cpath }/CCQnA/">Q&amp;A</a></li>							
-							</ul>
+							</ul> 
 						</li>
 					</ul>
 				</div>
