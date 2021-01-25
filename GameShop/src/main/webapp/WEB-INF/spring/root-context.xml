@@ -13,7 +13,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 	 	<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
-	 	<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.0.10:1521:orcl"/>
+	 	<property name="jdbcUrl" value="jdbc:oracle:thin:@110.13.240.9:10:orcl"/>
+<!-- 	 	<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.0.10:1521:orcl"/> -->
      	<property name="user" value="c##game2"/>
       	<property name="password" value="1"/>
    	   	<property name="maxPoolSize" value="100"/>

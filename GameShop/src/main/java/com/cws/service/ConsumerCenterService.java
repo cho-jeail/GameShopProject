@@ -38,6 +38,24 @@ public class ConsumerCenterService {
 		searchMap.put("first", ppv.getFirst() + "");
 		searchMap.put("last", ppv.getLast() + "");
 		
+//		System.out.println("\n=========================================");
+//		System.out.println("page : " + ppv.getPage());
+//		System.out.println("perPage : " + ppv.getPerPage());
+//		System.out.println("perSection : " + ppv.getPerSection());
+//		System.out.println("AllCount : " + ppv.getAllCount());
+//		System.out.println("PageCount : " + ppv.getPageCount());
+//		System.out.println();
+//		System.out.println("first : " + ppv.getFirst());
+//		System.out.println("Last : " + ppv.getLast());
+//		System.out.println();
+//		System.out.println("section : " + ppv.getSection());
+//		System.out.println("begin : " + ppv.getBegin());
+//		System.out.println("end : " + ppv.getEnd());
+//		System.out.println();
+//		System.out.println("prev : " + ppv.isPrev());
+//		System.out.println("next : " + ppv.isNext());
+//		System.out.println("=========================================\n");
+		
 		List<NoticeBoardVO> boardList = Bdao.SelectPageNoticeBoard(searchMap);
 		
 		mav.addObject("NoticeSearchWord", searchMap.get("word"));

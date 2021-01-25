@@ -32,7 +32,7 @@ public class PagingParamsVO {
 		first = (page - 1) * perPage + 1;
 		last = AllCount <= first + perPage - 1 ? AllCount : first + perPage - 1;
 		
-		section = (page - 1) / perPage;
+		section = (page - 1) / perSection;
 		begin = section * perSection + 1;
 		end = PageCount <= begin + perSection - 1 ? PageCount : begin + perSection - 1;
 		
