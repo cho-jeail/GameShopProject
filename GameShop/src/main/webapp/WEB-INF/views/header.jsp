@@ -17,7 +17,7 @@
 	<script type="text/javascript" src="${cpath }/js/header.js"></script>
 	<header>
 		<div class="LOGO">
-			<a href="${cpath }/"><img alt="" src=""></a>
+			<a href="${cpath }/"><img alt="logo" src="${cpath }/resources/image/logo.jpg"></a>
 		</div>
 		<div>
 			<div class="TopMenu">
