@@ -143,4 +143,8 @@
 		select * from product
 	</select>
 	
+	<select id="searchSelect" resultType="ProductVO">
+		select * from product where name like '%'||#{word}||'%'
+	</select>
+	
 </mapper>

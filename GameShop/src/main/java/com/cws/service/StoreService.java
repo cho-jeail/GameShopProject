@@ -280,7 +280,9 @@ public class StoreService {
 
 	public ModelAndView searchWord(String word) {
 		ModelAndView mav = new ModelAndView("info");
-		List<ProductVO> list = sd.storeSelect(word);
+		
+		List<ProductVO> list = sd.searchSelect(word);
+		
 //		System.out.println("검색 Service : " + list.get(0));
 		mav.addObject("list", list);
 		return mav;

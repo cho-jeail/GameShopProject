@@ -2,6 +2,7 @@ package com.cws.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,7 @@ import com.cws.service.StoreService;
 import com.cws.service.UserService;
 import com.cws.vo.CouponVO;
 import com.cws.vo.OutReasonVO;
+import com.cws.vo.ProductVO;
 import com.cws.vo.UserVO;
 
 /**
@@ -155,10 +157,36 @@ public class HomeController {
 		return naverLoginSF();
 	}
 	
-	@RequestMapping(value = "/info/", method = RequestMethod.POST)
-	public ModelAndView searchWord(@RequestParam("word") String word) {
+	@RequestMapping(value = "/info/", method = RequestMethod.GET)
+	public ModelAndView searchWord(@RequestParam("word") String word, HttpServletRequest request) {
 		System.out.println("검색이 들어온다!!!! : " + word);
 		return ss.searchWord(word);
+	}
+	
+	@RequestMapping(value = "/info/", method = RequestMethod.POST)
+	public String gameStore(HttpServletRequest request, Model model) {
+		System.out.println("gameStore : POST");
+		String name = request.getParameter("name");
+		String kind = request.getParameter("kind");
+		String developer = request.getParameter("developer");
+		
+		
+		System.out.println("gameStore : " + name); 
+		System.out.println("gameStore : " + kind); 
+		System.out.println("gameStore : " + developer); 
+		
+		if(developer == null && kind == null) {
+			model.addAttribute("storeList", ss.cateList(name));
+			return "gameStore";
+		}
+		
+		else if(developer != null || kind != null) {
+			System.out.println("필터에 들어옴");
+			List<ProductVO> list = ss.filterSelect(developer, kind);
+			model.addAttribute("storeList", list);
+			return "gameStore";
+		}
+		return "exhaust";
 	}
 	
 	public ModelAndView naverLoginSF() {
