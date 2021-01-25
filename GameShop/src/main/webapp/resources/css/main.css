@@ -91,14 +91,16 @@ footer font {
 	display: flex;
 	margin: 0px;
 	padding: 0px;
+	margin-left: 10px;
+	border: 1px solid skyblue;
+	background-color: rgba(0, 0, 0, 0.25);
 }
 
 .Menu ul li {
 	list-style: none;
 	height: 65px;
-	margin-left: 10px;
-	border: 1px solid white;
 	line-height: 65px;
+	border-right: 1px solid skyblue;
 }
 
 .Menu ul li:hover {
@@ -106,9 +108,11 @@ footer font {
 }
 
 .Menu ul li a {
+	display: block;
+	height: 65px;
 	font-size: 20px;
-	padding: 19px 22px;
 	text-decoration: none;
+	text-align: center;
 }
 
 .Menu ul li a:link, .Menu ul li a:visited, .Menu ul li a:hover {
@@ -198,7 +202,7 @@ footer font {
 	font-weight: bolder;
 	color: skyblue;
 	padding: 5px;
-	width: 70px;
+	width: 85px;
 	height: 35px;
 }
 

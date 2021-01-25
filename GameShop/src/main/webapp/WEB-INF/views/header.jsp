@@ -8,7 +8,6 @@
 <title>GAMESHOP</title>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
-<link rel="stylesheet" type="text/css" href="${cpath }/css/main.css">
 </head>
 <body>
 	<script type="text/javascript">
