@@ -13,7 +13,7 @@
 
 <section class="signinSection">
 	<div class="signinContainer">
-		<div class="signinLogo"></div>
+		<div class="signinLogo"><a href="${cpath }">GAMEZ</a></div>
 		<form class="signinForm" id="signinForm" method="post" action="${cpath }/signin/" >
 			<div class="signDiv">
 				<input type="text" class="signinInput" id="signinEmail" name="email" placeholder="이메일" value="${signEmail }">
