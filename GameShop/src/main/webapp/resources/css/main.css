@@ -124,7 +124,9 @@ footer font {
 	display: none;
 	background-color: #6E6E6E;
 	width: 150px;
-	border: 1px solid white;
+	border: 1px solid skyblue;
+	margin: 0px;
+	border-bottom: 0px;
 }
 .HeaderCCli:hover ul {
 	display: block;
@@ -133,19 +135,19 @@ footer font {
 	border: 0px;
 	margin: 0px;
 	height: 40px;
-	line-height: 32px;
+	line-height: 40px;
+	border-bottom: 1px solid skyblue;
 }
 .HeaderCCli ul li a {
 	display: block;
-	width: 120px;
+	padding: 0px;
+	width: 150px;
+	height: 40px;
 	font-size: 12pt;
-	padding: 5px 10px;
-	padding-right: 20px;
 }
 .HeaderCCli ul li a:active {
 	background-color: #4c4c4c;
 }
-
 
 .LOGO{
 	box-sizing: border-box;
