@@ -285,11 +285,14 @@
 	width: 900px;
 	margin-top: 35px;
 	margin-bottom: 35px;
+	color: white;
 }
 .storePaging a {
 	border: 1px solid gray;
 	padding: 10px 15px;
 	margin-right: 3px;
+	color: #FFF2E6;
+	text-decoration: none;
 }
 .storePaging a:hover {
 	background-color: gray;
