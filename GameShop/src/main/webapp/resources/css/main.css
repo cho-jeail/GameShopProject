@@ -133,6 +133,27 @@ footer font {
 	background-color: #4c4c4c;
 }
 
+
+.LOGO{
+	box-sizing: border-box;
+	width: max-content;
+	background-color: #b50000;
+	border: 3px solid white;
+	margin-top: 30px;
+	height: 90px;
+}
+
+.LOGO a{
+	display: block;
+	font-size: 4.5rem;
+	font-family: fantasy;
+	letter-spacing: 5px;
+	color: white;
+	padding: 0 5px 0 5px;
+}
+
+.LOGO a{ text-decoration: none; color: white; }
+.LOGO a:active{ color: white; }
 /* ============== 검색창 부분 ============== */
 .SearchBar {
 	height: 40px;
@@ -162,15 +183,19 @@ footer font {
 
 /* ============== 로그인 부분 ============== */
 .LoginArea {
-	margin-left: 250px;
 	margin-top: 17px;
+	box-sizing: border-box;
 }
 
 .LoginArea input {
 	border: 1px solid skyblue;
 	background-color: rgba(0,0,0,0);
+	font-size: 0.9rem;
+	font-weight: bolder;
 	color: skyblue;
 	padding: 5px;
+	width: 70px;
+	height: 35px;
 }
 
 .LoginArea input:hover {

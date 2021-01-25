@@ -24,10 +24,19 @@ a:active{ color: white; }
 }
 
 .signinLogo{
-	width: 60px;
-	height: 70px;
-	border: 1px solid black;
+	width: max-content;
+	background-color: #b50000;
+	border: 1px solid white;
 	margin: 0 auto 20px auto;
+}
+
+.signinLogo a{
+	display: block;
+	font-size: 2.5rem;
+	font-family: fantasy;
+	letter-spacing: 5px;
+	color: white;
+	padding: 0 5px 0 5px;
 }
 
 .signinForm{
@@ -62,7 +71,7 @@ a:active{ color: white; }
 	align-content: center;
 	color: white;
 	font-size: 0.8rem;
-	margin: 5px 0 10px 0;
+	margin: 5px 0 15px 0;
 }
 
 .signinCk{
@@ -73,7 +82,7 @@ a:active{ color: white; }
 
 .signinBtn{ 
 	height: 50px; 
-	margin-bottom: 10px; 
+	margin-bottom: 15px; 
 	font-weight: bolder;
 	font-size: 1.2rem;
 	color: white;
