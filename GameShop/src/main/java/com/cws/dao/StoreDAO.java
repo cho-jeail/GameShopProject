@@ -72,5 +72,7 @@ public interface StoreDAO {
 	List<CouponVO> selectCoupon(String id);
 
 	List<ProductVO> selectRecommend();
+
+	List<ProductVO> searchSelect(String word);
 	
 }

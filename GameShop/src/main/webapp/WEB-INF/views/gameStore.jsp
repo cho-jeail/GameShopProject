@@ -3,7 +3,6 @@
 <%@ include file="header.jsp" %>
 <link rel="stylesheet" type="text/css" href="${cpath }/css/gameStore.css">
 <!-- 게임 스토어 메인페이지 -->
-<hr>
 <!-- <div> -->
 <!-- 	<h1>요기는 게임 스토어</h1> -->
 <!-- </div> -->

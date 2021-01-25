@@ -8,6 +8,7 @@
 <title>GAMESHOP</title>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
+<link rel="stylesheet" type="text/css" href="${cpath }/css/main.css">
 </head>
 <body>
 	<script type="text/javascript">
@@ -22,7 +23,7 @@
 			<div>
 				<div class="TopMenu">
 					<div class="SearchBar">
-						<input type="text" id="SearchWord" placeholder="검색"> 
+						<input type="text" id="SearchWord" placeholder="검색" onkeyup="enterkey()"> 
 						<input type="image" src="${cpath }/resources/image/searchimg.jpg" onclick="search()" id="SearchImg">
 					</div>
 					<div class="LoginArea">
@@ -49,7 +50,7 @@
 								<li><a href="${cpath }/CCNotice/?page=1">공지사항</a></li>
 								<li><a href="${cpath }/CCFAQ/">자주 묻는 질문</a></li>
 								<li><a href="${cpath }/CCQnA/">Q&amp;A</a></li>							
-							</ul> 
+							</ul>
 						</li>
 					</ul>
 				</div>
@@ -66,7 +67,7 @@
 		var form = document.createElement("form");
 		var input_word = document.createElement("input");
 		
-		form.setAttribute("method", "post");
+		form.setAttribute("method", "get");
 		form.setAttribute("action", "${cpath}/info/");
 		
 		input_word.setAttribute("type", "hidden");
@@ -77,5 +78,11 @@
 		form.appendChild(input_word);
 		
 		form.submit();
+	}
+	
+	function enterkey() {
+        if (window.event.keyCode == 13) {
+             search();
+        }
 	}
 	</script>

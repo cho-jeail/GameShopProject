@@ -80,6 +80,13 @@ function filter() {
 			break;
 		}
 	}
+	
+	console.log(kind);
+	
+	if(kind === "" && developer ==="") {
+		alert('필터 기능은 하나 이상의 옵션을 선택 해주세요');
+		history.go(0);
+	}
 		
 	var form = document.createElement("form");
 	var input_kind = document.createElement("input");
