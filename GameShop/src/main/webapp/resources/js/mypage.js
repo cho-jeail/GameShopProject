@@ -187,15 +187,17 @@ function pwComfirm(){
 	if(mypPwd.value !== ''){
 		if(mypPwd.value !== mypPwd2.value){
 			mypPwd2Cmf.innerText = '일치하지 않습니다.';
+			console.log("일치안함");
 			mypPwd2Cmf.style.color = 'red';
 		}
-		else if(pwC.value === ''){
+		else if(mypPwd2.value === ''){
 			mypPwd2Cmf.innerText = '필수 입력바랍니다.'
 			mypPwd2Cmf.style.color = 'red';
 		}
 		else{
 			mypPwd2Cmf.innerText = '일치합니다.'
 			mypPwd2Cmf.style.color = '#00ff40';
+			console.log("일치안함");
 			pwdCk = true;
 		}
 	}
