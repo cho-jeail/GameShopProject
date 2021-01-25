@@ -55,7 +55,7 @@
 		</div>
 		
 		<div class="advertise">
-			<img src="${cpath }/resources/image/advertise.jpg" style="width: 630px; height: 250px">
+			<a href=""><img src="${cpath }/resources/image/advertise.jpg" style="width: 630px; height: 250px"></a>
 		</div>
 	</div>
 </div>
@@ -66,7 +66,7 @@
 	<div class="underList">
 		<!-- 게임 리스트 첫번째 열 -->
 		<div>
-			<c:forEach var="list" items="${storeList }" begin="0" step="3" end="4">
+			<c:forEach var="list" items="${storeList }" begin="0" step="4" end="4">
 				<div class="product">
 					<div>
 						<div class="imgsize">
@@ -95,7 +95,7 @@
 
 		<!-- 게임 리스트 두번째 열 -->
 		<div>
-			<c:forEach var="list" items="${storeList }" begin="1" step="3" end="5">
+			<c:forEach var="list" items="${storeList }" begin="1" step="4" end="5">
 				<div class="product">
 					<div>
 						<div class="imgsize">
@@ -124,7 +124,7 @@
 
 		<!-- 게임 리스트 세번째 열 -->
 		<div>
-			<c:forEach var="list" items="${storeList }" begin="2" step="3" end="6">
+			<c:forEach var="list" items="${storeList }" begin="2" step="4" end="6">
 				<div class="product">
 					<div>
 						<div class="imgsize">
@@ -152,7 +152,7 @@
 		
 		<!-- 게임 리스트 네번째 열 -->
 		<div>
-			<c:forEach var="list" items="${storeList }" begin="3" step="3" end="7">
+			<c:forEach var="list" items="${storeList }" begin="3" step="4" end="7">
 				<div class="product">
 					<div>
 						<div class="imgsize">
