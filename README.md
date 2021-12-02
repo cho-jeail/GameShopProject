@@ -18,7 +18,11 @@
   <dd><a href="https://github.com/cho-jeail/GameShopProject/blob/master/GameShop/src/main/java/com/cws/vo/NoticeBoardVO.java">NoticeBoardVO.java</a></dd>
   <dd><a href="https://github.com/cho-jeail/GameShopProject/blob/master/GameShop/src/main/java/com/cws/vo/QABoardVO.java">QABoardVO.java</a></dd>
   <dd><a href="https://github.com/cho-jeail/GameShopProject/blob/master/GameShop/src/main/java/com/cws/vo/QACommentVO.java">QACommentVO.java</a></dd>
-  <dd><a href="https://github.com/cho-jeail/GameShopProject/blob/master/GameShop/src/main/java/com/cws/vo/PagingParamsVO.java">PagingParamsVO.java</a> - 신경 많이 쓴 코드</dd>
+  <dd>
+    <a href="https://github.com/cho-jeail/GameShopProject/blob/master/GameShop/src/main/java/com/cws/vo/PagingParamsVO.java">PagingParamsVO.java</a><br>
+    - 신경 많이 쓴 코드<br>
+    - 변수 생성 시 매개 변수에 현재 페이지 번호 및 전체 개시물 개수만 넣으면 자동으로 페이징에 필요한 변수를 계산하도록 만든 VO
+  </dd>
   <hr>
   <dt>5. JSP</dt>
   <dd><a href="https://github.com/cho-jeail/GameShopProject/blob/master/GameShop/src/main/webapp/WEB-INF/views/CC_FAQBoard.jsp">CC_FAQBoard.jsp</a></dd>
