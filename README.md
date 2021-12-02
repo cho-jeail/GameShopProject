@@ -5,7 +5,7 @@
 <h3>조재일 작업 파일</h3>
 <dl>
   <dt>1. Controller</dt>
-  <dd>ConsumerCenterController.java</dd>
+  <dd><a href="https://github.com/cho-jeail/GameShopProject/blob/master/GameShop/src/main/java/com/cws/controller/ConsumerCenterController.java">ConsumerCenterController.java</a></dd>
   <hr>
   <dt>2. Service</dt>
   <dd>ConsumerCenterService.java</dd>
