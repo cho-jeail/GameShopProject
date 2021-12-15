@@ -1,5 +1,6 @@
 # GameShopProject
-게임 판매 웹사이트 (포트폴리오)<br>
+게임 판매 웹사이트 (포트폴리오, 팀 프로젝트)<br>
+참여인원 : 3명<br>
 개발 일지 링크 : https://www.notion.so/GameZ-21c033157a6c436794dd116fcd8029ec
 <br><hr><br>
 <h3>조재일 작업 파일</h3>
